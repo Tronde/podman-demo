@@ -1,0 +1,7 @@
+# podman-systemd.unit - systemd units using Podman quadlet
+
+See podman-systemd.unit(5) for general information.
+
+  * Edit path in `apache-demo.kube` to match the path to `apache-demo-kube.yml` on your system
+  * Copy `apache-demo.kube` into `~/.config/containers/systemd/` and run `systemctl --user daemon-relaod`
+  * Running the previous commands generate the corresponding systemd service unit file

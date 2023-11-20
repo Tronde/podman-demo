@@ -1,0 +1,49 @@
+---
+# defaults file for ansible_role_deploy_nextcloud_with_mariadb_pod
+# Podman volumes for Nextcloud
+NC_HTML: nc_html
+NC_APPS: nc_apps
+NC_CONFIG: nc_config
+NC_DATA: nc_data
+
+# Podman volume for MariaDB
+MYSQL_DATA: mysql_data
+
+# MySQL/MariaDB vars
+MYSQL_DATABASE: nc_db
+MYSQL_USER: nextcloud
+MYSQL_PASSWORD: ToPSeCrEt2021! # notsecret
+MYSQL_ROOT_PASSWORD: ToPSeCrEt2021! # notsecret
+MYSQL_HOST: 127.0.0.1
+
+# Vars for MariaDB container
+MARIADB_CONMON_PIDFILE: /tmp/mariadb_conmon.pid
+MARIADB_IMAGE: docker.io/library/mariadb:10.11.2
+MARIADB_NAME: nc_mariadb
+
+# Nextcloud vars
+NEXTCLOUD_ADMIN_USER: nc_admin
+NEXTCLOUD_ADMIN_PASSWORD: VSnfD2021! # notsecret
+NEXTCLOUD_OVERWRITEPROTOCOL: ""
+NEXTCLOUD_OVERWRITECLIURL: ""
+NEXTCLOUD_TRUSTED_DOMAINS: "" # put the ip address of your host here
+
+# SMTP vars
+SMTP_HOST: "smtp.example.com"
+SMTP_SECURE: "tls" # ssl to use SSL, or tls zu use STARTTLS
+SMTP_PORT: "587" # (25, 465 for SSL, 587 for STARTTLS)
+SMTP_AUTHTYPE: "LOGIN"
+SMTP_NAME: "bob@example.com"
+SMTP_PASSWORD: "MailSecret1!" # notsecret
+MAIL_FROM_ADDRESS: "no-reply"
+MAIL_DOMAIN: "example.com"
+
+# Vars for podman-pod(1)
+POD_NAME: nc_pod
+POD_PORT: 40671:80
+POD_INFRA_CONMON_PIDFILE: /tmp/nc_pod_infra.pid
+
+# Vars for Nextcloud container
+NC_CONMON_PIDFILE: /tmp/nc_conmon.pid
+NC_IMAGE: docker.io/library/nextcloud:production-apache
+NC_NAME: nextcloud

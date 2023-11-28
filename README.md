@@ -22,6 +22,8 @@ As time for a proper demo is far too short during the event you are free to use 
     * ghcr.io/paperless-ngx/paperless-ngx:latest
     * docker.io/gotenberg/gotenberg:7.8
     * docker.io/library/mariadb:10.11.2
+  * Optional: A Podman Desktop installation; See [Installing Podman Desktop](https://podman-desktop.io/docs/installation)
+  * Optional: OpenShift CLI tools if you want to push your containers to an OpenShift cluster
   * Optional: A working Ansible installation if you would like to try the Ansible example; See [Installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible) for help.
 
 

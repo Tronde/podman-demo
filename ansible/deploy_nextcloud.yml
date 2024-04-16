@@ -1,6 +1,0 @@
----
-- hosts: localhost
-  connection: local
-  remote_user: jkastnin
-  roles:
-     - Tronde.deploy_nextcloud_with_mariadb_pod

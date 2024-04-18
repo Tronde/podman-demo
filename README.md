@@ -5,6 +5,25 @@ The examples/use cases in this demo require access to the Red Hat container regi
 
 In case you are not a Red Hat enterprise customer with access to standard or premium subscriptions of Red Hat Enterprise Linux (RHEL) you can sign up for the no-cost [Red Hat Devoloper Subscription for Individuals](https://access.redhat.com/solutions/4078831).[^2] [^3]
 
+## The User Stories
+
+There are three user stories for this demo.
+
+**Story 1:** Some user needs to build a container image by extending some
+base image to provide a custom container image that will serve an
+application.
+
+**Story 2:** Teams should be able to run containers and pods in a rootless
+Podman environment. The containerized applications should be able to
+store data persistently in databases or local file systems.
+
+**Story 3:** System administrators need to inspect container images, check
+logs of running containers, and need access to troubleshooting
+resources in order to support their application teams.
+
+Based on these stories the demo addresses use cases to build, deploy, integrate and test containers.
+With an automation first mindset the demo focus on using Ansible for the different use cases.
+
 ## Prerequisites
 
   * A working rootless podman installation; instructions are available at

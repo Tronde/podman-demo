@@ -1,0 +1,97 @@
+%title: Podman Demo/Workshop
+%author: Joerg Kastning
+
+-> Podman Demo/Workshop <-
+==========================
+
+-> A command-line based `podman` workshop <-
+
+_Content:_
+
+Build               *container images with Buildah*
+
+Run                 *containers using Ansible and `systemd`*
+
+Manage/Troubleshoot *methods and tools*
+
+-------------------------------------------------------------------------------
+
+-> Build container images with Buildah <-
+-----------------------------------------
+
+**User Story:** Some user needs to build a container image by extending some
+base image to provide a custom container image that will serve an
+application.
+
+-------------------------------------------------------------------------------
+
+-> Build container images with Buildah <-
+-----------------------------------------
+
+Quick facts:
+
+  * No Daemon - Buildah requires no container runtime
+  * Works with images and from scratch
+  * Builds images from a Containerfile/Dockerfile
+  * Builds images from scatch and with shell scripts
+
+-------------------------------------------------------------------------------
+
+-> Build container images with Buildah from a Container file <-
+---------------------------------------------------------------
+
+Workshop Cheat Sheet Part 1:
+
+~~~
+# Installing Buildah
+sudo dnf -y in buildah
+buildah from registry.access.redhat.com/ubi9/ubi
+buildah images
+buildah containers
+
+# Building an image from a Containerfile with Buildah
+cat Containerfile
+FROM registry.access.redhat.com/ubi9/ubi
+ADD myecho /usr/local/bin
+ENTRYPOINT "/usr/local/bin/myecho"
+
+cat myecho
+echo "This container works!"
+
+chmod 755 myecho
+
+# Build the myecho image
+buildah bud -t myecho .
+
+# Verfiy
+buildah images
+
+# Run
+podman run --rm --name=myecho localhost/myecho
+~~~
+
+-------------------------------------------------------------------------------
+
+-> Build container images with Buildah from a Container file <-
+---------------------------------------------------------------
+
+Building from a Containerfile has some disadvantages:
+
+  * If something breaks you need to start the whole build from the beginning
+  * There is no chance to interupt and troubleshoot the build process
+  * It is non-interactive, you cannot anser questions or provide input
+
+As an alternative you can use the "shell mode".
+
+-------------------------------------------------------------------------------
+
+-> Build container images with Buildah (shell mode) <-
+------------------------------------------------------
+
+  * You can do your build step by step
+  * Of course, you can put all your steps into some shell script
+  * You can respond to interactive questions or input requests (e.g. Here docs)
+  ^
+  * Let me show you the script `build_myecho_image.sh`
+
+-------------------------------------------------------------------------------

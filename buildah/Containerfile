@@ -1,0 +1,3 @@
+FROM registry.access.redhat.com/ubi9/ubi
+ADD myecho /usr/local/bin
+ENTRYPOINT "/usr/local/bin/myecho"

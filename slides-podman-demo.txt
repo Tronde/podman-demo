@@ -17,7 +17,7 @@ Manage/Troubleshoot *methods and tools*
 -------------------------------------------------------------------------------
 
 -> Build container images with Buildah <-
------------------------------------------
+=========================================
 
 **User Story:** Some user needs to build a container image by extending some
 base image to provide a custom container image that will serve an
@@ -95,3 +95,46 @@ As an alternative you can use the "shell mode".
   * Let me show you the script `build_myecho_image.sh`
 
 -------------------------------------------------------------------------------
+-> RHEL and Universal Base Images <-
+====================================
+
+-> The Red Hat Universal Base Image (UBI) <-
+--------------------------------------------
+
+  * Built from a subset of RHEL content
+  * Redistributable: Can be freely shared and deployed
+    * See [Characteristics of UBI images](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_characteristics-of-ubi-images_assembly_types-of-container-images)
+    * See [Red Hat Universal Base Image End User Licensing Agreement](https://www.redhat.com/licenses/EULA_Red_Hat_Universal_Base_Image_English_20190422.pdf)
+  * For base images are available:
+    * [init](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-init-images_assembly_types-of-container-images)
+    * [micro](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-micro-images_assembly_types-of-container-images)
+    * [minimal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-minimal-images_assembly_types-of-container-images)
+    * [standard](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-standard-images_assembly_types-of-container-images)
+  * The `ubi-9-baseos` and `ubi-9-appstream` repositories hold the redistributable subset of packages you can include in your container
+  * Provide a set of pre-built language runtime container images such as `python`, `perl`, `php`, `dotnet`, `nodejs`, and `ruby`
+
+-------------------------------------------------------------------------------
+
+-> The Red Hat RHEL Image <-
+----------------------------
+
+  * Not freely distributale
+  * Host needs a valid RHEL subscription
+
+-------------------------------------------------------------------------------
+
+-> Characteristics of UBI and RHEL Images <-
+--------------------------------------------
+
+  * Supported by Red Hat for use with containerized applications
+  * Listed in the [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/search), with descriptions, technical details, and health index
+  * Well-defined [update schedule](https://access.redhat.com/articles/2208321)
+
+-------------------------------------------------------------------------------
+
+-> Run containers using Ansible <-
+==================================
+
+**User Story:** Teams should be able to run containers and pods in a rootless
+Podman environment. The containerized applications should be able to
+store data persistently in databases or local file systems.

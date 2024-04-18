@@ -42,6 +42,17 @@ With an automation first mindset the demo focus on using Ansible for the differe
   * Optional: A Podman Desktop installation; See [Installing Podman Desktop](https://podman-desktop.io/docs/installation)
   * Optional: OpenShift CLI tools if you want to push your containers to an OpenShift cluster
 
+## How to use this workshop on your own time?
+
+I designed this demo/workshop for on-site vists, where I as a Red Hat Technical Account Manager (TAM)[^4] visit my customers to discuss current topics, projects, and deliver demos and workshops that are of interest for the customer.
+
+If you like to repeat the steps from the workshop on your own time or just do the workshop yourself, feel free to go ahead.
+You can use the file `slides-podman-demo.txt` as guidance.
+The file is a command-line based markdown presentation.
+See [mdp](https://github.com/visit1985/mdp) on how to render it in your terminal of choice.
+And of course, you can just use your favorite editor to view it.
+
 [^1]: https://podman.io
 [^2]: [How do I get the no-cost Red Hat Enterprise Linux Developer Subscription or renew it?](https://access.redhat.com/solutions/4078831)
 [^3]: [No-cost Red Hat Enterprise Linux Individual Developer Subscription: FAQs](https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux#)
+[^4]: [Red Hat Technical Account Management](https://www.redhat.com/en/services/support/technical-account-management)

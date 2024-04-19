@@ -29,14 +29,20 @@ With an automation first mindset the demo focus on using Ansible for the differe
   * A working rootless podman installation; instructions are available at
     * [RHEL 9 - Building, running, and managing containers](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/building_running_and_managing_containers/index)
     * [RHEL 8 - Building, running, and managing containers](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/building_running_and_managing_containers/index)
-  * Access to the container images that are being used used in the examples, which are
-    * registry.access.redhat.com/ubi9/httpd-24:latest
+  * Access to the container registries:
+    * registry.access.redhat.com
     * registry.redhat.io
   * A working Ansible installation; See [Installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible) for help.
     On RHEL you can Ansible by running:
 
     ~~~
     $ sudo dnf install ansible-core
+    ~~~
+
+  * Access to RHEL System Roles which can be installed on any subscribed RHEL system by running
+
+    ~~~
+    $ sudo dnf install rhel-system-roles
     ~~~
 
   * Optional: A Podman Desktop installation; See [Installing Podman Desktop](https://podman-desktop.io/docs/installation)

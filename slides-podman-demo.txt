@@ -135,6 +135,4 @@ As an alternative you can use the "shell mode".
 -> Run containers using Ansible <-
 ==================================
 
-**User Story:** Teams should be able to run containers and pods in a rootless
-Podman environment. The containerized applications should be able to
-store data persistently in databases or local file systems.
+**User Story:** Teams should be able to run containers and pods in a rootless Podman environment. The containerized applications should be able to store data persistently in databases or local file systems.

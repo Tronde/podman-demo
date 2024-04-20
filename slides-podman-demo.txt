@@ -59,7 +59,16 @@ cat myecho
 echo "This container works!"
 
 chmod 755 myecho
+~~~
 
+-------------------------------------------------------------------------------
+
+-> Build container images with Buildah from a Container file <-
+---------------------------------------------------------------
+
+Workshop Cheat Sheet Part 2:
+
+~~~
 # Build the myecho image
 buildah bud -t myecho .
 
@@ -136,3 +145,17 @@ As an alternative you can use the "shell mode".
 ==================================
 
 **User Story:** Teams should be able to run containers and pods in a rootless Podman environment. The containerized applications should be able to store data persistently in databases or local file systems.
+
+-------------------------------------------------------------------------------
+
+-> What are we going to do next? <-
+-----------------------------------
+
+  1. Take a look at what to do with podman-systemd.unit(5)
+  2. Deploy containerized Wordpress with Ansible
+
+-------------------------------------------------------------------------------
+
+-> Manage and Troubleshoot <-
+=============================
+

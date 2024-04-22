@@ -152,7 +152,52 @@ As an alternative you can use the "shell mode".
 -----------------------------------
 
   1. Take a look at what to do with podman-systemd.unit(5)
-  2. Deploy containerized Wordpress with Ansible
+  2. Install a simple application using Podman Quadlet
+  3. Deploy containerized Wordpress with Ansible
+
+-------------------------------------------------------------------------------
+
+-> Quadlet Cheat Sheet <-
+-------------------------
+
+~~~
+   Podman unit search path
+              • /etc/containers/systemd/
+              • /usr/share/containers/systemd/
+
+   Podman user unit search path
+              • $XDG_CONFIG_HOME/containers/systemd/
+              • ~/.config/containers/systemd/
+              • /etc/containers/systemd/users/$(UID)
+              • /etc/containers/systemd/users/
+~~~
+
+Start it with:
+
+~~~
+$ systemctl --user daemon-reload
+$ systemctl start  {--user} name.service
+~~~
+
+View the generated files and/or error messages with:
+
+`/usr/lib/systemd/system-generators/podman-system-generator {--user} --dryrun`
+
+-------------------------------------------------------------------------------
+
+-> Example: Uptime Kuma <-
+--------------------------
+
+  * Time to install [Uptime Kuma](https://github.com/louislam/uptime-kuma)
+
+  1. `sudo mkdir -p /etc/containers/systemd/users/$UID`
+  2. `sudo cp quadlet/uptime-kuma.* /etc/containers/systemd/users/$UID/`
+  3. `systemctl --user daemon-reload`
+  4. `systemctl --user start uptime-kuma.service`
+  5. `systemctl --user status uptime-kuma.service`
+  5. `loginctl enable-linger [NAME]`
+
+  * Step 5 is necessary to start the container after boot when the user is not looged in.
 
 -------------------------------------------------------------------------------
 

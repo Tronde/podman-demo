@@ -58,6 +58,40 @@ The file is a command-line based markdown presentation.
 See [mdp](https://github.com/visit1985/mdp) on how to render it in your terminal of choice.
 And of course, you can just use your favorite editor to view it.
 
+## Applications used in the examples of this workshop
+
+  * [Uptime Kuma](https://github.com/louislam/uptime-kuma) is an easy-to-use self-hosted monitoring tool. It does not require a database and stores data on the hosts' file system.
+  * [Shaarli](https://shaarli.readthedocs.io/en/master/index.html) - The personal, minimalist, super fast, database-free, bookmarking service. Stores data on hosts' file system.
+  * [myTinyTodo](https://www.mytinytodo.net/) - Simple way to manage your todo lists. Written in PHP and jQuery. Data stored in PostgreSQL, MySQL or Sqlite database. Distributed under the GNU GPL License.
+
+## Background information and further reading
+
+This section provides articles from various sources that can help to get a better understanding of the wonderful world of containers.
+
+### Architecture and Terminology
+
+  * [A Practical Introduction to Container Terminology](https://developers.redhat.com/blog/2018/02/22/container-terminology-practical-introduction/); [Scott McCarty (fatherlinux)](https://www.redhat.com/en/authors/scott-mccarty-fatherlinux); February 22, 2018
+  * [Architecting Containers Part 1: Why Understanding User Space vs. Kernel Space Matters](https://www.redhat.com/en/blog/architecting-containers-part-1-why-understanding-user-space-vs-kernel-space-matters); [Scott McCarty (fatherlinux)](https://www.redhat.com/en/authors/scott-mccarty-fatherlinux); July 29, 2015
+  * [Architecting Containers Part 2: Why the User Space Matters](https://www.redhat.com/en/blog/architecting-containers-part-2-why-user-space-matters); [Scott McCarty (fatherlinux)](https://www.redhat.com/en/authors/scott-mccarty-fatherlinux); September 17, 2015
+  * [Architecting Containers Part 3: How the User Space Affects Your Application](https://www.redhat.com/en/blog/architecting-containers-part-3-how-user-space-affects-your-application); [Scott McCarty (fatherlinux)](https://www.redhat.com/en/authors/scott-mccarty-fatherlinux); November 10, 2015
+  * [Container images, multi-architecture, manifests, ids, digests – what’s behind?](https://www.opensourcerers.org/2020/11/16/container-images-multi-architecture-manifests-ids-digests-whats-behind/); [Robert Bohne](https://www.opensourcerers.org/author/rbohne/); Open Sourcerers; November 16, 2020
+
+### Building
+
+  * [Building with Buildah: Dockerfiles, command line, or scripts](https://www.redhat.com/sysadmin/building-buildah)
+  * [Getting started with Buildah](https://developers.redhat.com/blog/2021/01/11/getting-started-with-buildah#)
+  * [https://github.com/containers/Demos/tree/main/building](https://github.com/containers/Demos/tree/main/building)
+  * [https://github.com/containers/buildah/tree/main/docs/tutorials](https://github.com/containers/buildah/tree/main/docs/tutorials)
+
+### Networking
+
+  * [Basic Networking Guide for Podman](https://github.com/containers/podman/blob/master/docs/tutorials/basic_networking.md); GibHub; Podman-Tutorials; Letzter Abruf: 2021-02-20
+  * [Configuring container networking with Podman](https://www.redhat.com/sysadmin/container-networking-podman); [Brent Baude](https://www.redhat.com/sysadmin/users/brent-baude); Enable Sysadmin; October 28, 2019
+
+### Others
+
+  * [Quadlet: Running Podman containers under systemd](https://mo8it.com/blog/quadlet/)
+
 [^1]: https://podman.io
 [^2]: [How do I get the no-cost Red Hat Enterprise Linux Developer Subscription or renew it?](https://access.redhat.com/solutions/4078831)
 [^3]: [No-cost Red Hat Enterprise Linux Individual Developer Subscription: FAQs](https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux#)

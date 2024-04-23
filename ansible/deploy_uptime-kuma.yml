@@ -1,13 +1,17 @@
 ---
 - name: Uptime Kuma Demo Playbook
   hosts: localhost
+  become: true  # Necessary to open firewall port
   tasks:
     - name: Deploy Uptime Kuma with Podman Quadlet
       ansible.builtin.include_role:
         name: rhel-system-roles.podman
       vars:
+        podman_run_as_user: jkastnin
+        podman_run_as_group: jkastnin
         podman_quadlet_specs:
           - file_src: ../quadlet/uptime-kuma.volume
+            activate_systemd_unit: false
           - file_src: ../quadlet/uptime-kuma.container
             activate_systemd_unit: true
         podman_firewall:

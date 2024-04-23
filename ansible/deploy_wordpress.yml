@@ -1,11 +1,14 @@
 ---
 - name: Wordpress Demo Playbook
   hosts: localhost
+  become: true # Necessary to open ports in firewall
   tasks:
     - name: Deploy Wordpress and MariaDB with Podman Quadlet
       ansible.builtin.include_role:
         name: rhel-system-roles.podman
       vars:
+        podman_run_as_user: "{{ podman_rootless_user }}"
+        podman_run_as group: "{{ podman_rootless_group }}"
         podman_quadlet_specs:
           - name: wordpress-demo
             type: network
@@ -15,7 +18,9 @@
               Gateway=192.168.30.1
               Label=app=wordpress
           - file_src: mariadb.volume
+            activate_systemd_unit: false
           - file_src: wordpress.volume
+            activate_systemd_unit: false
           - file_src: mariadb.container
             activate_systemd_unit: true
           - file_src: wordpress.container

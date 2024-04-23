@@ -82,6 +82,7 @@ This section provides articles from various sources that can help to get a bette
   * [Getting started with Buildah](https://developers.redhat.com/blog/2021/01/11/getting-started-with-buildah#)
   * [https://github.com/containers/Demos/tree/main/building](https://github.com/containers/Demos/tree/main/building)
   * [https://github.com/containers/buildah/tree/main/docs/tutorials](https://github.com/containers/buildah/tree/main/docs/tutorials)
+  * [Using sensitive data in containers](https://www.redhat.com/sysadmin/sensitive-data-containers). [Ashley Cui (Red Hat)](https://www.redhat.com/sysadmin/users/ashley-cui). 2021-11-03.
 
 ### Networking
 

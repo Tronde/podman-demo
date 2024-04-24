@@ -1,0 +1,9 @@
+.linktitle a {
+    color: red;
+}
+
+#demo_marquee {
+	background: darkmagenta;
+	color: white;
+	font-weight: bold;
+}

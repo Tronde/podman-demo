@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include="includes"}
+</head>
+<body>
+<div id="pageheader">
+    {include="page.header"}
+
+    <div id="headerform" class="search">
+        <form method="GET" class="searchform" name="searchform">
+            <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="Search text"
+               {if="!empty($search_term)"}
+                    value="{$search_term}"
+               {/if}
+            >
+            <input type="submit" value="Search" class="bigbutton">
+        </form>
+        <form method="GET" class="tagfilter" name="tagfilter">
+            <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="Filter by tag"
+                {if="!empty($search_tags)"}
+                    value="{$search_tags}"
+                {/if}
+                autocomplete="off" data-multiple data-minChars="1"
+                data-list="{loop="$tags"}{$key}, {/loop}"
+            >
+            <input type="submit" value="Search" class="bigbutton">
+        </form>
+        {loop="$plugins_header.fields_toolbar"}
+            <form
+                {loop="$value.attr"}
+                    {$key}="{$value}"
+                {/loop}>
+                {loop="$value.inputs"}
+                    <input
+                    {loop="$value"}
+                        {$key}="{$value}"
+                    {/loop}>
+                {/loop}
+            </form>
+        {/loop}
+    </div>
+</div>
+
+<div id="linklist">
+
+    {include="linklist.paging"}
+
+    <div id="plugin_zone_start_linklist" class="plugin_zone">
+        {loop="$plugin_start_zone"}
+            {$value}
+        {/loop}
+    </div>
+
+    {if="count($links)==0"}
+        <div id="searchcriteria">Nothing found.</div>
+    {elseif="!empty($search_term) or $search_tags !== ''"}
+        <div id="searchcriteria">
+            {$result_count} results
+            {if="!empty($search_term)"}
+                for <em>{$search_term}</em>
+            {/if}
+            {if="!empty($search_tags)"}
+                {$exploded_tags=tags_str2array($search_tags, $tags_separator)}
+                tagged
+                {loop="$exploded_tags"}
+                    <span class="linktag" title="Remove tag">
+                        <a href="{$base_path}/remove-tag/{function="urlencode($value)"}">{$value} <span class="remove">x</span></a>
+                    </span>
+                {/loop}
+            {elseif="$search_tags === false"}
+                <span class="linktag" title="Remove tag">
+                    <a href="{$base_path}/">untagged <span class="remove">x</span></a>
+                </span>
+            {/if}
+        </div>
+    {/if}
+    <ul>
+        {loop="$links"}
+        <li{if="$value.class"} class="{$value.class}"{/if} data-id="{$value.id}">
+            <a id="{$value.shorturl}"></a>
+            {if="$thumbnails_enabled && $value.thumbnail !== false"}
+                <div class="thumbnail" {if="$value.thumbnail === null"}data-async-thumbnail="1"{/if}>
+                    <a href="{$value.real_url}">
+                        {ignore}RainTPL hack: put the 2 src on two different line to avoid path replace bug{/ignore}
+                        <img data-src="{$base_path}/{$value.thumbnail}#" class="b-lazy"
+                             src=""
+                             alt="thumbnail" width="{$thumbnails_width}" height="{$thumbnails_height}" />
+                    </a>
+                </div>
+            {/if}
+            <div class="linkcontainer">
+                {if="$is_logged_in"}
+                    <div class="linkeditbuttons">
+                        <a href="{$base_path}/admin/shaare/{$value.id}" title="Edit" class="button_edit">
+                            <img src="{$asset_path}/img/edit_icon.png#">
+                        </a>
+                        <br>
+                        <a href="{$base_path}/admin/shaare/delete?id={$value.id}&amp;token={$token}" label="Delete"
+                           onClick="return confirmDeleteLink();"
+                           class="button_delete"
+                        >
+                            <img src="{$asset_path}/img/delete_icon.png#">
+                        </a>
+                    </div>
+                {/if}
+                <span class="linktitle">
+                    <a href="{$value.real_url}">{$value.title}</a>
+                </span>
+                <br>
+                {if="$value.description"}<div class="linkdescription">{$value.description}</div>{/if}
+                {if="!$hide_timestamps || $is_logged_in"}
+                    {$updated=$value.updated_timestamp ? 'Edited: '. format_date($value.updated) : 'Permalink'}
+                    <span class="linkdate" title="Permalink">
+                        <a href="{$base_path}/shaare/{$value.shorturl}">
+                            <span title="{$updated}">
+                                {$value.created|format_date}
+                                {if="$value.updated_timestamp"}*{/if}
+                            </span>
+                            - permalink
+                        </a> -
+                    </span>
+                {else}
+                    <span class="linkdate" title="Short link here"><a href="{$base_path}/shaare/{$value.shorturl}">permalink</a> - </span>
+                {/if}
+
+                {loop="$value.link_plugin"}
+                    <span>{$value}</span> -
+                {/loop}
+
+                <a href="{$value.real_url}"><span class="linkurl" title="Short link">{$value.url}</span></a><br>
+                {if="$value.tags"}
+                    <div class="linktaglist">
+                    {loop="$value.taglist"}<span class="linktag" title="Add tag"><a href="{$base_path}/add-tag/{$value|urlencode}">{$value}</a></span> {/loop}
+                    </div>
+                {/if}
+
+
+            </div>
+        </li>
+    {/loop}
+    </ul>
+
+    <div id="plugin_zone_end_linklist" class="plugin_zone">
+        {loop="$plugin_end_zone"}
+            {$value}
+        {/loop}
+    </div>
+
+    {include="linklist.paging"}
+
+</div>
+
+    {include="page.footer"}
+<script src="{$asset_path}/js/thumbnails.min.js#"></script>
+{if="$is_logged_in && $async_metadata"}<script src="{$asset_path}/js/metadata.min.js?v={$version_hash}#"></script>{/if}
+
+</body>
+</html>

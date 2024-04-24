@@ -1,0 +1,37 @@
+# Disable directory listing
+Options -Indexes
+
+RewriteEngine On
+
+# Prevent accessing subdirectories not managed by SCM
+RewriteRule ^(.git|doxygen|vendor) - [F]
+
+# Forward the "Authorization" HTTP header
+# fixes JWT token not correctly forwarded on some Apache/FastCGI setups
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+# Alternative (if the 2 lines above don't work)
+# SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+# Slim URL Redirection
+# Ionos Hosting needs RewriteBase /
+# RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+<LimitExcept GET POST PUT DELETE PATCH OPTIONS>
+  <IfModule version_module>
+    <IfVersion >= 2.4>
+       Require all denied
+    </IfVersion>
+    <IfVersion < 2.4>
+       Allow from none
+       Deny from all
+    </IfVersion>
+  </IfModule>
+
+  <IfModule !version_module>
+    Require all denied
+  </IfModule>
+</LimitExcept>

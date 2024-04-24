@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Docker - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Docker";
+        var mkdocs_page_input_path = "Docker.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Docker</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#install-docker">Install Docker</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get-and-run-a-shaarli-image">Get and run a Shaarli image</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-compose">Docker Compose</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-dockerized-shaarli-as-a-systemd-service">Running dockerized Shaarli as a systemd service</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-cheatsheet">Docker cheatsheet</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Reverse-proxy/">Reverse Proxy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Plugins/">Plugins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Usage/">Usage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Community-and-related-software/">Community and Related software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Versioning/">Versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Setup &raquo;</li>
+      <li>Docker</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/Docker.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">#</a></h1>
+<p><a href="https://docs.docker.com/get-started/overview/">Docker</a> is an open platform for developing, shipping, and running applications</p>
+<h2 id="install-docker">Install Docker<a class="headerlink" href="#install-docker" title="Permanent link">#</a></h2>
+<p>Install <a href="https://docs.docker.com/engine/install/">Docker</a>, by following the instructions relevant to your OS / distribution, and start the service. For example on <a href="https://docs.docker.com/engine/install/debian/">Debian</a>:</p>
+<pre><code class="language-bash"># update your package lists
+sudo apt update
+# remove old versions
+sudo apt-get remove docker docker-engine docker.io containerd runc
+# install requirements
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+# add docker's GPG signing key
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+# add the repository
+sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable&quot;
+# install docker engine
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+# Start and enable Docker service
+sudo systemctl enable docker &amp;&amp; sudo systemctl start docker
+# verify that Docker is properly configured
+sudo docker run hello-world
+</code></pre>
+<p>In order to run Docker commands as a non-root user, you must add the <code>docker</code> group to this user:</p>
+<pre><code class="language-bash"># Add docker group as secondary group
+sudo usermod -aG docker your-user
+# Reboot or logout
+# Then verify that Docker is properly configured, as &quot;your-user&quot;
+docker run hello-world
+</code></pre>
+<h2 id="get-and-run-a-shaarli-image">Get and run a Shaarli image<a class="headerlink" href="#get-and-run-a-shaarli-image" title="Permanent link">#</a></h2>
+<p>Shaarli images are available on <a href="https://github.com/shaarli/Shaarli/pkgs/container/shaarli">GitHub Container Registry</a> <code>ghcr.io/shaarli/shaarli</code>:</p>
+<ul>
+<li><code>latest</code>: master (development) branch</li>
+<li><code>vX.Y.Z</code>: shaarli <a href="https://github.com/shaarli/Shaarli/releases">releases</a></li>
+<li><code>release</code>: always points to the last release</li>
+<li><code>stable</code> and <code>master</code>: <strong>deprecated</strong>. These tags are no longer maintained and may be removed without notice</li>
+</ul>
+<p>These images are built automatically on Github Actions and rely on:</p>
+<ul>
+<li><a href="https://www.alpinelinux.org/">Alpine Linux</a></li>
+<li><a href="http://php-fpm.org/">PHP7-FPM</a></li>
+<li><a href="http://nginx.org/">Nginx</a></li>
+</ul>
+<p>Additional Dockerfiles are provided for the <code>arm32v7</code> platform, relying on <a href="https://hub.docker.com/r/lsiobase/alpine.armhf/">Linuxserver.io Alpine armhf images</a>. These images must be built using <a href="https://docs.docker.com/engine/reference/commandline/build/"><code>docker build</code></a> on an <code>arm32v7</code> machine or using an emulator such as <a href="https://resin.io/blog/building-arm-containers-on-any-x86-machine-even-dockerhub/">qemu</a>.</p>
+<p>Here is an example of how to run Shaarli latest image using Docker:</p>
+<pre><code class="language-bash"># download the 'latest' image from GitHub Container Registry
+docker pull ghcr.io/shaarli/shaarli
+
+# create persistent data volumes/directories on the host
+docker volume create shaarli-data
+docker volume create shaarli-cache
+
+# create a new container using the Shaarli image
+# --detach: run the container in background
+# --name: name of the created container/instance
+# --publish: map the host's :8000 port to the container's :80 port
+# --rm: automatically remove the container when it exits
+# --volume: mount persistent volumes in the container ($volume_name:$volume_mountpoint)
+docker run --detach \
+           --name myshaarli \
+           --publish 8000:80 \
+           --rm \
+           --volume shaarli-data:/var/www/shaarli/data \
+           --volume shaarli-cache:/var/www/shaarli/cache \
+           ghcr.io/shaarli/shaarli:latest
+
+# verify that the container is running
+docker ps | grep myshaarli
+
+# to completely remove the container
+docker stop myshaarli # stop the running container
+docker ps | grep myshaarli # verify the container is no longer running
+docker ps -a | grep myshaarli # verify the container is stopped
+docker rm myshaarli # destroy the container
+docker ps -a | grep myshaarli # verify th container has been destroyed
+
+</code></pre>
+<p>After running <code>docker run</code> command, your Shaarli instance should be available on the host machine at <a href="http://localhost:8000">localhost:8000</a>. In order to access your instance through a reverse proxy, we recommend using our <a href="#docker-compose">Docker Compose</a> build.</p>
+<h2 id="docker-compose">Docker Compose<a class="headerlink" href="#docker-compose" title="Permanent link">#</a></h2>
+<p>A <a href="https://docs.docker.com/compose/compose-file/">Compose file</a> is a common format for defining and running multi-container Docker applications.</p>
+<p>A <code>docker-compose.yml</code> file can be used to run a persistent/autostarted shaarli service using <a href="https://docs.docker.com/compose/">Docker Compose</a> or in a <a href="https://docs.docker.com/engine/reference/commandline/stack_deploy/">Docker stack</a>.</p>
+<p>Shaarli provides configuration file for Docker Compose, that will setup a Shaarli instance, a <a href="https://containo.us/traefik/">Træfik</a> instance (reverse proxy) with <a href="https://letsencrypt.org/">Let's Encrypt</a> certificates, a Docker network, and volumes for Shaarli data and Træfik TLS configuration and certificates.</p>
+<p>Download docker-compose from the <a href="https://docs.docker.com/compose/install/">release page</a>:</p>
+<pre><code class="language-bash">$ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>To run Shaarli container and its reverse proxy, you can execute the following commands:</p>
+<pre><code class="language-bash"># create a new directory to store the configuration:
+$ mkdir shaarli &amp;&amp; cd shaarli
+# Download the latest version of Shaarli's docker-compose.yml
+$ curl -L https://raw.githubusercontent.com/shaarli/Shaarli/latest/docker-compose.yml -o docker-compose.yml
+# Create the .env file and fill in your VPS and domain information
+# (replace &lt;shaarli.mydomain.org&gt;, &lt;admin@mydomain.org&gt; and &lt;latest&gt; with your actual information)
+$ echo 'SHAARLI_VIRTUAL_HOST=shaarli.mydomain.org' &gt; .env
+$ echo 'SHAARLI_LETSENCRYPT_EMAIL=admin@mydomain.org' &gt;&gt; .env
+# Available Docker tags can be found at https://github.com/shaarli/Shaarli/pkgs/container/shaarli/versions?filters%5Bversion_type%5D=tagged
+$ echo 'SHAARLI_DOCKER_TAG=latest' &gt;&gt; .env
+# Pull the Docker images
+$ docker-compose pull
+# Run!
+$ docker-compose up -d
+</code></pre>
+<p>After a few seconds, you should be able to access your Shaarli instance at <a href="https://shaarli.mydomain.org">https://shaarli.mydomain.org</a> (replace your own domain name).</p>
+<h2 id="running-dockerized-shaarli-as-a-systemd-service">Running dockerized Shaarli as a systemd service<a class="headerlink" href="#running-dockerized-shaarli-as-a-systemd-service" title="Permanent link">#</a></h2>
+<p>It is possible to start a dockerized Shaarli instance as a systemd service (systemd is the service management tool on several distributions). After installing Docker, use the following steps to run your shaarli container Shaarli to run on system start.</p>
+<p>As root, create <code>/etc/systemd/system/docker.shaarli.service</code>:</p>
+<pre><code class="language-ini">[Unit]
+Description=Shaarli Bookmark Manager Container
+After=docker.service
+Requires=docker.service
+
+
+[Service]
+Restart=always
+
+# Put any environment you want in an included file, like $host- or $domainname in this example
+EnvironmentFile=/etc/sysconfig/box-environment
+
+# It's just an example..
+ExecStart=/usr/bin/docker run \
+  -p 28010:80 \
+  --name ${hostname}-shaarli \
+  --hostname shaarli.${domainname} \
+  -v /srv/docker-volumes-local/shaarli-data:/var/www/shaarli/data:rw \
+  -v /etc/localtime:/etc/localtime:ro \
+  ghcr.io/shaarli/shaarli:latest
+
+ExecStop=/usr/bin/docker rm -f ${hostname}-shaarli
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<pre><code class="language-bash"># reload systemd services definitions
+systemctl daemon-reload
+# start the servie and enable it a boot time
+systemctl enable docker.shaarli.service --now
+# verify that the service is running
+systemctl status docker.*
+# inspect system log if needed
+journalctl -f
+</code></pre>
+<h2 id="docker-cheatsheet">Docker cheatsheet<a class="headerlink" href="#docker-cheatsheet" title="Permanent link">#</a></h2>
+<pre><code class="language-bash"># pull/update an image
+$ docker pull ghcr.io/shaarli/shaarli:release
+# run a container from an image
+$ docker run ghcr.io/shaarli/shaarli:latest
+# list available images
+$ docker images ls
+# list running containers
+$ docker ps
+# list running AND stopped containers
+$ docker ps -a
+# run a command in a running container
+$ docker exec -ti &lt;container-name-or-first-letters-of-id&gt; bash
+# follow logs of a running container
+$ docker logs -f &lt;container-name-or-first-letters-of-id&gt;
+# delete unused images to free up disk space
+$ docker system prune --images
+# delete unused volumes to free up disk space (CAUTION all data in unused volumes will be lost)
+$ docker system prune --volumes
+# delete unused containers
+$ docker system prune
+</code></pre>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://docs.docker.com/storage/volumes/">Docker: using volumes</a></li>
+<li><a href="https://docs.docker.com/articles/dockerfile_best-practices/">Dockerfile best practices</a></li>
+<li><a href="https://docs.docker.com/reference/builder/">Dockerfile reference</a></li>
+<li><a href="https://github.com/features/packages">GitHub Container Registry</a></li>
+<li><a href="https://docs.github.com/en/packages">GithHub Packages documentation</a></li>
+<li><a href="https://docs.docker.com/docker-hub/orgs/">DockerHub: Teams and organizations</a>, <a href="https://www.docker.com/blog/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams/">End of Docker free teams</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/debian/">Get Docker CE for Debian</a></li>
+<li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+<li><a href="https://www.katacoda.com/courses/docker/">Interactive Docker training portal</a> on <a href="https://www.katacoda.com/">Katakoda</a></li>
+<li><a href="http://nginx.org/en/docs/ngx_core_module.html#daemon">Service management: Nginx in the foreground</a></li>
+<li><a href="https://docs.docker.com/articles/using_supervisord/">Service management: Using supervisord</a></li>
+<li><a href="https://docs.docker.com/storage/volumes/">Volumes</a></li>
+<li><a href="http://blog.thoward37.me/articles/where-are-docker-images-stored/">Where are Docker images stored?</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/create/">docker create</a></li>
+<li><a href="https://docs.docker.com/">Docker Documentation</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/images/">docker images</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/logs/">docker logs</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/logs/">docker logs</a></li>
+<li><a href="https://docs.docker.com/engine/docker-overview/">Docker Overview</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/ps/">docker ps</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/pull/">docker pull</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/run/">docker run</a></li>
+<li><a href="https://docs.docker.com/compose/reference/logs/">docker-compose logs</a></li>
+<li>Træfik: <a href="https://docs.traefik.io/">Getting Started</a>, <a href="https://docs.traefik.io/configuration/backends/docker/">Docker backend</a>, <a href="https://docs.traefik.io/user-guide/docker-and-lets-encrypt/">Let's Encrypt</a>, <a href="https://hub.docker.com/_/traefik/">Docker image</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Reverse-proxy/" class="btn btn-neutral float-right" title="Reverse Proxy">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Reverse-proxy/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -141,6 +141,15 @@ As an alternative you can use the "shell mode".
 
 -------------------------------------------------------------------------------
 
+-> Apache 2.4 with PHP 8.1 Builder Image <-
+-------------------------------------------
+
+  * Lets take a quick look at the [catalog](https://catalog.redhat.com/software/containers/ubi9/php-81/62e8e662f6d3d47e19779b01?architecture=amd64&image=6613b6fda253889111a3e07d)
+  * Next we extend this builder image to include the PHP application [Shaarli](https://shaarli.readthedocs.io/en/master/index.html)
+  * You find source and build script in `buildah/shaarli/`
+
+-------------------------------------------------------------------------------
+
 -> Run containers using Ansible <-
 ==================================
 

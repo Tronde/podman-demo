@@ -1,0 +1,21 @@
+{
+    "name": "pubsubhubbub/publisher",
+    "type": "library",
+    "description": "pubsubhubbub implementation of publisher.",
+    "keywords": ["pubsubhubbub", "publishers", "data", "feeds", "websub"],
+    "homepage": "https://github.com/pubsubhubbub/php-publisher",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "pubsubhubbub publisher Contributors",
+            "homepage": "https://github.com/pubsubhubbub/php-publisher/contributors"
+        }
+    ],
+    "require": {
+        "php": "~5.4 || ~7.0 || ~8.0",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": { "pubsubhubbub\\publisher\\": "library/" }
+    }
+}

@@ -1,0 +1,18 @@
+I will write some formating using spaces:
+
+  * For example,
+  * lists,
+    + but also
+    + sublists
+  * use spaces.
+
+Also code:
+
+```
+foreach ($data['linksToDisplay'] as $key => $bookmark) {
+    $length = strlen($bookmark['title']) + (342 * strlen($bookmark['description'])) / 836;
+    if (! empty($bookmark['thumbnail'])) {
+		$length += 100; // 1 thumbnails roughly takes 100 pixels height.
+    }
+}
+```

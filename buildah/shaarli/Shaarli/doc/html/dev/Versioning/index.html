@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Versioning - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Versioning";
+        var mkdocs_page_input_path = "dev/Versioning.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Reverse-proxy/">Reverse Proxy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Plugins/">Plugins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Usage/">Usage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Community-and-related-software/">Community and Related software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Versioning</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#master-branch">master branch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#v0x-branch">v0.x branch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#latest-branch">latest branch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#releases">Releases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advices-on-3rd-party-git-repos-workflow">Advices on 3rd party git repos workflow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#versioning_1">Versioning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#major-bugfix-backport-releases">Major bugfix backport releases</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Development &raquo;</li>
+      <li>Versioning</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/dev/Versioning.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="versioning">Versioning<a class="headerlink" href="#versioning" title="Permanent link">#</a></h1>
+<p>If you're maintaining a 3rd party tool for Shaarli (theme, plugin, etc.), It's important to understand how Shaarli branches work ensure your tool stays compatible.</p>
+<h2 id="master-branch"><code>master</code> branch<a class="headerlink" href="#master-branch" title="Permanent link">#</a></h2>
+<p>The <code>master</code> branch is the development branch. Any new change MUST go through this branch using Pull Requests.</p>
+<p>Remarks:</p>
+<ul>
+<li>This branch shouldn't be used for production as it isn't necessary stable.</li>
+<li>3rd party aren't required to be compatible with the latest changes.</li>
+<li>Official plugins, themes and libraries (contained within Shaarli organization repos) must be compatible with the master branch.</li>
+</ul>
+<h2 id="v0x-branch"><code>v0.x</code> branch<a class="headerlink" href="#v0x-branch" title="Permanent link">#</a></h2>
+<p>The <code>v0.x</code> branch points to the latest <code>v0.x.y</code> release.</p>
+<p>If a major bug affects the original <code>v0.x.0</code> release, we may <a href="https://en.wikipedia.org/wiki/Backporting">backport</a> a fix for this bug from master, to the <code>v0.x</code> branch, and create a new bugfix release (eg. <code>v0.x.1</code>) from this branch.</p>
+<p>This allows users of the original release to upgrade to the fixed version, without having to upgrade to a completely new minor/major release.</p>
+<h2 id="latest-branch"><code>latest</code> branch<a class="headerlink" href="#latest-branch" title="Permanent link">#</a></h2>
+<p>This branch point the latest release. It recommended to use it to get the latest tested changes.</p>
+<h2 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">#</a></h2>
+<p>For every release, we manually generate a .zip file which contains all Shaarli dependencies, making Shaarli's installation only one step.</p>
+<h2 id="advices-on-3rd-party-git-repos-workflow">Advices on 3rd party git repos workflow<a class="headerlink" href="#advices-on-3rd-party-git-repos-workflow" title="Permanent link">#</a></h2>
+<h3 id="versioning_1">Versioning<a class="headerlink" href="#versioning_1" title="Permanent link">#</a></h3>
+<p>Any time a new Shaarli release is published, you should publish a new release of your repo if the changes affected you since the latest release (take a look at the <a href="https://github.com/shaarli/Shaarli/releases">changelog</a> (<em>Draft</em> means not released yet) and the commit log (like <a href="https://github.com/shaarli/Shaarli/commits/master/tpl/default"><code>tpl</code> folder</a> for themes)). You can either:</p>
+<ul>
+<li>use the Shaarli version number, with your repo version. For example, if Shaarli <code>v0.8.3</code> is released, publish a <code>v0.8.3-1</code> release, where <code>v0.8.3</code> states Shaarli compatibility and <code>-1</code> is your own version digit for the current Shaarli version.</li>
+<li>use your own versioning scheme, and state Shaarli compatibility in the release description.</li>
+</ul>
+<p>Using this, any user will be able to pick the release matching his own Shaarli version.</p>
+<h3 id="major-bugfix-backport-releases">Major bugfix backport releases<a class="headerlink" href="#major-bugfix-backport-releases" title="Permanent link">#</a></h3>
+<p>To be able to support backported fixes, it recommended to use our workflow:</p>
+<pre><code class="language-bash"># In master, fix the major bug
+git commit -m &quot;Katastrophe&quot;
+git push origin master
+# Get your commit hash
+git log --format=&quot;%H&quot; -n 1
+# Create a new branch from your latest release, let's say v0.8.2-1 (the tag name)
+git checkout -b katastrophe v0.8.2-1
+# Backport the fix commit to your brand new branch
+git cherry-pick &lt;fix commit hash&gt;
+git push origin katastrophe
+# Then you just have to make a new release from the `katastrophe` branch tagged `v0.8.3-1`
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Development/" class="btn btn-neutral float-left" title="Development"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../GnuPG-signature/" class="btn btn-neutral float-right" title="GnuPG signature">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Development/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../GnuPG-signature/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

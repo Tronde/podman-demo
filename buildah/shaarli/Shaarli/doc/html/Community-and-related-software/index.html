@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Community and Related software - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Community and Related software";
+        var mkdocs_page_input_path = "Community-and-related-software.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Reverse-proxy/">Reverse Proxy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Plugins/">Plugins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Usage/">Usage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Community and Related software</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#related-software">Related software</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rest-api-clients">REST API clients</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#third-party-plugins">Third party plugins</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#third-party-themes">Third-party themes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#integration-with-other-platforms">Integration with other platforms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mobile-apps">Mobile apps</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#desktop-apps">Desktop apps</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#browser-extensions">Browser extensions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#server-apps">Server apps</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alternatives-to-shaarli">Alternatives to Shaarli</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#community">Community</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#articles-and-social-media-discussions">Articles and social media discussions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Versioning/">Versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Usage &raquo;</li>
+      <li>Community and Related software</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/Community-and-related-software.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="community-related-software">Community &amp; related software<a class="headerlink" href="#community-related-software" title="Permanent link">#</a></h1>
+<p><em>Unofficial but related work on Shaarli. If you maintain one of these,
+please get in touch with us to help us find a way to adapt your work to our fork.</em></p>
+<h2 id="related-software">Related software<a class="headerlink" href="#related-software" title="Permanent link">#</a></h2>
+<h3 id="rest-api-clients">REST API clients<a class="headerlink" href="#rest-api-clients" title="Permanent link">#</a></h3>
+<p>See <a href="REST-API">REST API</a> for a list of official and community clients.</p>
+<h3 id="third-party-plugins">Third party plugins<a class="headerlink" href="#third-party-plugins" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/kalvn/shaarli-plugin-autosave">autosave</a> by <a href="https://github.com/kalvn">@kalvn</a>: Automatically saves data when editing a Shaare to avoid any loss in case of crash or unexpected shutdown.</li>
+<li><a href="https://github.com/ArthurHoaro/code-coloration">code-coloration</a> by <a href="https://github.com/ArthurHoaro">@ArthurHoaro</a>: client side code syntax highlighter.</li>
+<li><a href="https://github.com/immanuelfodor/shaarli-custom-css">custom-css</a> by <a href="https://github.com/immanuelfodor">@immanuelfodor</a> - Customize the look and feel of the UI with custom CSS rules</li>
+<li><a href="https://github.com/kalvn/shaarli-plugin-disqus">disqus</a> by <a href="https://github.com/kalvn">@kalvn</a>: Adds Disqus comment system to your Shaarli.</li>
+<li><a href="https://github.com/immanuelfodor/emojione">emojione</a> by <a href="https://github.com/immanuelfodor">@immanuelfodor</a> - Resurrected fork of the original emojione project</li>
+<li><a href="https://github.com/trailjeep/shaarli-favicons">favicons</a> by <a href="https://github.com/trailjeep">@trailjeep</a> - Shaarli plugin to add favicon/filetype icons to Shaares.</li>
+<li><a href="https://github.com/ericjuden/Shaarli-Google-Analytics-Plugin">google analytics</a> by <a href="http://github.com/ericjuden">@ericjuden</a>: Adds Google Analytics tracking support</li>
+<li><a href="https://github.com/ArthurHoaro/launch-plugin">launch</a> - Launch Plugin is a plugin designed to enhance and customize Launch Theme for Shaarli.</li>
+<li><a href="https://github.com/immanuelfodor/shaarli-markdown-toolbar">markdown-toolbar</a> by <a href="https://github.com/immanuelfodor">@immanuelfodor</a> - Easily insert markdown syntax into the Description field when editing a Shaare.</li>
+<li><a href="https://github.com/ilesinge/shaarli-related">related</a> by <a href="https://github.com/ilesinge">@ilesinge</a> - Show related Shaares based on the number of identical tags.</li>
+<li><a href="https://github.com/immanuelfodor/shaarli-descriptor">shaarli-descriptor</a> by <a href="https://github.com/immanuelfodor">@immanuelfodor</a> - Customize the default height/number of rows of the Description field when editing a Shaare.</li>
+<li><a href="https://github.com/kalvn/shaarli2mastodon">shaarli2mastodon</a> by <a href="https://github.com/kalvn">@kalvn</a> - This Shaarli plugin allows you to automatically publish links you post on your Mastodon timeline.</li>
+<li><a href="https://github.com/ArthurHoaro/shaarli2twitter">shaarli2twitter</a> by <a href="https://github.com/ArthurHoaro">@ArthurHoaro</a> - Automatically tweet your Shaares from Shaarli</li>
+<li><a href="https://github.com/alexisju/social">social</a> by <a href="https://github.com/alexisju">@alexisju</a>: share links to social networks.</li>
+<li><a href="https://github.com/trailjeep/shaarli-urlextern">urlextern</a> by <a href="https://github.com/trailjeep">@trailjeep</a> - Shaarli plugin to open external links in a new tab/window.</li>
+<li><a href="https://gitlab.com/flow.gunso/shaarli-webhooks">webhooks</a> by <a href="https://gitlab.com/flow.gunso">@flow.gunso</a> - Shaarli plugin that enables user-defined callback URL, i.e. webhooks, for specific Shaarli events (link saving, deletion...)</li>
+</ul>
+<h3 id="third-party-themes">Third-party themes<a class="headerlink" href="#third-party-themes" title="Permanent link">#</a></h3>
+<p>See <a href="Theming">Theming</a> for a list of community-contributed themes, and an installation guide.</p>
+<h3 id="integration-with-other-platforms">Integration with other platforms<a class="headerlink" href="#integration-with-other-platforms" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/jcsaaddupuy/tt-rss-shaarli">tt-rss-shaarli</a> - <a href="http://tt-rss.org/">Tiny-Tiny RSS</a> plugin that adds support for sharing articles with Shaarli</li>
+<li><a href="https://github.com/ahmet2mir/octopress-shaarli">octopress-shaarli</a> - Octopress plugin to retrieve Shaarli Shaares on the sidebar</li>
+<li><a href="https://github.com/q2apro/scuttle-to-shaarli">Scuttle to Shaarli</a> - Import bookmarks from Scuttle</li>
+<li><a href="https://git.cloudron.io/cloudron/shaarli-app">Shaarli app for Cloudron</a> - <a href="https://cloudron.io/button.html?app=com.github.shaarli"><img alt="" src="https://img.shields.io/badge/Cloudron-03A9F4?logo=Buffer" /></a> Effortlessly run Shaarli with the help of <a href="https://cloudron.io/">Cloudron</a> </li>
+<li><a href="https://github.com/YunoHost-Apps/shaarli_ynh">Shaarli_ynh</a> - <a href="https://install-app.yunohost.org/?app=shaarli"><img alt="" src="https://img.shields.io/badge/YunoHost-black?logo=Buffer" /></a> Shaarli is available as a <a href="https://yunohost.org">Yunohost</a> app</li>
+<li><a href="https://blog.getpelican.com">pelican</a> static blog generator plugin to auto-post articles on a Shaarli instance: <a href="https://github.com/getpelican/pelican-plugins/tree/master/shaarli_poster">shaarli_poster</a></li>
+</ul>
+<h3 id="mobile-apps">Mobile apps<a class="headerlink" href="#mobile-apps" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/mro/ShaarliOS">ShaarliOS</a> - <a href="https://itunes.apple.com/app/ShaarliOS/id1027441388"><img alt="" src="https://img.shields.io/badge/App%20Store-black?logo=apple" /></a> Apple iOS share extension.</li>
+<li><a href="https://github.com/dimtion/Shaarlier">Shaarlier for Android</a> - <a href="https://play.google.com/store/apps/details?id=com.dimtion.shaarlier"><img alt="" src="https://img.shields.io/badge/Play%20Store-3EB7C0?logo=Google%20Play" /></a> Android application to simply add Shaares directly into your Shaarli via Sharing. Free software.</li>
+<li><a href="https://stakali.toneiv.eu">Stakali for Android</a> - <a href="https://play.google.com/store/apps/details?id=eu.toneiv.stakali"><img alt="" src="https://img.shields.io/badge/Play%20Store-3EB7C0?logo=Google%20Play" /></a> Stakali is a personal bookmark manager which synchronizes with Shaarli. Support offline work without instance, sync, browsing within app. Free use of up to 20 results.</li>
+<li><a href="http://sebsauvage.net/links/?ZAyDzg">Shaarli for Android</a> - Android application that adds Shaarli as a sharing provider.</li>
+</ul>
+<h3 id="desktop-apps">Desktop apps<a class="headerlink" href="#desktop-apps" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/sebw/ulauncher-shaarli">Ulauncher Extension</a> - Ulauncher is an an application launcher for Linux, this extension allows research in your Shaarli</li>
+</ul>
+<h3 id="browser-extensions">Browser extensions<a class="headerlink" href="#browser-extensions" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/ikipatang/shaarli-web-extension">Shaarli Firefox Extension</a> - <a href="https://addons.mozilla.org/firefox/addon/shaarli/"><img alt="" src="https://img.shields.io/badge/Firefox%20Add--ons-414141?logo=Firefox" /></a> toolbar button to share your current tab with Shaarli. </li>
+<li><a href="https://github.com/octplane/Shiny-Shaarli">Shaarli Chrome Extension</a> - toolbar button to share your current tab with Shaarli. <a href="https://chrome.google.com/webstore/detail/shiny-shaarli/hajdfkmbdmadjmmpkkbbcnllepomekin">Removed</a> from Chrome web store.</li>
+<li><a href="https://github.com/burgyl/AddToShaarli">Add to Shaarli</a> - <a href="https://chrome.google.com/webstore/detail/add-to-shaarli/jhfblapoehcfajokolimghdfmeeakbee"><img alt="" src="https://img.shields.io/badge/Chrome%20Web%20Store-white?logo=Google%20Chrome" /></a> lets you add the current tab or a note to your Shaarli instance.</li>
+<li><a href="https://chrome.google.com/webstore/detail/weblinks-ext/pnejcofgljlklmmjkocipnanfdbaclke">WebLinks Ext</a> - <a href="https://chrome.google.com/webstore/detail/weblinks-ext/pnejcofgljlklmmjkocipnanfdbaclke"><img alt="" src="https://img.shields.io/badge/Chrome%20Web%20Store-white?logo=Google%20Chrome" /></a> Save, edit and use your Shaarli. Support work offline, sync, trash, etc. Free software.</li>
+</ul>
+<h3 id="server-apps">Server apps<a class="headerlink" href="#server-apps" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://github.com/sebw/shaarli-archiver">Shaarli Archiver</a> - Shaarli and SingleFile to archive your bookmarks</li>
+<li><a href="https://github.com/nodiscc/shaarchiver">shaarchiver</a> - Archive your Shaarli bookmarks and their content</li>
+<li><a href="https://github.com/mknexen/shaarli-river">shaarli-river</a> - An aggregator for shaarlis with many features</li>
+<li><a href="https://github.com/DMeloni/shaarlo">Shaarlo</a> - An aggregator for shaarlis with many features</li>
+<li><a href="https://github.com/BoboTiG/shaarlimages">Shaarlimages</a> - An image-oriented aggregator for Shaarlis</li>
+<li><a href="https://github.com/mknexen/shaarli-api">mknexen/shaarli-api</a> - A REST API for Shaarli</li>
+<li><a href="https://framagit.org/qwertygc/shaarli-dev-code/blob/master/self-dead-link.php">Self dead link</a> - Detect dead links on shaarli. This version use the database of shaarli. <a href="https://framagit.org/qwertygc/shaarli-dev-code/blob/master/dead-link.php">Another version</a>, can be used for other shaarli instances (but is more resource consuming).</li>
+<li><a href="https://github.com/pirate/bookmark-archiver">Bookmark Archiver</a> - Save an archived copy of all websites starred using browser bookmarks/Shaarli/Delicious/Instapaper/Unmark.it/Pocket/Pinboard. Outputs browseable html.</li>
+</ul>
+<h2 id="alternatives-to-shaarli">Alternatives to Shaarli<a class="headerlink" href="#alternatives-to-shaarli" title="Permanent link">#</a></h2>
+<p>See <a href="https://github.com/Kickball/awesome-selfhosted/#bookmarks--link-sharing">awesome-selfhosted: bookmarks &amp; link sharing</a>.</p>
+<h2 id="community">Community<a class="headerlink" href="#community" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="http://sebsauvage.net/links/">Liens en vrac de sebsauvage</a> - the original Shaarli</li>
+<li><a href="http://porneia.free.fr/pub/links/ou-est-shaarli.html">A large list of Shaarlis</a></li>
+<li><a href="https://raw.githubusercontent.com/Oros42/find_shaarlis/master/annuaires.json">A list of working Shaarli aggregators</a></li>
+<li><a href="https://github.com/Oros42/shaarlis_list">A list of some known Shaarlis</a></li>
+<li><a href="http://sebsauvage.net/rhaa/index.php?2011/09/16/09/29/58-adieu-delicious-diigo-et-stumbleupon-salut-shaarli-">Adieu Delicious, Diigo et StumbleUpon. Salut Shaarli ! - sebsauvage.net</a> (fr) <em>16/09/2011 - the original post about Shaarli</em></li>
+<li><a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli:ideas">Original ideas/fixme/TODO page</a></li>
+<li><a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli:discussion">Original discussion page</a> (fr)</li>
+<li><a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli:history">Original revisions history</a></li>
+<li><a href="https://www.shaarli.fr/my.php">Shaarli.fr/my</a> - Unofficial, unsupported (old fork) hosted Shaarlis provider, courtesy of <a href="https://github.com/DMeloni">DMeloni</a></li>
+</ul>
+<h3 id="articles-and-social-media-discussions">Articles and social media discussions<a class="headerlink" href="#articles-and-social-media-discussions" title="Permanent link">#</a></h3>
+<ul>
+<li>2020-04-05 - Hacker News - <a href="https://news.ycombinator.com/item?id=22780219">Self-hosted instance of Shaarli - it is simple, fast and reliable</a></li>
+<li>2016-10-10 - Framasoft - <a href="https://framablog.org/2016/10/10/myframa-vos-favoris-et-framasofteries-partout-avec-vous-rien-qua-vous/">MyFrama : vos favoris partout, avec vous, rien qu’à vous !</a></li>
+<li>2016-09-22 - Hacker News - <a href="https://news.ycombinator.com/item?id=12552176">Shaarli – Personal, minimalist, database-free, bookmarking service (github.com)</a></li>
+<li>2015-08-15 - Reddit - <a href="https://www.reddit.com/r/selfhosted/comments/3h3zwh/question_about_migrating_from_wordpress_to_shaarli/">Question about migrating from WordPress to Shaarli.</a></li>
+<li>2015-06-22 - Hacker News - <a href="https://news.ycombinator.com/item?id=9755366">Shaarli: Self-hosted del.icio.us alternative (sebsauvage.net)</a></li>
+<li>2015-05-12 - Reddit - <a href="https://www.reddit.com/r/selfhosted/comments/35pkkc/shaarli_self_hosted_bookmarking_delicious_php/">shaarli - Self hosted Bookmarking / Delicious (PHP, MySQL)</a></li>
+<li>2014-10-15 - OpenSource.com - <a href="https://opensource.com/life/14/10/five-open-source-alternatives-popular-web-apps">Five open source alternatives to popular web apps</a></li>
+</ul>
+<p>It also appears in the following recommendation lists:
+- <a href="https://alternativeto.net/software/shaarli/">AlternativeTo</a>
+- <a href="https://framalibre.org/content/shaarli">FramaLibre</a>
+- <a href="https://project-awesome.org/Kickball/awesome-selfhosted">Project Awesome: Selfhosted Bookmarks and Link Sharing</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../REST-API/" class="btn btn-neutral float-left" title="REST API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dev/Development/" class="btn btn-neutral float-right" title="Development">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../REST-API/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dev/Development/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Plugins - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Plugins";
+        var mkdocs_page_input_path = "Plugins.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Reverse-proxy/">Reverse Proxy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Plugins</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#order">Order</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#official-plugins">Official plugins</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#third-party-plugins">Third party plugins</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Usage/">Usage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Community-and-related-software/">Community and Related software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Versioning/">Versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Setup &raquo;</li>
+      <li>Plugins</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/Plugins.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">#</a></h1>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p>For plugins shipped with Shaarli, no installation is required.</p>
+<p>If you want to install a third party plugin, download it to the <code>plugins</code> directory in Shaarli's installation folder:</p>
+<pre><code class="language-bash"># example directory structure
+| index.php
+| plugins/
+|---| custom_plugin/
+|   |---| custom_plugin.php
+|   |---| ...
+
+</code></pre>
+<p>Make sure your webserver can read and write the files in your plugin folder.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
+<p>From Shaarli's administration page (<code>Tools</code> link), go to <code>Plugin administration</code>. Here you can enable and disable all plugins available, and configure them.</p>
+<p><img alt="administration screenshot" src="https://camo.githubusercontent.com/5da68e191969007492ca0fbeb25f3b2357b748cc/687474703a2f2f692e696d6775722e636f6d2f766837544643712e706e67" /></p>
+<h2 id="order">Order<a class="headerlink" href="#order" title="Permanent link">#</a></h2>
+<p>In the plugin administration page, you can move enabled plugins to the top or bottom of the list. The first plugins in the list will be processed first.</p>
+<p>This is important in case plugins depend on each other. Read plugins READMEs for more information.</p>
+<p><strong>Use case</strong>: The (non existent) plugin <code>shaares_footer</code> adds a footer to every shaare in Markdown syntax. It needs to be processed <em>before</em> (higher in the list) the Markdown plugin. Otherwise its syntax won't be translated in HTML.</p>
+<h2 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">#</a></h2>
+<p>Enabled plugins are stored in your <a href="Shaarli-configuration">Configuration file</a>.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
+<h3 id="official-plugins">Official plugins<a class="headerlink" href="#official-plugins" title="Permanent link">#</a></h3>
+<p>Usage of each plugin is documented in it's README file:</p>
+<ul>
+<li><code>addlink-toolbar</code>: Adds the addlink input on the Shaares list page</li>
+<li><code>archiveorg</code>: For each Shaare, add a link to the archived page on Archive.org</li>
+<li><code>default_colors</code>: Override default theme colors.</li>
+<li><code>isso</code>: Let visitor comment your shaares on permalinks with Isso.</li>
+<li><code>piwik</code>: A plugin that adds Piwik tracking code to Shaarli pages.</li>
+<li><a href="https://github.com/shaarli/Shaarli/blob/master/plugins/playvideos/README.md"><code>playvideos</code></a>: Add a button in the toolbar allowing to watch all videos.</li>
+<li><code>pubsubhubbub</code>: Enable PubSubHubbub feed publishing</li>
+<li><code>qrcode</code>: For each Shaare, add a QRCode icon.</li>
+<li><code>readitlater</code>: Mark bookmarks to read them later, with bookmark list highlight and filter.</li>
+<li><a href="https://github.com/shaarli/Shaarli/blob/master/plugins/wallabag/README.md"><code>wallabag</code></a>:  For each Shaare, add a Wallabag icon to save it in your instance.</li>
+</ul>
+<h3 id="third-party-plugins">Third party plugins<a class="headerlink" href="#third-party-plugins" title="Permanent link">#</a></h3>
+<p>See <a href="https://shaarli.readthedocs.io/en/master/Community-and-related-software/">Community &amp; related software</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Shaarli-configuration/" class="btn btn-neutral float-left" title="Shaarli configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Upgrade-and-migration/" class="btn btn-neutral float-right" title="Upgrade and migration">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Shaarli-configuration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Upgrade-and-migration/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

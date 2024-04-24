@@ -1,0 +1,447 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The personal, minimalist, super fast, database-free bookmarking service" lang="en" name="description" xml:lang="en" />
+<meta content="UTF-8" name="charset" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Troubleshooting" href="Troubleshooting.html" /><link rel="prev" title="Plugins" href="Plugins.html" />
+
+    <link rel="shortcut icon" href="_static/icon.png"/><!-- Generated with Sphinx 7.1.0 and Furo 2023.07.26 -->
+        <title>REST API - Shaarli documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Shaarli documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/doc-logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Shaarli documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Server-configuration.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reverse-proxy.html">Reverse proxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shaarli-configuration.html">Shaarli configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Backup-and-restore.html">Backup and restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Upgrade-and-migration.html">Upgrade and migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Community-and-related-software.html">Community &amp; related software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plugins.html">Plugins</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/Development.html">Development</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="rest-api">
+<h1>REST API<a class="headerlink" href="#rest-api" title="Permalink to this heading">#</a></h1>
+<section id="server-requirements">
+<h2>Server requirements<a class="headerlink" href="#server-requirements" title="Permalink to this heading">#</a></h2>
+<p>See the <strong><a class="reference external" href="https://shaarli.github.io/api-documentation/">REST API documentation</a></strong> for a list of available endpoints and parameters.</p>
+<p>Please ensure that your server meets the requirements and is properly <a class="reference internal" href="Server-configuration.html"><span class="std std-doc">configured</span></a>:</p>
+<ul class="simple">
+<li><p>URL rewriting is enabled (see specific Apache and Nginx sections)</p></li>
+<li><p>the server’s timezone is properly defined</p></li>
+<li><p>the server’s clock is synchronized with <a class="reference external" href="https://en.wikipedia.org/wiki/Network_Time_Protocol">NTP</a></p></li>
+</ul>
+<p>The host where the API client is invoked should also be synchronized with NTP, see <em>payload/token expiration</em></p>
+</section>
+<section id="clients-and-examples">
+<h2>Clients and examples<a class="headerlink" href="#clients-and-examples" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://github.com/shaarli/python-shaarli-client">python-shaarli-client</a></strong> - the reference API client (<a class="reference external" href="https://python-shaarli-client.readthedocs.io/en/latest/">Documentation</a>)</p></li>
+<li><p><a class="reference external" href="https://www.npmjs.com/package/shaarli-client">shaarli-client</a> - NodeJs client (<a class="reference external" href="https://github.com/laBecasse/shaarli-client">source code</a>) by <a class="reference external" href="https://github.com/laBecasse">laBecasse</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.com/-/snippets/1665808">Android client example with Kotlin</a> by <a class="reference external" href="https://github.com/Braincoke">Braincoke</a></p></li>
+</ul>
+<p>This example uses the <a class="reference external" href="https://www.php.net/manual/en/book.curl.php">PHP cURL</a> library.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$baseUrl</span> <span class="o">=</span> <span class="s1">&#39;https://shaarli.mydomain.net&#39;</span><span class="p">;</span>
+<span class="nv">$secret</span> <span class="o">=</span> <span class="s1">&#39;thats_my_api_secret&#39;</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">base64url_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">rtrim</span><span class="p">(</span><span class="nb">strtr</span><span class="p">(</span><span class="nb">base64_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">),</span> <span class="s1">&#39;+/&#39;</span><span class="p">,</span> <span class="s1">&#39;-_&#39;</span><span class="p">),</span> <span class="s1">&#39;=&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">generateToken</span><span class="p">(</span><span class="nv">$secret</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$header</span> <span class="o">=</span> <span class="nx">base64url_encode</span><span class="p">(</span><span class="s1">&#39;{</span>
+<span class="s1">        &quot;typ&quot;: &quot;JWT&quot;,</span>
+<span class="s1">        &quot;alg&quot;: &quot;HS512&quot;</span>
+<span class="s1">    }&#39;</span><span class="p">);</span>
+    <span class="nv">$payload</span> <span class="o">=</span> <span class="nx">base64url_encode</span><span class="p">(</span><span class="s1">&#39;{</span>
+<span class="s1">        &quot;iat&quot;: &#39;</span><span class="o">.</span> <span class="nb">time</span><span class="p">()</span> <span class="o">.</span><span class="s1">&#39;</span>
+<span class="s1">    }&#39;</span><span class="p">);</span>
+    <span class="nv">$signature</span> <span class="o">=</span> <span class="nx">base64url_encode</span><span class="p">(</span><span class="nb">hash_hmac</span><span class="p">(</span><span class="s1">&#39;sha512&#39;</span><span class="p">,</span> <span class="nv">$header</span> <span class="o">.</span><span class="s1">&#39;.&#39;</span><span class="o">.</span> <span class="nv">$payload</span> <span class="p">,</span> <span class="nv">$secret</span><span class="p">,</span> <span class="k">true</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nv">$header</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$payload</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$signature</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">function</span> <span class="nf">getInfo</span><span class="p">(</span><span class="nv">$baseUrl</span><span class="p">,</span> <span class="nv">$secret</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$token</span> <span class="o">=</span> <span class="nx">generateToken</span><span class="p">(</span><span class="nv">$secret</span><span class="p">);</span>
+    <span class="nv">$endpoint</span> <span class="o">=</span> <span class="nb">rtrim</span><span class="p">(</span><span class="nv">$baseUrl</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/api/v1/info&#39;</span><span class="p">;</span>
+
+    <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;Content-Type: text/plain; charset=UTF-8&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Authorization: Bearer &#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">,</span>
+    <span class="p">];</span>
+
+    <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$endpoint</span><span class="p">);</span>
+    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
+    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_AUTOREFERER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_FRESH_CONNECT</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+    <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nx">getInfo</span><span class="p">(</span><span class="nv">$baseUrl</span><span class="p">,</span> <span class="nv">$secret</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
+<section id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>All requests to Shaarli’s API must include a <strong>JWT token</strong> to verify their authenticity.</p></li>
+<li><p>This token must be included as an HTTP header called <code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">Bearer</span> <span class="pre">&lt;jwt</span> <span class="pre">token&gt;</span></code>.</p></li>
+<li><p>JWT tokens are composed by three parts, separated by a dot <code class="docutils literal notranslate"><span class="pre">.</span></code> and encoded in base64:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">header</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">payload</span><span class="p">]</span><span class="o">.</span><span class="p">[</span><span class="n">signature</span><span class="p">]</span>
+</pre></div>
+</div>
+<section id="header">
+<h4>Header<a class="headerlink" href="#header" title="Permalink to this heading">#</a></h4>
+<p>Shaarli only allow one hash algorithm, so the header will always be the same:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HS512&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Encoded in base64, it gives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ewogICAgICAgICJ0eXAiOiAiSldUIiwKICAgICAgICAiYWxnIjogIkhTNTEyIgogICAgfQ</span><span class="o">==</span>
+</pre></div>
+</div>
+</section>
+<section id="payload">
+<h4>Payload<a class="headerlink" href="#payload" title="Permalink to this heading">#</a></h4>
+<p>Token expiration: To avoid infinite token validity, JWT tokens must include their creation date in UNIX timestamp format (timezone independent - UTC) under the key <code class="docutils literal notranslate"><span class="pre">iat</span></code> (issued at) field (<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7519">1</a>). This token will be valid during <strong>9 minutes</strong>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1468663519</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="signature">
+<h4>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">#</a></h4>
+<p>The signature authenticates the token validity. It contains the base64 of the header and the body, separated by a dot <code class="docutils literal notranslate"><span class="pre">.</span></code>, hashed in SHA512 with the API secret available in Shaarli administration page.</p>
+<p>Example signature with PHP:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$content = base64_encode($header) . &#39;.&#39; . base64_encode($payload);</span>
+<span class="x">$signature = hash_hmac(&#39;sha512&#39;, $content, $secret);</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<section id="debug-mode">
+<h3>Debug mode<a class="headerlink" href="#debug-mode" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>This should never be used in a production environment.</p>
+</div></blockquote>
+<p>For security reasons, authentication issues will always return an <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">401</span></code> error code without any detail.</p>
+<p>It is possible to enable the debug mode in <code class="docutils literal notranslate"><span class="pre">config.json.php</span></code>
+to get the actual error message in the HTTP response body with:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;debug&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jwt.io">jwt.io</a> (including a list of client per language).</p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7519">RFC - JSON Web Token (JWT)</a></p></li>
+<li><p><a class="reference external" href="https://float-middle.com/json-web-tokens-jwt-vs-sessions/">JSON Web Tokens (JWT) vs Sessions</a>, <a class="reference external" href="https://news.ycombinator.com/item?id=11929267">HackerNews thread</a></p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="Troubleshooting.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Troubleshooting</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Plugins.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Plugins</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2011-2023, the shaarli community
+            </div>
+            Made with 
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/shaarli/shaarli" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">REST API</a><ul>
+<li><a class="reference internal" href="#server-requirements">Server requirements</a></li>
+<li><a class="reference internal" href="#clients-and-examples">Clients and examples</a></li>
+<li><a class="reference internal" href="#implementation">Implementation</a><ul>
+<li><a class="reference internal" href="#authentication">Authentication</a><ul>
+<li><a class="reference internal" href="#header">Header</a></li>
+<li><a class="reference internal" href="#payload">Payload</a></li>
+<li><a class="reference internal" href="#signature">Signature</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#debug-mode">Debug mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=06ac7929"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    </body>
+</html>

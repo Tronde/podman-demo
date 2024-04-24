@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Troubleshooting - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Troubleshooting";
+        var mkdocs_page_input_path = "Troubleshooting.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Reverse-proxy/">Reverse Proxy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Plugins/">Plugins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Usage/">Usage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Community-and-related-software/">Community and Related software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Versioning/">Versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#login">Login</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#i-forgot-my-password">I forgot my password!</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#im-locked-out-login-bruteforce-protection">I'm locked out - Login bruteforce protection</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#browser-issues">Browser issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#redirection-issues-http-referer">Redirection issues (HTTP Referer)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#firefox-localhost-and-redirections">Firefox, localhost and redirections</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hosting-problems">Hosting problems</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#old-php-versions">Old PHP versions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dates-are-not-properly-formatted">Dates are not properly formatted</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#my-session-expires-i-cant-stay-logged-in">My session expires! I can't stay logged in</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#old-apache-versions-internal-server-error">Old apache versions, Internal Server Error</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sessions-do-not-seem-to-work-correctly-on-your-server">Sessions do not seem to work correctly on your server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#error-406-not-acceptable">Error 406 "Not acceptable"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#timeout-during-long-lasting-operations">Timeout during long-lasting operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upgrades">Upgrades</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#you-must-specify-an-integer-as-a-key">You must specify an integer as a key</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updatestxt-contains-updatemethoddatastoreids">updates.txt contains updateMethodDatastoreIds</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updatestxt-doesnt-exist-or-doesnt-contain-updatemethoddatastoreids">updates.txt doesn't exist or doesn't contain updateMethodDatastoreIds</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#importexport">Import/export</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#importing-shaarli-data-to-firefox">Importing shaarli data to Firefox</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#diigo">Diigo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mister-wong">Mister Wong</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#semanticscuttle">SemanticScuttle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scuttle">Scuttle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#refindcom">Refind.com</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other">Other</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-bookmarklet-doesnt-work">The bookmarklet doesn't work</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changing-the-timestamp-for-a-shaare">Changing the timestamp for a shaare</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clearing-shaarli-caches">Clearing Shaarli caches</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#support">Support</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/Troubleshooting.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h1>
+<p>First of all, ensure that both the <a href="../Server-configuration/">web server</a> and <a href="../Shaarli-configuration/">Shaarli</a> are correctly configured.</p>
+<h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">#</a></h2>
+<h3 id="i-forgot-my-password">I forgot my password!<a class="headerlink" href="#i-forgot-my-password" title="Permanent link">#</a></h3>
+<p>Delete the file <code>data/config.json.php</code> and display the page again. You will be asked for a new login/password.</p>
+<h3 id="im-locked-out-login-bruteforce-protection">I'm locked out - Login bruteforce protection<a class="headerlink" href="#im-locked-out-login-bruteforce-protection" title="Permanent link">#</a></h3>
+<p>Login form is protected against brute force attacks: 4 failed logins will ban the IP address from login for 30 minutes. Banned IPs can still browse Shaares.</p>
+<ul>
+<li>To remove the current IP bans, delete the file <code>data/ipbans.php</code></li>
+<li>To list all login attempts, see <code>data/log.txt</code> (succesful/failed logins, bans/lifted bans)</li>
+</ul>
+<hr />
+<h2 id="browser-issues">Browser issues<a class="headerlink" href="#browser-issues" title="Permanent link">#</a></h2>
+<h3 id="redirection-issues-http-referer">Redirection issues (HTTP Referer)<a class="headerlink" href="#redirection-issues-http-referer" title="Permanent link">#</a></h3>
+<p>Shaarli relies on <code>HTTP_REFERER</code> for some functions (like redirects and clicking on tags). If you have disabled or altered/spoofed <a href="https://en.wikipedia.org/wiki/HTTP_referer">HTTP referers</a> in your browser, some features of Shaarli may not work as expected (depending on configuration and installed plugins), notably redirections between pages.</p>
+<p>Firefox Referer settings are available by browsing <code>about:config</code> and are documented <a href="https://wiki.mozilla.org/Security/Referrer">here</a>. <code>network.http.referer.spoofSource = true</code> in particular is known to break some functionality in Shaarli.</p>
+<h3 id="firefox-localhost-and-redirections">Firefox, localhost and redirections<a class="headerlink" href="#firefox-localhost-and-redirections" title="Permanent link">#</a></h3>
+<p><code>localhost</code> is not a proper Fully Qualified Domain Name (FQDN); if Firefox has been set up to spoof referers, or only accept requests from the same base domain/host,
+Shaarli redirections will not work properly. To solve this, assign a local domain to your host, e.g. <code>localhost.lan</code> in your <a href="https://en.wikipedia.org/wiki/Hosts_(file)">hosts file</a> and browse Shaarli at http://localhost.lan/.</p>
+<hr />
+<h2 id="hosting-problems">Hosting problems<a class="headerlink" href="#hosting-problems" title="Permanent link">#</a></h2>
+<h3 id="old-php-versions">Old PHP versions<a class="headerlink" href="#old-php-versions" title="Permanent link">#</a></h3>
+<ul>
+<li>On hosts (such as <strong>free.fr</strong>) which only support PHP 5.6, Shaarli <a href="https://github.com/shaarli/Shaarli/releases/tag/v0.10.4">v0.10.4</a> is the maximum supported version. At the root of your webspace create a <code>sessions</code> directory and a <code>.htaccess</code> file containing:</li>
+</ul>
+<pre><code class="language-xml">&lt;IfDefine Free&gt;
+php56 1
+&lt;/IfDefine&gt;
+&lt;Files &quot;.ht*&quot;&gt;
+Order allow,deny
+Deny from all
+Satisfy all
+&lt;/Files&gt;
+Options -Indexes
+</code></pre>
+<ul>
+<li>If you have an error such as: <code>Parse error: syntax error, unexpected '=', expecting '(' in /links/index.php on line xxx</code>, it means that your host is using PHP 4, not PHP 5. Shaarli requires PHP 5.1. Try changing the file extension to <code>.php5</code></li>
+<li>On <strong>1and1</strong> : If you add the link from the page (and not from the bookmarklet), Shaarli will no be able to get the title of the page. You will have to enter it manually. (Because they have disabled the ability to download a file through HTTP).</li>
+<li>If you have the error <code>Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration in /…/index.php on line xxx</code>, it means that your host has disabled the ability to fetch a file by HTTP in the php config (Typically in 1and1 hosting). Bad host. Change host. Or comment the following lines:</li>
+</ul>
+<pre><code class="language-php">//list($status,$headers,$data) = getHTTP($url,4); // Short timeout to keep the application responsive.
+// FIXME: Decode charset according to charset specified in either 1) HTTP response headers or 2) &lt;head&gt; in html
+//if (strpos($status,'200 OK')) $title=html_extract_title($data);
+</code></pre>
+<ul>
+<li>On hosts (such as <strong>free.fr</strong>) which forbid outgoing HTTP requests, some thumbnails will not work.</li>
+<li>On hosts (such as <strong>free.fr</strong>) which limit the number of FTP connections, setup your FTP client accordingly (else some files may be missing after upload).</li>
+<li>On <strong>lost-oasis</strong>, RSS doesn't work correctly, because of this message at the begining of the RSS/ATOM feed : <code>&lt;? // tout ce qui est charge ici (generalement des includes et require) est charge en permanence. ?&gt;</code>. To fix this, remove this message from <code>php-include/prepend.php</code></li>
+</ul>
+<h3 id="dates-are-not-properly-formatted">Dates are not properly formatted<a class="headerlink" href="#dates-are-not-properly-formatted" title="Permanent link">#</a></h3>
+<p>Shaarli tries to sniff the language of the browser (using <code>HTTP_ACCEPT_LANGUAGE</code> headers)
+and choose a date format accordingly. But Shaarli can only use the date formats
+(and more generally speaking, the locales) provided by the webserver.
+So even if you have a browser in French, you may end up with dates in US format
+(it's the case on sebsauvage.net :-( )</p>
+<h3 id="my-session-expires-i-cant-stay-logged-in">My session expires! I can't stay logged in<a class="headerlink" href="#my-session-expires-i-cant-stay-logged-in" title="Permanent link">#</a></h3>
+<p>This can be caused by several things:</p>
+<ul>
+<li>Your php installation may not have a proper directory setup for session files. (eg. on Free.fr you need to create a  <code>session</code> directory on the root of your website.) You may need to create the session directory of set it up.</li>
+<li>Most hosts regularly clean the temporary and session directories. Your host may be cleaning those directories too aggressively (eg.OVH hosts), forcing an expire of the session. You may want to set the session directory in your web root. (eg. Create the <code>sessions</code> subdirectory and add <code>ini_set('session.save_path', $_SERVER['DOCUMENT_ROOT'].'/../sessions');</code>. Make sure this directory is not browsable !)</li>
+<li>If your IP address changes during surfing, Shaarli will force expire your session for security reasons (to prevent session cookie hijacking). This can happen when surfing from WiFi or 3G (you may have switched WiFi/3G access point), or in some corporate/university proxies which use load balancing (and may have proxies with several external IP addresses).</li>
+<li>Some browser addons may interfer with HTTP headers (ipfuck/ipflood/GreaseMonkey…). Try disabling those.</li>
+<li>You may be using OperaTurbo or OperaMini, which use their own proxies which may change from time to time.</li>
+<li>If you have another application on the same webserver where Shaarli is installed, these application may forcefully expire php sessions.</li>
+</ul>
+<h3 id="old-apache-versions-internal-server-error">Old apache versions, Internal Server Error<a class="headerlink" href="#old-apache-versions-internal-server-error" title="Permanent link">#</a></h3>
+<p>If you hosting provider only provides apache 2.2 and no support for <code>mod_version</code>, <code>.htaccess</code> files may cause 500 errors (Internal Server Error). See <a href="https://github.com/shaarli/Shaarli/issues/1196#issuecomment-412271085">this workaround</a>.</p>
+<h3 id="sessions-do-not-seem-to-work-correctly-on-your-server">Sessions do not seem to work correctly on your server<a class="headerlink" href="#sessions-do-not-seem-to-work-correctly-on-your-server" title="Permanent link">#</a></h3>
+<p>Follow the instructions in the error message. Make sure you are accessing shaarli via a direct IP address or a proper hostname. If you have <strong>no dots</strong> in the hostname (e.g. <code>localhost</code> or <code>http://my-webserver/shaarli/</code>), some browsers will not store cookies at all (this respects the <a href="http://curl.haxx.se/rfc/cookie_spec.html">HTTP cookie specification</a>).</p>
+<h3 id="error-406-not-acceptable">Error 406 "Not acceptable"<a class="headerlink" href="#error-406-not-acceptable" title="Permanent link">#</a></h3>
+<p>If attempting to save a link results in a <code>Not acceptable</code> error (HTTP status code of <code>406</code>), it is likely due to strict settings for <code>mod_security</code> (a module used with Apache). This cannot be mitigated by reconfiguring Shaarli itself, and must be dealt with at the level of the underlying web server instead.</p>
+<p>On some shared hosting services (such as <strong>Bluehost</strong>), <code>mod_security</code> is enabled by default, so the recommended course of action is to get in touch with the helpdesk and ask them to disable <code>mod_security</code> for your domain, sub-domain, or the subdirectory where Shaarli is installed. Ideally, you want to narrow it down to a very specific location, so as to continue reaping the benefits of <code>mod_security</code> elsewhere on your domain. If asked for specific, you can refer support staff to this <a href="https://github.com/shaarli/Shaarli/issues/1736">issue</a>, where more technical details are available.</p>
+<h3 id="timeout-during-long-lasting-operations">Timeout during long-lasting operations<a class="headerlink" href="#timeout-during-long-lasting-operations" title="Permanent link">#</a></h3>
+<p>You may need to adjust timeouts to larger values in your <a href="../Reverse-proxy/">reverse proxy configuration</a> if you're getting <code>504 Gateway Timeout</code> errors during long-lasting operations (like importing many bookmarks from HTML, or batch deleting tags) on slow hardware. The PHP setting <code>max_execution_time</code> may also need to be adjusted for your specific setup. See issues <a href="https://github.com/shaarli/Shaarli/issues/1854">#1854</a> and <a href="https://github.com/shaarli/Shaarli/issues/1910">#1910</a>.</p>
+<hr />
+<h2 id="upgrades">Upgrades<a class="headerlink" href="#upgrades" title="Permanent link">#</a></h2>
+<h3 id="you-must-specify-an-integer-as-a-key">You must specify an integer as a key<a class="headerlink" href="#you-must-specify-an-integer-as-a-key" title="Permanent link">#</a></h3>
+<p>In <code>v0.8.1</code> we changed how Shaare keys are handled (from timestamps to incremental integers). Take a look at <code>data/updates.txt</code> content.</p>
+<h3 id="updatestxt-contains-updatemethoddatastoreids"><code>updates.txt</code> contains <code>updateMethodDatastoreIds</code><a class="headerlink" href="#updatestxt-contains-updatemethoddatastoreids" title="Permanent link">#</a></h3>
+<p>Try to delete it and refresh your page while being logged in.</p>
+<h3 id="updatestxt-doesnt-exist-or-doesnt-contain-updatemethoddatastoreids"><code>updates.txt</code> doesn't exist or doesn't contain <code>updateMethodDatastoreIds</code><a class="headerlink" href="#updatestxt-doesnt-exist-or-doesnt-contain-updatemethoddatastoreids" title="Permanent link">#</a></h3>
+<ol>
+<li>Create <code>data/updates.txt</code> if it doesn't exist</li>
+<li>Paste this string in the update file <code>;updateMethodRenameDashTags;</code></li>
+<li>Login to Shaarli</li>
+<li>Delete the update file</li>
+<li>Refresh</li>
+</ol>
+<hr />
+<h2 id="importexport">Import/export<a class="headerlink" href="#importexport" title="Permanent link">#</a></h2>
+<h3 id="importing-shaarli-data-to-firefox">Importing shaarli data to Firefox<a class="headerlink" href="#importing-shaarli-data-to-firefox" title="Permanent link">#</a></h3>
+<ul>
+<li>In Firefox, open the bookmark manager (<code>Bookmarks menu &gt; Show all bookmarks</code> or <code>Ctrl+Shift+B</code>), select <code>Import and Backup &gt; Import bookmarks in HTML format</code></li>
+<li>Make sure the <code>Prepend note permalinks with this Shaarli instance's URL</code> box is checked when exporting, so that text-only/notes Shaares still point to the Shaarli instance you exported them from.</li>
+<li>Depending on the number of bookmarks, the import can take some time.</li>
+</ul>
+<p>You may be interested in these Firefox addons to manage bookmarks imported from Shaarli</p>
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/bookmark-deduplicator/">Bookmark Deduplicator</a> - provides an easy way to deduplicate your bookmarks</li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/tagsieve/">TagSieve</a> - browse your bookmarks by their tags</li>
+</ul>
+<h3 id="diigo">Diigo<a class="headerlink" href="#diigo" title="Permanent link">#</a></h3>
+<p>If you export your bookmark from Diigo, make sure you use the Delicious export, not the Netscape export. (Their Netscape export is broken, and they don't seem to be interested in fixing it.)</p>
+<h3 id="mister-wong">Mister Wong<a class="headerlink" href="#mister-wong" title="Permanent link">#</a></h3>
+<p>See <a href="https://github.com/sebsauvage/Shaarli/issues/146">this issue</a> for import tweaks.</p>
+<h3 id="semanticscuttle">SemanticScuttle<a class="headerlink" href="#semanticscuttle" title="Permanent link">#</a></h3>
+<p>To correctly import the tags from a <a href="http://semanticscuttle.sourceforge.net/">SemanticScuttle</a> HTML export, edit the HTML file before importing and replace all occurences of <code>tags=</code> (lowercase) to <code>TAGS=</code> (uppercase).</p>
+<h3 id="scuttle">Scuttle<a class="headerlink" href="#scuttle" title="Permanent link">#</a></h3>
+<p>Shaarli cannot import data directly from <a href="https://github.com/scronide/scuttle">Scuttle</a>.</p>
+<p>However, you can use the third-party <a href="https://github.com/q2apro/scuttle-to-shaarli">scuttle-to-shaarli</a>
+tool to export the Scuttle database to the Netscape HTML format compatible with the Shaarli importer.</p>
+<h3 id="refindcom">Refind.com<a class="headerlink" href="#refindcom" title="Permanent link">#</a></h3>
+<p>You can use the third-party tool <a href="https://github.com/ShawnPConroy/Derefind">Derefind</a> to convert refind.com bookmark exports to a format that can be imported into Shaarli.</p>
+<hr />
+<h2 id="other">Other<a class="headerlink" href="#other" title="Permanent link">#</a></h2>
+<h3 id="the-bookmarklet-doesnt-work">The bookmarklet doesn't work<a class="headerlink" href="#the-bookmarklet-doesnt-work" title="Permanent link">#</a></h3>
+<p>Some websites may disallow usage of bookmarklets through <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a>. Unfortunately, there is nothing Shaarli can do about it (<a href="https://github.com/shaarli/Shaarli/issues/196">1</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=866522">2</a>, <a href="https://code.google.com/p/chromium/issues/detail?id=233903">3</a>.</p>
+<p>Under Opera, you can't drag'n drop the button: You have to right-click on it and add a bookmark to your personal toolbar.</p>
+<h3 id="changing-the-timestamp-for-a-shaare">Changing the timestamp for a shaare<a class="headerlink" href="#changing-the-timestamp-for-a-shaare" title="Permanent link">#</a></h3>
+<ul>
+<li>Look for <code>&lt;input type="hidden" name="lf_linkdate" value="{$link.linkdate}"&gt;</code> in <code>tpl/editlink.tpl</code> (line 14)</li>
+<li>Replace <code>type="hidden"</code> with <code>type="text"</code> from this line</li>
+<li>A new date/time field becomes available in the edit/new Shaare dialog.</li>
+<li>You can set the timestamp manually by entering it in the format <code>YYYMMDD_HHMMS</code>.</li>
+</ul>
+<h3 id="clearing-shaarli-caches">Clearing Shaarli caches<a class="headerlink" href="#clearing-shaarli-caches" title="Permanent link">#</a></h3>
+<p>For debugging purposes:</p>
+<pre><code class="language-bash"># clear raintpl cache and temporary files
+find /var/www/links/cache/ /var/www/links/pagecache/ /var/www/links/tmp/ -type f -exec rm -v '{}' \;
+# if you have a php accelerator such as php-apcu, restart the webserver
+sudo systemctl restart apache2
+</code></pre>
+<hr />
+<h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">#</a></h2>
+<p>If the solutions above did not help, please:</p>
+<ul>
+<li>Come and ask question on the <a href="https://gitter.im/shaarli/Shaarli">Gitter chat</a> (also reachable via <a href="https://irc.gitter.im/">IRC</a>)</li>
+<li>Search for <a href="https://github.com/shaarli/Shaarli/issues">issues</a> and <a href="https://github.com/shaarli/Shaarli/pulls">Pull Requests</a><ul>
+<li>if you find one that is related to the issue, feel free to comment and provide additional details (host/Shaarli setup...)</li>
+<li>check issues labeled <a href="https://github.com/shaarli/Shaarli/labels/feature"><code>feature</code></a>, <a href="https://github.com/shaarli/Shaarli/labels/enhancement"><code>enhancement</code></a>, and <a href="https://github.com/shaarli/Shaarli/labels/plugin"><code>plugin</code></a> if you would like a feature added to Shaarli.</li>
+<li>else, <a href="https://github.com/shaarli/Shaarli/issues/new">open a new issue</a>, and provide information about the problem:<ul>
+<li><em>what happens?</em> - display glitches, invalid data, security flaws...</li>
+<li><em>what is your configuration?</em>  - OS, server version, activated extensions, web browser...</li>
+<li><em>is it reproducible?</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dev/Unit-tests/" class="btn btn-neutral float-left" title="Unit tests"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../dev/Unit-tests/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

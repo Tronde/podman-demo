@@ -1,0 +1,1828 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="The personal, minimalist, super fast, database-free bookmarking service" lang="en" name="description" xml:lang="en" />
+<meta content="UTF-8" name="charset" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Troubleshooting" href="../Troubleshooting.html" />
+
+    <link rel="shortcut icon" href="../_static/icon.png"/><!-- Generated with Sphinx 7.1.0 and Furo 2023.07.26 -->
+        <title>Development - Shaarli documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Shaarli documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/doc-logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Shaarli documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Server-configuration.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reverse-proxy.html">Reverse proxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration.html">Shaarli configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore.html">Backup and restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration.html">Upgrade and migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community-and-related-software.html">Community &amp; related software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../REST-API.html">REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Development</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this heading">#</a></h1>
+<p>Please read <a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/CONTRIBUTING.md">Contributing to Shaarli</a></p>
+<section id="third-party-libraries">
+<h2>Third-party libraries<a class="headerlink" href="#third-party-libraries" title="Permalink to this heading">#</a></h2>
+<p>CSS:</p>
+<ul class="simple">
+<li><p>Yahoo UI <a class="reference external" href="https://clarle.github.io/yui3/yui/docs/cssreset/">CSS Reset</a> - standardize cross-browser rendering</p></li>
+</ul>
+<p>Javascript:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://projects.verou.me/awesomplete/">Awesomeplete</a> (<a class="reference external" href="https://github.com/LeaVerou/awesomplete">GitHub</a>) - autocompletion in input forms</p></li>
+<li><p><a class="reference external" href="https://dinbror.dk/blazy/">bLazy</a> (<a class="reference external" href="https://github.com/dinbror/blazy">GitHub</a>) - lazy loading for thumbnails</p></li>
+<li><p><a class="reference external" href="https://github.com/neocotic/qrious">qr.js</a> - QR code generation</p></li>
+</ul>
+<p>PHP (managed through <a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/composer.json"><code class="docutils literal notranslate"><span class="pre">composer.json</span></code></a>):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/feulf/raintpl">RainTPL</a> - HTML templating for PHP</p></li>
+<li><p><a class="reference external" href="https://packagist.org/packages/shaarli/netscape-bookmark-parser"><code class="docutils literal notranslate"><span class="pre">shaarli/netscape-bookmark-parser</span></code></a> - Import bookmarks from Netscape files</p></li>
+<li><p><a class="reference external" href="https://packagist.org/packages/erusev/parsedown"><code class="docutils literal notranslate"><span class="pre">erusev/parsedown</span></code></a> - Parse MarkDown syntax for the MarkDown plugin</p></li>
+<li><p><a class="reference external" href="https://packagist.org/packages/slim/slim"><code class="docutils literal notranslate"><span class="pre">slim/slim</span></code></a> - Handle routes and middleware for the REST API</p></li>
+<li><p><a class="reference external" href="https://github.com/ArthurHoaro/web-thumbnailer"><code class="docutils literal notranslate"><span class="pre">ArthurHoaro/web-thumbnailer</span></code></a> - PHP library which will retrieve a thumbnail for any given URL</p></li>
+<li><p><a class="reference external" href="https://github.com/pubsubhubbub/php-publisher"><code class="docutils literal notranslate"><span class="pre">pubsubhubbub/publisher</span></code></a> - A PubSubHubbub publisher module for PHP.</p></li>
+<li><p><a class="reference external" href="https://github.com/php-gettext/Gettext"><code class="docutils literal notranslate"><span class="pre">gettext/gettext</span></code></a> - PHP library to collect and manipulate gettext (.po, .mo, .php, .json, etc)</p></li>
+</ul>
+</section>
+<section id="security">
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The password is salted, hashed and stored in the data subdirectory, in a PHP file, and protected by htaccess. Even if the webserver does not support htaccess, the hash is not readable by URL. Even if the .php file is stolen, the password cannot deduced from the hash. The salt prevents rainbow-tables attacks.</p></li>
+<li><p>Directories are protected using <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> files</p></li>
+<li><p>Forms are protected against <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a>:</p>
+<ul>
+<li><p>Forms which act on data (save,delete…) contain a token generated by the server.</p></li>
+<li><p>Any posted form which does not contain a valid token is rejected.</p></li>
+<li><p>Any token can only be used once.</p></li>
+<li><p>Tokens are attached to the session and cannot be reused in another session.</p></li>
+</ul>
+</li>
+<li><p>Sessions automatically expire after 60 minutes.</p></li>
+<li><p>Sessions are protected against hijacking: the session ID cannot be used from a different IP address.</p></li>
+<li><p>Links are stored as an associative array which is serialized, compressed (with deflate), base64-encoded and saved as a comment in a <code class="docutils literal notranslate"><span class="pre">.php</span></code> file - even if the server does not support <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> files, the data file will still not be readable by URL.</p></li>
+<li><p>Bruteforce protection: Successful and failed login attempts are logged - IP bans are enforced after a configurable amount of failures. Logs can also be used consumed by <a class="reference internal" href="../Server-configuration.html#fail2ban"><span class="std std-ref">fail2ban</span></a></p></li>
+<li><p>A pop-up notification is shown when a new release is available.</p></li>
+</ul>
+</section>
+<section id="link-structure">
+<h2>Link structure<a class="headerlink" href="#link-structure" title="Permalink to this heading">#</a></h2>
+<p>Every link available through the <code class="docutils literal notranslate"><span class="pre">LinkDB</span></code> object is represented as an array
+containing the following fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (integer): Unique identifier.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> (string): Title of the link.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> (string): URL of the link. Used for displayable links (without redirector, url encoding, etc.).
+Can be absolute or relative for Notes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real_url</span></code> (string): Real destination URL, can be redirected, encoded, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shorturl</span></code> (string): Permalink small hash.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code> (string): Link text description.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">private</span></code> (boolean): whether the link is private or not.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tags</span></code> (string): all link tags separated by a single space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thumbnail</span></code> (string|boolean): relative path of the thumbnail cache file, or false if there isn’t any.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">created</span></code> (DateTime): link creation date time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updated</span></code> (DateTime): last modification date time.</p></li>
+</ul>
+<p>Small hashes are used to make a link to an entry in Shaarli. They are unique: the date of the item (eg. <code class="docutils literal notranslate"><span class="pre">20110923_150523</span></code>) is hashed with CRC32, then converted to base64 and some characters are replaced. They are always 6 characters longs and use only <code class="docutils literal notranslate"><span class="pre">A-Z</span> <span class="pre">a-z</span> <span class="pre">0-9</span> <span class="pre">-</span> <span class="pre">_</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>.</p>
+</section>
+<section id="directory-structure">
+<h2>Directory structure<a class="headerlink" href="#directory-structure" title="Permalink to this heading">#</a></h2>
+<p>Here is the directory structure of Shaarli and the purpose of the different files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">	</span>index.php<span class="w">        </span><span class="c1"># Main program</span>
+<span class="w">	</span>application/<span class="w">     </span><span class="c1"># Shaarli classes</span>
+<span class="w">		</span>├──<span class="w"> </span>LinkDB.php
+
+<span class="w">        </span>...
+
+<span class="w">		</span>└──<span class="w"> </span>Utils.php
+<span class="w">	</span>tests/<span class="w">           </span><span class="c1"># Shaarli unitary &amp; functional tests</span>
+<span class="w">		</span>├──<span class="w"> </span>LinkDBTest.php
+
+<span class="w">        </span>...
+
+<span class="w">		</span>├──<span class="w"> </span>utils<span class="w">    </span><span class="c1"># utilities to ease testing</span>
+<span class="w">		</span>│<span class="w">   </span>└──<span class="w"> </span>ReferenceLinkDB.php
+<span class="w">		</span>└──<span class="w"> </span>UtilsTest.php
+<span class="w">	</span>assets/
+<span class="w">	    </span>├──<span class="w"> </span>common/<span class="w">                </span><span class="c1"># Assets shared by multiple themes</span>
+<span class="w">	        </span>├──<span class="w"> </span>...
+<span class="w">        </span>├──<span class="w"> </span>default/<span class="w">               </span><span class="c1"># Assets for the default template, before compilation</span>
+<span class="w">            </span>├──<span class="w"> </span>fonts/<span class="w">                  </span><span class="c1"># Font files</span>
+<span class="w">            </span>├──<span class="w"> </span>img/<span class="w">                    </span><span class="c1"># Images used by the default theme</span>
+<span class="w">            </span>├──<span class="w"> </span>js/<span class="w">                     </span><span class="c1"># JavaScript files in ES6 syntax</span>
+<span class="w">            </span>├──<span class="w"> </span>scss/<span class="w">                   </span><span class="c1"># SASS files</span>
+<span class="w">        </span>└──<span class="w"> </span>vintage/<span class="w">               </span><span class="c1"># Assets for the vintage template, before compilation</span>
+<span class="w">            </span>└──<span class="w"> </span>...
+<span class="w">    </span>COPYING<span class="w">          </span><span class="c1"># Shaarli license</span>
+<span class="w">    </span>inc/<span class="w">             </span><span class="c1"># static assets and 3rd party libraries</span>
+<span class="w">        </span>└──<span class="w"> </span>rain.tpl.class.php<span class="w">     </span><span class="c1"># RainTPL templating library</span>
+<span class="w">    </span>images/<span class="w">          </span><span class="c1"># Images and icons used in Shaarli</span>
+<span class="w">    </span>data/<span class="w">            </span><span class="c1"># data storage: bookmark database, configuration, logs, banlist...</span>
+<span class="w">        </span>├──<span class="w"> </span>config.json.php<span class="w">        </span><span class="c1"># Shaarli configuration (login, password, timezone, title...)</span>
+<span class="w">        </span>├──<span class="w"> </span>datastore.php<span class="w">          </span><span class="c1"># Your link database (compressed).</span>
+<span class="w">        </span>├──<span class="w"> </span>ipban.php<span class="w">              </span><span class="c1"># IP address ban system data</span>
+<span class="w">        </span>├──<span class="w"> </span>lastupdatecheck.txt<span class="w">    </span><span class="c1"># Update check timestamp file</span>
+<span class="w">        </span>└──<span class="w"> </span>log.txt<span class="w">                </span><span class="c1"># login/IPban log.</span>
+<span class="w">    </span>tpl/<span class="w">             </span><span class="c1"># RainTPL templates for Shaarli. They are used to build the pages.</span>
+<span class="w">        </span>├──<span class="w"> </span>default/<span class="w">               </span><span class="c1"># Default Shaarli theme</span>
+<span class="w">            </span>├──<span class="w"> </span>fonts/<span class="w">                  </span><span class="c1"># Font files</span>
+<span class="w">            </span>├──<span class="w"> </span>img/<span class="w">                    </span><span class="c1"># Images</span>
+<span class="w">            </span>├──<span class="w"> </span>js/<span class="w">                     </span><span class="c1"># JavaScript files compiled by Babel and compatible with all browsers</span>
+<span class="w">            </span>├──<span class="w"> </span>css/<span class="w">                    </span><span class="c1"># CSS files compiled with SASS</span>
+<span class="w">        </span>└──<span class="w"> </span>vintage/<span class="w">               </span><span class="c1"># Legacy Shaarli theme</span>
+<span class="w">            </span>└──<span class="w"> </span>...
+<span class="w">    </span>cache/<span class="w">           </span><span class="c1"># thumbnails cache</span>
+<span class="w">                     </span><span class="c1"># This directory is automatically created. You can erase it anytime you want.</span>
+<span class="w">    </span>tmp/<span class="w">             </span><span class="c1"># Temporary directory for compiled RainTPL templates.</span>
+<span class="w">                     </span><span class="c1"># This directory is automatically created. You can erase it anytime you want.</span>
+<span class="w">    </span>vendor/<span class="w">          </span><span class="c1"># Third-party dependencies. This directory is created by Composer</span>
+</pre></div>
+</div>
+<p>Shaarli needs read access to:</p>
+<ul class="simple">
+<li><p>the root index.php file</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">application/</span></code>, <code class="docutils literal notranslate"><span class="pre">plugins/</span></code> and <code class="docutils literal notranslate"><span class="pre">inc/</span></code> directories (recursively)</p></li>
+</ul>
+<p>Shaarli needs read/write access to the <code class="docutils literal notranslate"><span class="pre">cache/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, <code class="docutils literal notranslate"><span class="pre">pagecache/</span></code>, and <code class="docutils literal notranslate"><span class="pre">tmp/</span></code> directories</p>
+</section>
+<section id="automation">
+<h2>Automation<a class="headerlink" href="#automation" title="Permalink to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/Makefile"><code class="docutils literal notranslate"><span class="pre">Makefile</span></code></a> is available to perform project-related operations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#Static-analysis"><span class="xref myst">Static analysis</span></a> - check that the code is compliant to PHP conventions</p></li>
+<li><p><a class="reference internal" href="#Unit-tests"><span class="xref myst">Unit tests</span></a> - ensure there are no regressions introduced by new commits</p></li>
+<li><p>Javascript linting - Shaarli uses <a class="reference external" href="https://github.com/airbnb/javascript">Airbnb JavaScript Style Guide</a>. Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">eslint</span></code> to check JS style.</p></li>
+<li><p>Documentation - generate a local HTML copy of the markdown documentation</p></li>
+</ul>
+</section>
+<section id="continuous-integration">
+<h2>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/shaarli/Shaarli/actions">Github Actions</a> is a Continuous Integration build server, that runs a build:</p>
+<ul class="simple">
+<li><p>each time a commit is pushed to any branch</p></li>
+<li><p>each time a Pull Request is submitted or updated</p></li>
+</ul>
+<p>After all jobs have finished, Github Actions returns the results to GitHub:</p>
+<ul class="simple">
+<li><p>a status icon represents the result for the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch: <a class="reference external" href="https://github.com/shaarli/Shaarli/actions"><img alt="Build Status" src="https://github.com/shaarli/Shaarli/actions/workflows/ci.yml/badge.svg" /></a></p></li>
+<li><p>Pull Requests are updated with the Github Actions build result.</p></li>
+</ul>
+<p>Github Actions is also used to build and push <a class="reference internal" href="../Docker.html"><span class="std std-doc">Docker</span></a> images to <a class="reference external" href="https://github.com/shaarli/Shaarli/pkgs/container/shaarli">https://github.com/shaarli/Shaarli/pkgs/container/shaarli</a> for the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch and on every git <code class="docutils literal notranslate"><span class="pre">tag</span></code>/<a class="reference external" href="https://github.com/shaarli/Shaarli/releases">release</a>.</p>
+<p>See <a class="reference external" href="https://github.com/shaarli/Shaarli/tree/master/.github/workflows"><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code></a>.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> is used to convert markdown documentation to HTML pages. The <a class="reference external" href="https://shaarli.readthedocs.io/en/master/">public documentation</a> website is rendered and hosted by <a class="reference external" href="https://readthedocs.org/">readthedocs.org</a>. A copy of the documentation is also included in prebuilt <a class="reference external" href="https://github.com/shaarli/Shaarli/releases">release archives</a> (<code class="docutils literal notranslate"><span class="pre">doc/html/</span></code> path in your Shaarli installation). To generate the HTML documentation locally, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">htmldoc</span></code>.</p>
+</section>
+<section id="static-analysis">
+<h2>Static analysis<a class="headerlink" href="#static-analysis" title="Permalink to this heading">#</a></h2>
+<p>Patches should try to stick to the <a class="reference external" href="https://www.php-fig.org/psr/">PHP Standard Recommendations</a> (PSR), and must follow:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.php-fig.org/psr/psr-1/">PSR-1</a> - Basic Coding Standard</p></li>
+<li><p><a class="reference external" href="https://www.php-fig.org/psr/psr-2/">PSR-2</a> - Coding Style Guide</p></li>
+<li><p><a class="reference external" href="https://www.php-fig.org/psr/psr-12/">PSR-12</a> - Extended Coding Style Guide</p></li>
+</ul>
+<p>These are enforced on pull requests using our Continuous Integration tools with <a class="reference external" href="https://github.com/squizlabs/PHP_CodeSniffer">PHP Code Sniffer</a>.</p>
+<p>Static analysis tools are installed with Composer dependencies, and used through Shaarli’s <a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/Makefile">Makefile</a> with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">code_sniffer</span></code>.</p>
+<p>For an overview of the available features, see:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/shaarli/Shaarli/pull/124">Code quality: Makefile to run static code checkers</a> (#124)</p></li>
+<li><p><a class="reference external" href="https://github.com/shaarli/Shaarli/pull/1635">Apply PHP Code Sniffer to Shaarli code base</a> (#1635)</p></li>
+</ul>
+</section>
+<section id="unit-tests">
+<h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this heading">#</a></h2>
+<p>Shaarli uses the <a class="reference external" href="https://phpunit.de/">PHPUnit</a> test framework; it can be installed with <a class="reference internal" href="../Installation.html#from-sources"><span class="std std-ref">Composer</span></a>, which is a dependency management tool.</p>
+<section id="install-composer">
+<h3>Install composer<a class="headerlink" href="#install-composer" title="Permalink to this heading">#</a></h3>
+<p>You can either use:</p>
+<ul class="simple">
+<li><p>a system-wide version, e.g. installed through your distro’s package manager</p></li>
+<li><p>a local version, downloadable <a class="reference external" href="https://getcomposer.org/download/">here</a>.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># for Debian-based distros</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>composer
+</pre></div>
+</div>
+</section>
+<section id="install-shaarli-dev-dependencies">
+<h3>Install Shaarli dev dependencies<a class="headerlink" href="#install-shaarli-dev-dependencies" title="Permalink to this heading">#</a></h3>
+<p>After installing <a class="reference internal" href="../Server-configuration.html#php"><span class="std std-ref">required PHP extensions</span></a>, install development dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/path/to/shaarli
+$<span class="w"> </span>make<span class="w"> </span>composer_dependencies_dev
+</pre></div>
+</div>
+</section>
+<section id="install-and-enable-xdebug-to-generate-phpunit-coverage-reports">
+<h3>Install and enable Xdebug to generate PHPUnit coverage reports<a class="headerlink" href="#install-and-enable-xdebug-to-generate-phpunit-coverage-reports" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://xdebug.org/docs/install">Xdebug</a> is a PHP extension which provides debugging and profiling capabilities. Install Xdebug:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># for Debian-based distros:</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>php-xdebug
+
+<span class="c1"># for ArchLinux:</span>
+pacman<span class="w"> </span>-S<span class="w"> </span>xdebug
+
+<span class="c1"># then add the following line to /etc/php/php.ini</span>
+<span class="nv">zend_extension</span><span class="o">=</span>xdebug.so
+</pre></div>
+</div>
+</section>
+<section id="run-unit-tests">
+<h3>Run unit tests<a class="headerlink" href="#run-unit-tests" title="Permalink to this heading">#</a></h3>
+<p>Ensure tests pass successfully:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nb">test</span>
+<span class="c1"># ...</span>
+<span class="c1"># OK (36 tests, 65 assertions)</span>
+</pre></div>
+</div>
+<p>In case of failure the test suite will point you to actual errors and output a summary:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nb">test</span>
+<span class="c1"># ...</span>
+<span class="c1"># FAILURES!</span>
+<span class="c1"># Tests: 36, Assertions: 63, Errors: 1, Failures: 2.</span>
+</pre></div>
+</div>
+<p>By default, PHPUnit will run all suitable tests found under the <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory. Each test has 3 possible outcomes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> - success</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F</span></code> - failure: the test was run but its results are invalid</p>
+<ul>
+<li><p>the code does not behave as expected</p></li>
+<li><p>dependencies to external elements: globals, session, cache…</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E</span></code> - error: something went wrong and the tested code has crashed</p>
+<ul>
+<li><p>typos in the code, or in the test code</p></li>
+<li><p>dependencies to missing external elements</p></li>
+</ul>
+</li>
+</ul>
+<p>If Xdebug has been installed and activated, two coverage reports will be generated:</p>
+<ul class="simple">
+<li><p>a summary in the console</p></li>
+<li><p>a detailed HTML report with metrics for tested code</p>
+<ul>
+<li><p>to open it in a web browser: <code class="docutils literal notranslate"><span class="pre">firefox</span> <span class="pre">coverage/index.html</span> <span class="pre">&amp;</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="executing-specific-tests">
+<h3>Executing specific tests<a class="headerlink" href="#executing-specific-tests" title="Permalink to this heading">#</a></h3>
+<p>Add a <a class="reference external" href="https://phpunit.de/manual/6.5/en/appendixes.annotations.html"><code class="docutils literal notranslate"><span class="pre">&#64;group</span></code></a> annotation in a test class or method comment:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">/**</span>
+<span class="x"> * Netscape bookmark import</span>
+<span class="x"> * @group WIP</span>
+<span class="x"> */</span>
+<span class="x">class BookmarkImportTest extends PHPUnit_Framework_TestCase</span>
+<span class="x">{</span>
+<span class="x">   [...]</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>To run all tests annotated with <code class="docutils literal notranslate"><span class="pre">&#64;group</span> <span class="pre">WIP</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>vendor/bin/phpunit<span class="w"> </span>--group<span class="w"> </span>WIP<span class="w"> </span>tests/
+</pre></div>
+</div>
+</section>
+<section id="running-tests-inside-docker-containers">
+<h3>Running tests inside Docker containers<a class="headerlink" href="#running-tests-inside-docker-containers" title="Permalink to this heading">#</a></h3>
+<p>Unit tests can be run inside <a class="reference internal" href="../Docker.html"><span class="std std-doc">Docker</span></a> containers.</p>
+<p>Test Dockerfiles are located under <code class="docutils literal notranslate"><span class="pre">tests/docker/&lt;distribution&gt;/Dockerfile</span></code>, and can be used to build Docker images to run Shaarli test suites under commonLinux environments. Dockerfiles are provided for the following environments:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/tests/docker/alpine316/Dockerfile"><code class="docutils literal notranslate"><span class="pre">alpine316</span></code></a> - <a class="reference external" href="https://www.alpinelinux.org/downloads/">Alpine Linux 3.16</a></p></li>
+<li><p><a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/tests/docker/debian8/Dockerfile"><code class="docutils literal notranslate"><span class="pre">debian8</span></code></a> - <a class="reference external" href="https://wiki.debian.org/DebianJessie">Debian 8 Jessie</a> (oldoldstable)</p></li>
+<li><p><a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/tests/docker/debian9/Dockerfile"><code class="docutils literal notranslate"><span class="pre">debian9</span></code></a> - <a class="reference external" href="https://wiki.debian.org/DebianStretch">Debian 9 Stretch</a> (oldstable)</p></li>
+<li><p><a class="reference external" href="https://github.com/shaarli/Shaarli/blob/master/tests/docker/ubuntu16/Dockerfile"><code class="docutils literal notranslate"><span class="pre">ubuntu16</span></code></a> - <a class="reference external" href="https://releases.ubuntu.com/16.04/">Ubuntu 16.04 Xenial Xerus</a> (old LTS)</p></li>
+</ul>
+<p>Each image provides:</p>
+<ul class="simple">
+<li><p>a base Linux OS</p></li>
+<li><p>Shaarli PHP dependencies (OS packages)</p></li>
+<li><p>test PHP dependencies (OS packages)</p></li>
+<li><p>Composer</p></li>
+<li><p>Tests that run inside the container using a standard Linux user account (running tests as <code class="docutils literal notranslate"><span class="pre">root</span></code> would bypass permission checks and may hide issues)</p></li>
+</ul>
+<p>Build a test image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># build the Debian 9 Docker image</span>
+<span class="nb">cd</span><span class="w"> </span>/path/to/shaarli/tests/docker/debian9
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>shaarli-test:debian9<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Run unit tests in a container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/shaarli
+<span class="c1"># install/update 3rd-party test dependencies</span>
+composer<span class="w"> </span>install<span class="w"> </span>--prefer-dist
+<span class="c1"># run tests using the freshly built image</span>
+docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>:/shaarli<span class="w"> </span>shaarli-test:debian9<span class="w"> </span>docker_test
+<span class="c1"># run the full test campaign</span>
+docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>:/shaarli<span class="w"> </span>shaarli-test:debian9<span class="w"> </span>docker_all_tests
+</pre></div>
+</div>
+</section>
+</section>
+<section id="gnupg-signature">
+<h2>GnuPG Signature<a class="headerlink" href="#gnupg-signature" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://gnupg.org/">Gnu Privacy Guard</a> (GnuPG) is an Open Source implementation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">Pretty Good Privacy</a> (OpenPGP) specification. Its main purposes are digital authentication, signature and encryption. It is often used by the <a class="reference external" href="https://en.wikipedia.org/wiki/Free_and_open-source_software">FLOSS</a> community to verify:</p>
+<ul class="simple">
+<li><p>Linux package signatures: Debian <a class="reference external" href="https://wiki.debian.org/SecureApt">SecureApt</a>, ArchLinux <a class="reference external" href="https://archlinux.org/master-keys/">Master Keys</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Revision_control">Version control</a> releases &amp; maintainer identity</p></li>
+</ul>
+<blockquote>
+<div><p>You MUST understand that presence of data in the keyserver (pools) in no way connotes trust. Anyone can generate a key, with any name or email address, and upload it. All security and trust comes from evaluating security at the “object level”, via PGP <a class="reference external" href="https://en.wikipedia.org/wiki/Web_of_trust">Web of trust</a> signatures. This keyserver makes it possible to retrieve keys, looking them up via various indices, but the collection of keys in this public pool is KNOWN to contain malicious and fraudulent keys. It is the common expectation of server operators that users understand this and use software which, like all known common OpenPGP implementations, evaluates trust accordingly. This expectation is so common that it is not normally explicitly stated.</p>
+</div></blockquote>
+<p>– Phil Pennock (author of the SKS key server)</p>
+<p>Trust can be gained by having your key signed by other people (and signing their key back, too :) ), for instance during <a class="reference external" href="https://en.wikipedia.org/wiki/Key_signing_party">key signing parties</a>: <a class="reference external" href="https://www.cryptnet.net/fdp/crypto/keysigning_party/en/keysigning_party.html">Keysigning party HOWTO</a>,</p>
+<section id="generate-a-gpg-key">
+<h3>Generate a GPG key<a class="headerlink" href="#generate-a-gpg-key" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/12061645/generating-a-gpg-key-for-git-tagging/16725717#16725717">Generating a GPG key for Git tagging</a> (StackOverflow)</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/managing-commit-signature-verification">Generating a GPG key</a> (GitHub)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gpg<span class="w"> </span>--gen-key
+
+gpg<span class="w"> </span><span class="o">(</span>GnuPG<span class="o">)</span><span class="w"> </span><span class="m">2</span>.1.6<span class="p">;</span><span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2015</span><span class="w"> </span>Free<span class="w"> </span>Software<span class="w"> </span>Foundation,<span class="w"> </span>Inc.
+This<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software:<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>to<span class="w"> </span>change<span class="w"> </span>and<span class="w"> </span>redistribute<span class="w"> </span>it.
+There<span class="w"> </span>is<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent<span class="w"> </span>permitted<span class="w"> </span>by<span class="w"> </span>law.
+
+Note:<span class="w"> </span>Use<span class="w"> </span><span class="s2">&quot;gpg2 --full-gen-key&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>full<span class="w"> </span>featured<span class="w"> </span>key<span class="w"> </span>generation<span class="w"> </span>dialog.
+
+GnuPG<span class="w"> </span>needs<span class="w"> </span>to<span class="w"> </span>construct<span class="w"> </span>a<span class="w"> </span>user<span class="w"> </span>ID<span class="w"> </span>to<span class="w"> </span>identify<span class="w"> </span>your<span class="w"> </span>key.
+
+Real<span class="w"> </span>name:<span class="w"> </span>Marvin<span class="w"> </span>the<span class="w"> </span>Paranoid<span class="w"> </span>Android
+Email<span class="w"> </span>address:<span class="w"> </span>marvin@h2g2.net
+You<span class="w"> </span>selected<span class="w"> </span>this<span class="w"> </span>USER-ID:
+<span class="w">    </span><span class="s2">&quot;Marvin the Paranoid Android &lt;marvin@h2g2.net&gt;&quot;</span>
+
+Change<span class="w"> </span><span class="o">(</span>N<span class="o">)</span>ame,<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>mail,<span class="w"> </span>or<span class="w"> </span><span class="o">(</span>O<span class="o">)</span>kay/<span class="o">(</span>Q<span class="o">)</span>uit?<span class="w"> </span>o
+We<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>a<span class="w"> </span>lot<span class="w"> </span>of<span class="w"> </span>random<span class="w"> </span>bytes.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>good<span class="w"> </span>idea<span class="w"> </span>to<span class="w"> </span>perform
+some<span class="w"> </span>other<span class="w"> </span>action<span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>keyboard,<span class="w"> </span>move<span class="w"> </span>the<span class="w"> </span>mouse,<span class="w"> </span>utilize<span class="w"> </span>the
+disks<span class="o">)</span><span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>prime<span class="w"> </span>generation<span class="p">;</span><span class="w"> </span>this<span class="w"> </span>gives<span class="w"> </span>the<span class="w"> </span>random<span class="w"> </span>number
+generator<span class="w"> </span>a<span class="w"> </span>better<span class="w"> </span>chance<span class="w"> </span>to<span class="w"> </span>gain<span class="w"> </span>enough<span class="w"> </span>entropy.
+</pre></div>
+</div>
+<p>At this point, you will:</p>
+<ul class="simple">
+<li><p>be prompted for a secure password to protect your key (the input method will depend on your Desktop Environment and configuration)</p></li>
+<li><p>be asked to use your machine’s input devices (mouse, keyboard, etc.) to generate random entropy; this step <em>may take some time</em></p></li>
+</ul>
+<p>GnuPG will the confirm key creation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gpg:<span class="w"> </span>key<span class="w"> </span>A9D53A3E<span class="w"> </span>marked<span class="w"> </span>as<span class="w"> </span>ultimately<span class="w"> </span>trusted
+public<span class="w"> </span>and<span class="w"> </span>secret<span class="w"> </span>key<span class="w"> </span>created<span class="w"> </span>and<span class="w"> </span>signed.
+
+gpg:<span class="w"> </span>checking<span class="w"> </span>the<span class="w"> </span>trustdb
+gpg:<span class="w"> </span><span class="m">3</span><span class="w"> </span>marginal<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>needed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>complete<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>needed,<span class="w"> </span>PGP<span class="w"> </span>trust<span class="w"> </span>model
+gpg:<span class="w"> </span>depth:<span class="w"> </span><span class="m">0</span><span class="w">  </span>valid:<span class="w">   </span><span class="m">2</span><span class="w">  </span>signed:<span class="w">   </span><span class="m">0</span><span class="w">  </span>trust:<span class="w"> </span><span class="m">0</span>-,<span class="w"> </span>0q,<span class="w"> </span>0n,<span class="w"> </span>0m,<span class="w"> </span>0f,<span class="w"> </span>2u
+pub<span class="w">   </span>rsa2048/A9D53A3E<span class="w"> </span><span class="m">2015</span>-07-31
+<span class="w">      </span>Key<span class="w"> </span><span class="nv">fingerprint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>AF2A<span class="w"> </span><span class="m">5381</span><span class="w"> </span>E54B<span class="w"> </span>2FD2<span class="w"> </span>14C4<span class="w">  </span>A9A3<span class="w"> </span>0E35<span class="w"> </span>ACA4<span class="w"> </span>A9D5<span class="w"> </span>3A3E
+uid<span class="w">       </span><span class="o">[</span>ultimate<span class="o">]</span><span class="w"> </span>Marvin<span class="w"> </span>the<span class="w"> </span>Paranoid<span class="w"> </span>Android<span class="w"> </span>&lt;marvin@h2g2.net&gt;
+sub<span class="w">   </span>rsa2048/8C0EACF1<span class="w"> </span><span class="m">2015</span>-07-31
+</pre></div>
+</div>
+<p>Optionally, you can submit your public key to a PGP server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gpg<span class="w"> </span>--keyserver<span class="w"> </span>pgp.mit.edu<span class="w"> </span>--send-keys<span class="w"> </span>A9D53A3E
+gpg:<span class="w"> </span>sending<span class="w"> </span>key<span class="w"> </span>A9D53A3E<span class="w"> </span>to<span class="w"> </span>hkp<span class="w"> </span>server<span class="w"> </span>pgp.mit.edu
+</pre></div>
+</div>
+</section>
+</section>
+<section id="release-shaarli">
+<h2>Release Shaarli<a class="headerlink" href="#release-shaarli" title="Permalink to this heading">#</a></h2>
+<p>This guide assumes that you have:</p>
+<ul class="simple">
+<li><p>a GPG key matching your GitHub authentication credentials/email (the email address identified by the GPG key is the same as the one in your <code class="docutils literal notranslate"><span class="pre">~/.gitconfig</span></code>)</p></li>
+<li><p>a GitHub fork of Shaarli</p></li>
+<li><p>a local clone of your Shaarli fork, with the following remotes:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">origin</span></code> pointing to your GitHub fork</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">upstream</span></code> pointing to the main Shaarli repository</p></li>
+</ul>
+</li>
+<li><p>maintainer permissions on the main Shaarli repository, to:</p>
+<ul>
+<li><p>push the signed tag</p></li>
+<li><p>create a new release</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://getcomposer.org/">Composer</a> needs to be installed</p></li>
+<li><p>The <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> Python 3 module needs to be installed for HTML documentation generation.</p></li>
+<li><p>Make sure you have GNU <code class="docutils literal notranslate"><span class="pre">tar</span></code> installed (not BSD <code class="docutils literal notranslate"><span class="pre">tar</span></code>). On macOS, you can install it with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">gnu-tar</span></code>.</p></li>
+</ul>
+<section id="release-notes-and-changelog-md">
+<h3>Release notes and <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code><a class="headerlink" href="#release-notes-and-changelog-md" title="Permalink to this heading">#</a></h3>
+<p>GitHub allows drafting the release notes for the upcoming release, from the <a class="reference external" href="https://github.com/shaarli/Shaarli/releases">Releases</a> page. This way, the release note can be drafted while contributions are merged to <code class="docutils literal notranslate"><span class="pre">master</span></code>. See https://keepachangelog.com/en/0.3.0/ for changelog formatting.</p>
+<p><code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> should contain the same information as the release note draft for the upcoming version. Update it to:</p>
+<ul class="simple">
+<li><p>add new entries (additions, fixes, etc.)</p></li>
+<li><p>mark the current version as released by setting its date and link</p></li>
+<li><p>add a new section for the future unreleased version</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">## [v0.x.y](https://github.com/shaarli/Shaarli/releases/tag/v0.x.y) - UNRELEASES</span>
+
+<span class="c1">### Added</span>
+
+<span class="c1">### Changed</span>
+
+<span class="c1">### Fixed</span>
+
+<span class="c1">### Removed</span>
+
+<span class="c1">### Deprecated</span>
+
+<span class="c1">### Security</span>
+</pre></div>
+</div>
+</section>
+<section id="update-the-list-of-git-contributors">
+<h3>Update the list of Git contributors<a class="headerlink" href="#update-the-list-of-git-contributors" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w"> </span>generate_authors
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-s<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update AUTHORS&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="create-and-merge-a-pull-request">
+<h3>Create and merge a Pull Request<a class="headerlink" href="#create-and-merge-a-pull-request" title="Permalink to this heading">#</a></h3>
+<p>Create a Pull Request to marge changes from your remote, into <code class="docutils literal notranslate"><span class="pre">master</span></code> in the community Shaarli repository, and have it merged.</p>
+</section>
+<section id="create-the-release-branch-and-update-shaarli-version-php">
+<h3>Create the release branch and update shaarli_version.php<a class="headerlink" href="#create-the-release-branch-and-update-shaarli-version-php" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># fetch latest changes from master to your local copy</span>
+git<span class="w"> </span>checkout<span class="w"> </span>master
+git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>master
+
+<span class="c1"># If releasing a new minor version, create a release branch</span>
+$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>v0.x
+<span class="c1"># Otherwise just use the existing one</span>
+$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>v0.x
+
+<span class="c1"># Get the latest changes</span>
+$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>master
+
+<span class="c1"># Check that everything went fine:</span>
+$<span class="w"> </span>make<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Bump shaarli_version.php from dev to 0.x.0, **without the v**</span>
+$<span class="w"> </span>vim<span class="w"> </span>shaarli_version.php<span class="w"> </span>doc/conf.py<span class="w"> </span>README.md
+$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>shaarli_version<span class="w"> </span>doc/conf.py<span class="w"> </span>README.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-s<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Bump Shaarli version to v0.x.0&quot;</span>
+$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>upstream<span class="w"> </span>v0.x
+</pre></div>
+</div>
+</section>
+<section id="create-and-push-a-signed-tag">
+<h3>Create and push a signed tag<a class="headerlink" href="#create-and-push-a-signed-tag" title="Permalink to this heading">#</a></h3>
+<p>Git <a class="reference external" href="https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project">tags</a> are used to identify specific revisions with a unique version number that follows <a class="reference external" href="https://semver.org/">semantic versioning</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># update your local copy</span>
+git<span class="w"> </span>checkout<span class="w"> </span>v0.5
+git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>v0.5
+
+<span class="c1"># create a signed tag</span>
+git<span class="w"> </span>tag<span class="w"> </span>-s<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release v0.5.0&quot;</span><span class="w"> </span>v0.5.0
+
+<span class="c1"># push the tag to upstream</span>
+git<span class="w"> </span>push<span class="w"> </span>--tags<span class="w"> </span>upstream
+</pre></div>
+</div>
+<p>Here is how to verify a signed tag. <a class="reference external" href="https://github.com/shaarli/Shaarli/releases/tag/v0.5.0"><code class="docutils literal notranslate"><span class="pre">v0.5.0</span></code></a> is the first GPG-signed tag pushed on the Community Shaarli. Let’s have a look at its signature!</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># update the list of available tags</span>
+git<span class="w"> </span>fetch<span class="w"> </span>upstream
+
+<span class="c1"># get the SHA1 reference of the tag</span>
+git<span class="w"> </span>show-ref<span class="w"> </span>tags/v0.5.0
+<span class="c1"># gives: f7762cf803f03f5caf4b8078359a63783d0090c1 refs/tags/v0.5.0</span>
+
+<span class="c1"># verify the tag signature information</span>
+git<span class="w"> </span>verify-tag<span class="w"> </span>f7762cf803f03f5caf4b8078359a63783d0090c1
+<span class="c1"># gpg: Signature made Thu 30 Jul 2015 11:46:34 CEST using RSA key ID 4100DF6F</span>
+<span class="c1"># gpg: Good signature from &quot;VirtualTam &lt;virtualtam@flibidi.net&gt;&quot; [ultimate]</span>
+</pre></div>
+</div>
+</section>
+<section id="publish-the-github-release">
+<h3>Publish the GitHub release<a class="headerlink" href="#publish-the-github-release" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">master</span></code> banch, update version badges in <code class="docutils literal notranslate"><span class="pre">README.md</span></code> to point to the newly released Shaarli version</p></li>
+<li><p>Update the previously drafted <a class="reference external" href="https://github.com/shaarli/Shaarli/releases">release</a> (notes, tag) and publish it</p></li>
+<li><p>Profit!</p></li>
+</ul>
+</section>
+<section id="generate-full-release-zip-archives">
+<h3>Generate full release zip archives<a class="headerlink" href="#generate-full-release-zip-archives" title="Permalink to this heading">#</a></h3>
+<p>Release archives will contain Shaarli code plus all required third-party libraries. They are useful for users who:</p>
+<ul class="simple">
+<li><p>have no SSH access, no possibility to install PHP packages/server extensions, no possibility to run scripts (shared hosting)</p></li>
+<li><p>do not want to install build/dev dependencies on their server</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> the appropriate branch, then:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># checkout the appropriate branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span><span class="m">0</span>.x.y
+<span class="c1"># generate zip archives</span>
+make<span class="w"> </span>release_archive
+</pre></div>
+</div>
+<p>This will create <code class="docutils literal notranslate"><span class="pre">shaarli-v0.x.y-full.tar</span></code>, <code class="docutils literal notranslate"><span class="pre">shaarli-v0.x.y-full.zip</span></code>. These archives need to be manually uploaded on the previously created GitHub <a class="reference external" href="https://github.com/shaarli/Shaarli/releases">release</a>.</p>
+</section>
+<section id="update-the-release-branch">
+<h3>Update the <code class="docutils literal notranslate"><span class="pre">release</span></code> branch<a class="headerlink" href="#update-the-release-branch" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># checkout the &#39;release&#39; branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>release
+<span class="c1"># merge changes from your newly published release branch</span>
+git<span class="w"> </span>merge<span class="w"> </span>v0.x.y
+<span class="c1"># fix eventual conflicts with git mergetool...</span>
+<span class="c1"># run tests</span>
+make<span class="w"> </span><span class="nb">test</span>
+<span class="c1"># push the latest branch</span>
+git<span class="w"> </span>push<span class="w"> </span>upstream<span class="w"> </span>release
+</pre></div>
+</div>
+</section>
+</section>
+<section id="plugin-system">
+<h2>Plugin system<a class="headerlink" href="#plugin-system" title="Permalink to this heading">#</a></h2>
+<p>The plugin system lets you:</p>
+<ul class="simple">
+<li><p>insert content into specific places across templates.</p></li>
+<li><p>alter data before templates rendering.</p></li>
+<li><p>alter data before saving new links.</p></li>
+</ul>
+<section id="how-to-create-a-plugin-for-shaarli">
+<h3>How to create a plugin for Shaarli<a class="headerlink" href="#how-to-create-a-plugin-for-shaarli" title="Permalink to this heading">#</a></h3>
+<p>First, chose a plugin name, such as <code class="docutils literal notranslate"><span class="pre">demo_plugin</span></code>.</p>
+<p>Under <code class="docutils literal notranslate"><span class="pre">plugin</span></code> folder, create a folder named with your plugin name. Then create a &lt;plugin_name&gt;.meta file and a &lt;plugin_name&gt;.php file in that folder.</p>
+<p>You should have the following tree view:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">index</span><span class="o">.</span><span class="n">php</span>
+<span class="o">|</span> <span class="n">plugins</span><span class="o">/</span>
+<span class="o">|---|</span> <span class="n">demo_plugin</span><span class="o">/</span>
+<span class="o">|</span>   <span class="o">|---|</span> <span class="n">demo_plugin</span><span class="o">.</span><span class="n">meta</span>
+<span class="o">|</span>   <span class="o">|---|</span> <span class="n">demo_plugin</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+</section>
+<section id="plugin-initialization">
+<h3>Plugin initialization<a class="headerlink" href="#plugin-initialization" title="Permalink to this heading">#</a></h3>
+<p>At the beginning of Shaarli execution, all enabled plugins are loaded. At this point, the plugin system looks for an <code class="docutils literal notranslate"><span class="pre">init()</span></code> function in the &lt;plugin_name&gt;.php to execute and run it if it exists. This function must be named this way, and takes the <code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code> as parameter.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;plugin_name&gt;_init($conf)
+</pre></div>
+</div>
+<p>This function can be used to create initial data, load default settings, etc. But also to set <em>plugin errors</em>. If the initialization function returns an array of strings, they will be understand as errors, and displayed in the header to logged in users.</p>
+<p>The plugin system also looks for a <code class="docutils literal notranslate"><span class="pre">description</span></code> variable in the &lt;plugin_name&gt;.meta file, to be displayed in the plugin administration page.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>description=&quot;The plugin does this and that.&quot;
+</pre></div>
+</div>
+</section>
+<section id="understanding-hooks">
+<h3>Understanding hooks<a class="headerlink" href="#understanding-hooks" title="Permalink to this heading">#</a></h3>
+<p>A plugin is a set of functions. Each function will be triggered by the plugin system at certain point in Shaarli execution.</p>
+<p>These functions need to be named with this pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hook_&lt;plugin_name&gt;_&lt;hook_name&gt;($data, $conf)
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p>data: see <a class="reference internal" href="#plugins-data"><span class="xref myst">$data section</span></a></p></li>
+<li><p>conf: the <code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code> instance.</p></li>
+</ul>
+<p>For example, if my plugin want to add data to the header, this function is needed:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hook_demo_plugin_render_header
+</pre></div>
+</div>
+<p>If this function is declared, and the plugin enabled, it will be called every time Shaarli is rendering the header.</p>
+</section>
+<section id="plugin-s-data">
+<h3>Plugin’s data<a class="headerlink" href="#plugin-s-data" title="Permalink to this heading">#</a></h3>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h4>
+<p>Every hook function has a <code class="docutils literal notranslate"><span class="pre">$data</span></code> parameter. Its content differs for each hooks.</p>
+<p><strong>This parameter needs to be returned every time</strong>, otherwise data is lost.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>return $data;
+</pre></div>
+</div>
+</section>
+<section id="special-data">
+<h4>Special data<a class="headerlink" href="#special-data" title="Permalink to this heading">#</a></h4>
+<p>Special additional data are passed to every hook through the
+<code class="docutils literal notranslate"><span class="pre">$data</span></code> parameter to give you access to additional context, and services.</p>
+<p>Complete list:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_PAGE_</span></code> (string): if the current hook is used to render a template, its name is passed through this additional parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_LOGGEDIN_</span></code> (bool): whether the user is logged in or not.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_BASE_PATH_</span></code> (string): if Shaarli instance is hosted under a subfolder, contains the subfolder path to <code class="docutils literal notranslate"><span class="pre">index.php</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">https://domain.tld/shaarli/</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/shaarli/</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_BOOKMARK_SERVICE_</span></code> (<code class="docutils literal notranslate"><span class="pre">BookmarkServiceInterface</span></code>): bookmark service instance, for advanced usage.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">if ($data[&#39;_PAGE_&#39;] === TemplatePage::LINKLIST &amp;&amp; $data[&#39;LOGGEDIN&#39;] === true) {</span>
+<span class="x">    // Do something for logged in users when the link list is rendered</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</section>
+<section id="filling-templates-placeholder">
+<h4>Filling templates placeholder<a class="headerlink" href="#filling-templates-placeholder" title="Permalink to this heading">#</a></h4>
+<p>Template placeholders are displayed in template in specific places.</p>
+<p>RainTPL displays every element contained in the placeholder’s array. These element can be added by plugins.</p>
+<p>For example, let’s add a value in the placeholder <code class="docutils literal notranslate"><span class="pre">top_placeholder</span></code> which is displayed at the top of my page:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$data[&#39;top_placeholder&#39;][] = &#39;My content&#39;;</span>
+<span class="x"># OR</span>
+<span class="x">array_push($data[&#39;top_placeholder&#39;], &#39;My&#39;, &#39;content&#39;);</span>
+
+<span class="x">return $data;</span>
+</pre></div>
+</div>
+</section>
+<section id="data-manipulation">
+<h4>Data manipulation<a class="headerlink" href="#data-manipulation" title="Permalink to this heading">#</a></h4>
+<p>When a page is displayed, every variable send to the template engine is passed to plugins before that in <code class="docutils literal notranslate"><span class="pre">$data</span></code>.</p>
+<p>The data contained by this array can be altered before template rendering.</p>
+<p>For example, in linklist, it is possible to alter every title:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// mind the reference if you want $data to be altered</span>
+<span class="x">foreach ($data[&#39;links&#39;] as &amp;$value) {</span>
+<span class="x">    // String reverse every title.</span>
+<span class="x">    $value[&#39;title&#39;] = strrev($value[&#39;title&#39;]);</span>
+<span class="x">}</span>
+
+<span class="x">return $data;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h3>
+<p>Every plugin needs a <code class="docutils literal notranslate"><span class="pre">&lt;plugin_name&gt;.meta</span></code> file, which is in fact an <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file (<code class="docutils literal notranslate"><span class="pre">KEY=&quot;VALUE&quot;</span></code>), to be listed in plugin administration.</p>
+<p>Each file contain two keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: plugin description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameters</span></code>: user parameter names, separated by a <code class="docutils literal notranslate"><span class="pre">;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameter.&lt;PARAMETER_NAME&gt;</span></code>: add a text description the specified parameter.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: In PHP, <code class="docutils literal notranslate"><span class="pre">parse_ini_file()</span></code> seems to want strings to be between by quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> in the ini file.</p>
+</div></blockquote>
+</section>
+<section id="register-plugin-s-routes">
+<h3>Register plugin’s routes<a class="headerlink" href="#register-plugin-s-routes" title="Permalink to this heading">#</a></h3>
+<p>Shaarli lets you register custom Slim routes for your plugin.</p>
+<p>To register a route, the plugin must include a function called <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">&lt;plugin_name&gt;_register_routes():</span> <span class="pre">array</span></code>.</p>
+<p>This method must return an array of routes, each entry must contain the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code>: HTTP method, <code class="docutils literal notranslate"><span class="pre">GET/POST/PUT/PATCH/DELETE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">route</span></code> (path): without prefix, e.g. <code class="docutils literal notranslate"><span class="pre">/up/{variable}</span></code>
+It will be later prefixed by <code class="docutils literal notranslate"><span class="pre">/plugin/&lt;plugin</span> <span class="pre">name&gt;/</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callable</span></code> string, function name or FQN class’s method to execute, e.g. <code class="docutils literal notranslate"><span class="pre">demo_plugin_custom_controller</span></code>.</p></li>
+</ul>
+<p>Callable functions or methods must have <code class="docutils literal notranslate"><span class="pre">Slim\Http\Request</span></code> and <code class="docutils literal notranslate"><span class="pre">Slim\Http\Response</span></code> parameters
+and return a <code class="docutils literal notranslate"><span class="pre">Slim\Http\Response</span></code>. We recommend creating a dedicated class and extend either
+<code class="docutils literal notranslate"><span class="pre">ShaarliVisitorController</span></code> or <code class="docutils literal notranslate"><span class="pre">ShaarliAdminController</span></code> to use helper functions they provide.</p>
+<p>A dedicated plugin template is available for rendering content: <code class="docutils literal notranslate"><span class="pre">pluginscontent.html</span></code> using <code class="docutils literal notranslate"><span class="pre">content</span></code> placeholder.</p>
+<blockquote>
+<div><p><strong>Warning</strong>: plugins are not able to use RainTPL template engine for their content due to technical restrictions.
+RainTPL does not allow to register multiple template folders, so all HTML rendering must be done within plugin
+custom controller.</p>
+</div></blockquote>
+<p>Check out the <code class="docutils literal notranslate"><span class="pre">demo_plugin</span></code> for a live example: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">&lt;shaarli_url&gt;/plugin/demo_plugin/custom</span></code>.</p>
+</section>
+<section id="understanding-relative-paths">
+<h3>Understanding relative paths<a class="headerlink" href="#understanding-relative-paths" title="Permalink to this heading">#</a></h3>
+<p>Because Shaarli is a self-hosted tool, an instance can either be installed at the root directory, or under a subfolder.
+This means that you can <em>never</em> use absolute paths (eg <code class="docutils literal notranslate"><span class="pre">/plugins/mything/file.png</span></code>).</p>
+<p>If a file needs to be included in server end, use simple relative path:
+<code class="docutils literal notranslate"><span class="pre">PluginManager::$PLUGINS_PATH</span> <span class="pre">.</span> <span class="pre">'/mything/template.html'</span></code>.</p>
+<p>If it needs to be included in front end side (e.g. an image),
+the relative path must be prefixed with special data:</p>
+<ul class="simple">
+<li><p>if it’s a link that will need to be processed by Shaarli, use <code class="docutils literal notranslate"><span class="pre">_BASE_PATH_</span></code>:
+for e.g. <code class="docutils literal notranslate"><span class="pre">$data['_BASE_PATH_']</span> <span class="pre">.</span> <span class="pre">'/admin/tools</span></code>.</p></li>
+<li><p>if you want to include an asset, you need to add the root URL (base path without <code class="docutils literal notranslate"><span class="pre">/index.php</span></code>, for people using Shaarli without URL rewriting), then use <code class="docutils literal notranslate"><span class="pre">_ROOT_PATH_</span></code>:
+for e.g
+<code class="docutils literal notranslate"><span class="pre">$['_ROOT_PATH_']</span> <span class="pre">.</span> <span class="pre">'/'</span> <span class="pre">.</span> <span class="pre">PluginManager::$PLUGINS_PATH</span> <span class="pre">.</span> <span class="pre">'/mything/picture.png</span></code>.</p></li>
+</ul>
+<p>Note that special placeholders for CSS and JS files (respectively <code class="docutils literal notranslate"><span class="pre">css_files</span></code> and <code class="docutils literal notranslate"><span class="pre">js_files</span></code>) are already prefixed
+with the root path in template files.</p>
+</section>
+<section id="it-s-not-working">
+<h3>It’s not working!<a class="headerlink" href="#it-s-not-working" title="Permalink to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">demo_plugin</span></code> as a functional example. It covers most of the plugin system features.</p>
+<p>If it’s still not working, please <a class="reference external" href="https://github.com/shaarli/Shaarli/issues/new">open an issue</a>.</p>
+</section>
+<section id="hooks">
+<h3>Hooks<a class="headerlink" href="#hooks" title="Permalink to this heading">#</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Hooks</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#render-header"><span class="xref myst">render_header</span></a></p></td>
+<td class="text-center"><p>Allow plugin to add content in page headers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#render-includes"><span class="xref myst">render_includes</span></a></p></td>
+<td class="text-center"><p>Allow plugin to include their own CSS files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#render_footer"><span class="xref myst">render_footer</span></a></p></td>
+<td class="text-center"><p>Allow plugin to add content in page footer and include their own JS files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#render-linklist"><span class="xref myst">render_linklist</span></a></p></td>
+<td class="text-center"><p>It allows to add content at the begining and end of the page, after every link displayed and to alter link data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#render-editlink"><span class="xref myst">render_editlink</span></a></p></td>
+<td class="text-center"><p>Allow to add fields in the form, or display elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#render-tools"><span class="xref myst">render_tools</span></a></p></td>
+<td class="text-center"><p>Allow to add content at the end of the page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#render-picwall"><span class="xref myst">render_picwall</span></a></p></td>
+<td class="text-center"><p>Allow to add content at the top and bottom of the page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#render-tagcloud"><span class="xref myst">render_tagcloud</span></a></p></td>
+<td class="text-center"><p>Allow to add content at the top and bottom of the page, and after all tags.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#render-taglist"><span class="xref myst">render_taglist</span></a></p></td>
+<td class="text-center"><p>Allow to add content at the top and bottom of the page, and after all tags.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#render-daily"><span class="xref myst">render_daily</span></a></p></td>
+<td class="text-center"><p>Allow to add content at the top and bottom of the page, the bottom of each link and to alter data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#render-feed"><span class="xref myst">render_feed</span></a></p></td>
+<td class="text-center"><p>Allow to do add tags in RSS and ATOM feeds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#save-link"><span class="xref myst">save_link</span></a></p></td>
+<td class="text-center"><p>Allow to alter the link being saved in the datastore.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#delete-link"><span class="xref myst">delete_link</span></a></p></td>
+<td class="text-center"><p>Allow to do an action before a link is deleted from the datastore.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#save-plugin-parameters"><span class="xref myst">save_plugin_parameters</span></a></p></td>
+<td class="text-center"><p>Allow to manipulate plugin parameters before they’re saved.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#filter-search-entry"><span class="xref myst">filter_search_entry</span></a></p></td>
+<td class="text-center"><p>Add custom filters to Shaarli search engine</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="render-header">
+<h4>render_header<a class="headerlink" href="#render-header" title="Permalink to this heading">#</a></h4>
+<p>Triggered on every page - allows plugins to add content in page headers.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing <a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">buttons_toolbar</span></code>: after the list of buttons in the header.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fields_toolbar</span></code>: after search fields in the header. Note: This will only be called in linklist.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="buttons_toolbar_example" src="https://i.imgur.com/ssJUOrt.png" />
+<img alt="fields_toolbar_example" src="https://i.imgur.com/3GMifI2.png" /></p>
+</section>
+<section id="render-includes">
+<h4>render_includes<a class="headerlink" href="#render-includes" title="Permalink to this heading">#</a></h4>
+<p>Triggered on every page - allows plugins to include their own CSS files.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing <a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">css_files</span></code>: called after loading default CSS. Note: only add the path of the CSS file. E.g: <code class="docutils literal notranslate"><span class="pre">plugins/demo_plugin/custom_demo.css</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="render-footer">
+<h4>render_footer<a class="headerlink" href="#render-footer" title="Permalink to this heading">#</a></h4>
+<p>Triggered on every page - allows plugins to add content in page footer and include their own JS files.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing <a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>: called after the end of the footer text.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">endofpage</span></code>: called at the end of the page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">js_files</span></code>: called at the end of the page, to include custom JS scripts. Note: only add the path of the JS file. E.g: <code class="docutils literal notranslate"><span class="pre">plugins/demo_plugin/custom_demo.js</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="text_example" src="https://i.imgur.com/L5S2YEH.png" /></p>
+</section>
+<section id="render-linklist">
+<h4>render_linklist<a class="headerlink" href="#render-linklist" title="Permalink to this heading">#</a></h4>
+<p>Triggered when <code class="docutils literal notranslate"><span class="pre">linklist</span></code> is displayed (list of links, permalink, search, tag filtered, etc.) - allows to add content at the begining and end of the page, after every link displayed and to alter link data.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data, including links.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">action_plugin</span></code>: next to the button “private only” at the top and bottom of the page.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_plugin</span></code>: for every link, between permalink and link URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_start_zone</span></code>: before displaying the template content.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_end_zone</span></code>: after displaying the template content.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="action_plugin_example" src="https://i.imgur.com/Q12PWg0.png" />
+<img alt="link_plugin_example" src="https://i.imgur.com/3oDPhWx.png" />
+<img alt="plugin_start_zone_example" src="https://i.imgur.com/OVBkGy3.png" />
+<img alt="plugin_end_zone_example" src="https://i.imgur.com/6IoRuop.png" /></p>
+</section>
+<section id="render-editlink">
+<h4>render_editlink<a class="headerlink" href="#render-editlink" title="Permalink to this heading">#</a></h4>
+<p>Triggered when the link edition form is displayed - allows to add fields in the form, or display elements.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">edit_link_plugin</span></code>: after tags field.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="edit_link_plugin_example" src="https://i.imgur.com/5u17Ens.png" /></p>
+</section>
+<section id="render-tools">
+<h4>render_tools<a class="headerlink" href="#render-tools" title="Permalink to this heading">#</a></h4>
+<p>Triggered when the “tools” page is displayed - allows to add content at the end of the page.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tools_plugin</span></code>: at the end of the page.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="tools_plugin_example" src="https://i.imgur.com/Bqhu9oQ.png" /></p>
+</section>
+<section id="render-picwall">
+<h4>render_picwall<a class="headerlink" href="#render-picwall" title="Permalink to this heading">#</a></h4>
+<p>Triggered when picwall is displayed - allows to add content at the top and bottom of the page.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_start_zone</span></code>: before displaying the template content.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_end_zone</span></code>: after displaying the template content.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="plugin_start_end_zone_example" src="https://i.imgur.com/tVTQFER.png" /></p>
+</section>
+<section id="render-tagcloud">
+<h4>render_tagcloud<a class="headerlink" href="#render-tagcloud" title="Permalink to this heading">#</a></h4>
+<p>Triggered when tagcloud is displayed - allows to add content at the top and bottom of the page.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_start_zone</span></code>: before displaying the template content.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_end_zone</span></code>: after displaying the template content.</p></li>
+</ul>
+</li>
+<li><p>For each tag, the following placeholder can be used:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tag_plugin</span></code>: after each tag</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="plugin_start_end_zone_example" src="https://i.imgur.com/vHmyT3a.png" /></p>
+</section>
+<section id="render-taglist">
+<h4>render_taglist<a class="headerlink" href="#render-taglist" title="Permalink to this heading">#</a></h4>
+<p>Triggered when taglist is displayed - allows to add content at the top and bottom of the page.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_start_zone</span></code>: before displaying the template content.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_end_zone</span></code>: after displaying the template content.</p></li>
+</ul>
+</li>
+<li><p>For each tag, the following placeholder can be used:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tag_plugin</span></code>: after each tag</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="render-daily">
+<h4>render_daily<a class="headerlink" href="#render-daily" title="Permalink to this heading">#</a></h4>
+<p>Triggered when tagcloud is displayed - allows to add content at the top and bottom of the page, the bottom of each link and to alter data.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data, including links.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: Items can be displayed in templates by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_plugin</span></code>: used at bottom of each link.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_start_zone</span></code>: before displaying the template content.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plugin_end_zone</span></code>: after displaying the template content.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="link_plugin_example" src="https://i.imgur.com/hzhMfSZ.png" /></p>
+</section>
+<section id="render-feed">
+<h4>render_feed<a class="headerlink" href="#render-feed" title="Permalink to this heading">#</a></h4>
+<p>Triggered when the ATOM or RSS feed is displayed - allows to add tags in the feed, either in the header or for each items. Items (links) can also be altered before being rendered.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>All templates data, including links.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a></p></li>
+</ul>
+</li>
+<li><p>Template placeholders: tags can be added in feeds by adding an entry in <code class="docutils literal notranslate"><span class="pre">$data['&lt;placeholder&gt;']</span></code> array. List of placeholders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">feed_plugins_header</span></code>: used as a header tag in the feed.</p></li>
+</ul>
+</li>
+<li><p>For each link, the following placeholder can be used:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">feed_plugins</span></code>: additional tag for every link entry.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="save-link">
+<h4>save_link<a class="headerlink" href="#save-link" title="Permalink to this heading">#</a></h4>
+<p>Triggered when a link is save (new link or edit) - allows to alter the link being saved in the datastore.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>the link being saved (id, title, url, shorturl, description, private, tags, created, updated)</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="delete-link">
+<h4>delete_link<a class="headerlink" href="#delete-link" title="Permalink to this heading">#</a></h4>
+<p>Triggered when a link is deleted - allows to execute any action before the link is actually removed from the datastore</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> is an array containing:</p>
+<ul>
+<li><p>the link being deleted (id, title, url, shorturl, description, private, tags, created, updated)</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="save-plugin-parameters">
+<h4>save_plugin_parameters<a class="headerlink" href="#save-plugin-parameters" title="Permalink to this heading">#</a></h4>
+<p>Triggered when the plugin parameters are saved from the plugin administration page. Plugins can perform an action every times their settings are updated. For example it is used to update the CSS file of the <code class="docutils literal notranslate"><span class="pre">default_colors</span></code> plugins.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">$data</span></code></strong> input contains:</p>
+<ul>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">$_POST</span></code> array, so if the plugin has a parameter called <code class="docutils literal notranslate"><span class="pre">MYPLUGIN_PARAMETER</span></code>, the array will contain an entry with <code class="docutils literal notranslate"><span class="pre">MYPLUGIN_PARAMETER</span></code> as a key.</p></li>
+<li><p><a class="reference internal" href="#special-data"><span class="xref myst">Special data</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="filter-search-entry">
+<h4>filter_search_entry<a class="headerlink" href="#filter-search-entry" title="Permalink to this heading">#</a></h4>
+<p>Triggered for <em>every</em> bookmark when Shaarli’s BookmarkService method <code class="docutils literal notranslate"><span class="pre">search()</span></code> is used. Any custom filter can be added to filter out bookmarks from search results.</p>
+<ul class="simple">
+<li><p>Parameters:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shaarli\Bookmark\Bookmark</span></code> object: entry to evaluate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$context</span></code> array: additional information provided depending on what search is currently used, the user request, etc.</p></li>
+</ul>
+</li>
+<li><p>The hook <strong>must</strong> return either:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code> to keep bookmark entry in search result set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code> to discard bookmark entry in result set</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p>Note: custom filters are called <em>before</em> default filters are applied.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="guide-for-template-designers">
+<h2>Guide for template designers<a class="headerlink" href="#guide-for-template-designers" title="Permalink to this heading">#</a></h2>
+<section id="plugin-administration">
+<h3>Plugin administration<a class="headerlink" href="#plugin-administration" title="Permalink to this heading">#</a></h3>
+<p>Your theme must include a plugin administration page: <code class="docutils literal notranslate"><span class="pre">pluginsadmin.html</span></code>.</p>
+<blockquote>
+<div><p>Note: repo’s template link needs to be added when the PR is merged.</p>
+</div></blockquote>
+<p>Use the default one as an example.</p>
+<p>Aside from classic RainTPL loops, plugins order is handle by JavaScript. You can just include <code class="docutils literal notranslate"><span class="pre">plugin_admin.js</span></code>, only if:</p>
+<ul class="simple">
+<li><p>you’re using a table.</p></li>
+<li><p>you call orderUp() and orderUp() onclick on arrows.</p></li>
+<li><p>you add data-line and data-order to your rows.</p></li>
+</ul>
+<p>Otherwise, you can use your own JS as long as this field is send by the form:</p>
+<input type="hidden" name="order_{$key}" value="{$counter}">
+</section>
+<section id="placeholder-system">
+<h3>Placeholder system<a class="headerlink" href="#placeholder-system" title="Permalink to this heading">#</a></h3>
+<p>In order to make plugins work with every custom themes, you need to add variable placeholder in your templates.</p>
+<p>It’s a RainTPL loop like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugin_variable&quot;}
+    {$value}
+{/loop}
+</pre></div>
+</div>
+<p>You should enable <code class="docutils literal notranslate"><span class="pre">demo_plugin</span></code> for testing purpose, since it uses every placeholder available.</p>
+</section>
+<section id="list-of-placeholders">
+<h3>List of placeholders<a class="headerlink" href="#list-of-placeholders" title="Permalink to this heading">#</a></h3>
+<p><strong>page.header.html</strong></p>
+<p>At the end of the menu:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugins_header.buttons_toolbar&quot;}
+    {$value}
+{/loop}
+</pre></div>
+</div>
+<p>At the end of file, before clearing floating blocks:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{if=&quot;!empty($plugin_errors) &amp;&amp; $is_logged_in&quot;}
+    &lt;ul class=&quot;errors&quot;&gt;
+        {loop=&quot;plugin_errors&quot;}
+            &lt;li&gt;{$value}&lt;/li&gt;
+        {/loop}
+    &lt;/ul&gt;
+{/if}
+</pre></div>
+</div>
+<p><strong>includes.html</strong></p>
+<p>At the end of the file:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugins_includes.css_files&quot;}
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{$value}#&quot;</span><span class="p">/&gt;</span>
+{/loop}
+</pre></div>
+</div>
+<p><strong>page.footer.html</strong></p>
+<p>At the end of your footer notes:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugins_footer.text&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p>At the end of file:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugins_footer.js_files&quot;}
+     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{$value}#&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+{/loop}
+</pre></div>
+</div>
+<p><strong>linklist.html</strong></p>
+<p>After search fields:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugins_header.fields_toolbar&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p>Before displaying the link list (after paging):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugin_start_zone&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p>For every links (icons):</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$value.link_plugin&quot;}
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{$value}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+{/loop}
+</pre></div>
+</div>
+<p>Before end paging:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$plugin_end_zone&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p><strong>linklist.paging.html</strong></p>
+<p>After the “private only” icon:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$action_plugin&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p><strong>editlink.html</strong></p>
+<p>After tags field:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$edit_link_plugin&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p><strong>tools.html</strong></p>
+<p>After the last tool:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$tools_plugin&quot;}
+     {$value}
+{/loop}
+</pre></div>
+</div>
+<p><strong>picwall.html</strong></p>
+<p>Top:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;plugin_zone_start_picwall&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;plugin_zone&quot;</span><span class="p">&gt;</span>
+    {loop=&quot;$plugin_start_zone&quot;}
+        {$value}
+    {/loop}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Bottom:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;plugin_zone_end_picwall&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;plugin_zone&quot;</span><span class="p">&gt;</span>
+    {loop=&quot;$plugin_end_zone&quot;}
+        {$value}
+    {/loop}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>tagcloud.html</strong></p>
+<p>Top:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;plugin_zone_start_tagcloud&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;plugin_zone&quot;</span><span class="p">&gt;</span>
+        {loop=&quot;$plugin_start_zone&quot;}
+            {$value}
+        {/loop}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Bottom:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;plugin_zone_end_tagcloud&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;plugin_zone&quot;</span><span class="p">&gt;</span>
+        {loop=&quot;$plugin_end_zone&quot;}
+            {$value}
+        {/loop}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>daily.html</strong></p>
+<p>Top:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;plugin_zone_start_picwall&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;plugin_zone&quot;</span><span class="p">&gt;</span>
+     {loop=&quot;$plugin_start_zone&quot;}
+         {$value}
+     {/loop}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>After every link:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dailyEntryFooter&quot;</span><span class="p">&gt;</span>
+     {loop=&quot;$link.link_plugin&quot;}
+          {$value}
+     {/loop}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Bottom:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;plugin_zone_end_picwall&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;plugin_zone&quot;</span><span class="p">&gt;</span>
+    {loop=&quot;$plugin_end_zone&quot;}
+        {$value}
+    {/loop}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>feed.atom.xml</strong> and <strong>feed.rss.xml</strong>:</p>
+<p>In headers tags section:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$feed_plugins_header&quot;}
+<span class="w">  </span>{$value}
+{/loop}
+</pre></div>
+</div>
+<p>After each entry:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>{loop=&quot;$value.feed_plugins&quot;}
+<span class="w">  </span>{$value}
+{/loop}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="theming">
+<h2>Theming<a class="headerlink" href="#theming" title="Permalink to this heading">#</a></h2>
+<p>There are two ways of customizing how Shaarli looks:</p>
+<ol class="arabic simple">
+<li><p>by using a custom CSS to override Shaarli’s CSS</p></li>
+<li><p>by using a full theme that provides its own RainTPL templates, CSS and Javascript resources</p></li>
+</ol>
+<section id="custom-css">
+<h3>Custom CSS<a class="headerlink" href="#custom-css" title="Permalink to this heading">#</a></h3>
+<p>Shaarli’s appearance can be modified by adding CSS rules to:</p>
+<ul class="simple">
+<li><p>Shaarli &lt; <code class="docutils literal notranslate"><span class="pre">v0.9.0</span></code>: <code class="docutils literal notranslate"><span class="pre">inc/user.css</span></code></p></li>
+<li><p>Shaarli &gt;= <code class="docutils literal notranslate"><span class="pre">v0.9.0</span></code>: <code class="docutils literal notranslate"><span class="pre">data/user.css</span></code></p></li>
+</ul>
+<p>This file allows overriding rules defined in the template CSS files (only add changed rules), or define a whole new theme.</p>
+<p><strong>Note</strong>: Do not edit <code class="docutils literal notranslate"><span class="pre">tpl/default/css/shaarli.css</span></code>! Your changes would be overridden when updating Shaarli.</p>
+</section>
+<section id="themes">
+<h3>Themes<a class="headerlink" href="#themes" title="Permalink to this heading">#</a></h3>
+<p>Installation:</p>
+<ul class="simple">
+<li><p>find a theme you’d like to install</p></li>
+<li><p>copy or clone the theme folder under <code class="docutils literal notranslate"><span class="pre">tpl/&lt;a_sweet_theme&gt;</span></code></p></li>
+<li><p>enable the theme:</p>
+<ul>
+<li><p>Shaarli &lt; <code class="docutils literal notranslate"><span class="pre">v0.9.0</span></code>: edit <code class="docutils literal notranslate"><span class="pre">data/config.json.php</span></code> and set the value of <code class="docutils literal notranslate"><span class="pre">raintpl_tpl</span></code> to the new theme name:
+<code class="docutils literal notranslate"><span class="pre">&quot;raintpl_tpl&quot;:</span> <span class="pre">&quot;tpl\/my-template\/&quot;</span></code></p></li>
+<li><p>Shaarli &gt;= <code class="docutils literal notranslate"><span class="pre">v0.9.0</span></code>: select the theme through the <em>Tools</em> page</p></li>
+</ul>
+</li>
+</ul>
+<section id="example-installation-albinomouse-theme">
+<h4>Example installation: AlbinoMouse theme<a class="headerlink" href="#example-installation-albinomouse-theme" title="Permalink to this heading">#</a></h4>
+<p>With the following configuration:</p>
+<ul class="simple">
+<li><p>Apache 2 / PHP 5.6</p></li>
+<li><p>user sites are enabled, e.g. <code class="docutils literal notranslate"><span class="pre">/home/user/public_html/somedir</span></code> is served as <code class="docutils literal notranslate"><span class="pre">http://localhost/~user/somedir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http</span></code> is the name of the Apache user</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/public_html
+
+<span class="c1"># clone repositories</span>
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/shaarli/Shaarli.git<span class="w"> </span>shaarli
+$<span class="w"> </span><span class="nb">pushd</span><span class="w"> </span>shaarli/tpl
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/alexisju/albinomouse-template.git
+$<span class="w"> </span><span class="nb">popd</span>
+
+<span class="c1"># set access rights for Apache</span>
+$<span class="w"> </span>chgrp<span class="w"> </span>-R<span class="w"> </span>http<span class="w"> </span>shaarli
+$<span class="w"> </span>chmod<span class="w"> </span>g+rwx<span class="w"> </span>shaarli<span class="w"> </span>shaarli/cache<span class="w"> </span>shaarli/data<span class="w"> </span>shaarli/pagecache<span class="w"> </span>shaarli/tmp
+</pre></div>
+</div>
+<p>Get config written:</p>
+<ul class="simple">
+<li><p>go to the freshly installed site</p></li>
+<li><p>fill the install form</p></li>
+<li><p>log in to Shaarli</p></li>
+</ul>
+<p>Edit Shaarli’s <a class="reference internal" href="../Shaarli-configuration.html"><span class="std std-doc">configuration</span></a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the file should be owned by Apache, thus not writeable =&gt; sudo</span>
+$<span class="w"> </span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="nv">s</span><span class="o">=</span><span class="nv">tpl</span><span class="o">=</span>tpl/albinomouse-template<span class="o">=</span>g<span class="w"> </span>shaarli/data/config.php
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="translations">
+<h2>Translations<a class="headerlink" href="#translations" title="Permalink to this heading">#</a></h2>
+<p>Shaarli supports <a class="reference external" href="https://www.gnu.org/software/gettext/manual/gettext.html">gettext</a> translations since <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">v0.9.2</span></code>.</p>
+<p>Note that only the <code class="docutils literal notranslate"><span class="pre">default</span></code> theme supports translations.</p>
+<p>We encourage the community to contribute to Shaarli translations, either by improving existing translations or submitting a new language.</p>
+<p>Contributing to the translation does not require software development knowledge.</p>
+<p>Please submit a pull request with the <code class="docutils literal notranslate"><span class="pre">.po</span></code> file updated/created. Note that the compiled file (<code class="docutils literal notranslate"><span class="pre">.mo</span></code>) is not stored on the repository, and is generated during the release process.</p>
+<p>Install <a class="reference external" href="https://poedit.net/">Poedit</a> (used to extract strings to translate from the PHP source code, and generate <code class="docutils literal notranslate"><span class="pre">.po</span></code> files).</p>
+<p>Due to the usage of a template engine, it’s important to generate PHP cache files to extract every translatable string. You can either use <a class="reference external" href="https://gist.github.com/ArthurHoaro/5d0323f758ab2401ef444a53f54e9a07">this script</a> (recommended) or visit every template page in your browser to generate cache files, while logged in. Here is a list :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://&lt;replace_domain&gt;/
+http://&lt;replace_domain&gt;/login
+http://&lt;replace_domain&gt;/daily
+http://&lt;replace_domain&gt;/tags/cloud
+http://&lt;replace_domain&gt;/tags/list
+http://&lt;replace_domain&gt;/picture-wall
+http://&lt;replace_domain&gt;/?nonope
+http://&lt;replace_domain&gt;/admin/add-shaare
+http://&lt;replace_domain&gt;/admin/password
+http://&lt;replace_domain&gt;/admin/tags
+http://&lt;replace_domain&gt;/admin/configure
+http://&lt;replace_domain&gt;/admin/tools
+http://&lt;replace_domain&gt;/admin/shaare
+http://&lt;replace_domain&gt;/admin/export
+http://&lt;replace_domain&gt;/admin/import
+http://&lt;replace_domain&gt;/admin/plugins
+</pre></div>
+</div>
+<section id="improve-existing-translations">
+<h3>Improve existing translations<a class="headerlink" href="#improve-existing-translations" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In Poedit, click on “Edit a Translation</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">inc/languages/&lt;lang&gt;/LC_MESSAGES/shaarli.po</span></code> under Shaarli’s directory</p></li>
+<li><p>The existing list of translatable strings should load</p></li>
+<li><p>Click on the “Update” button.</p></li>
+<li><p>Start editing translations.</p></li>
+</ul>
+<p><img alt="poedit-screenshot" src="../_images/poedit-1.jpg" /></p>
+<p>Save when you’re done, then you can submit a pull request containing the updated <code class="docutils literal notranslate"><span class="pre">shaarli.po</span></code>.</p>
+</section>
+<section id="add-a-new-language">
+<h3>Add a new language<a class="headerlink" href="#add-a-new-language" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In Poedit select “Create New Translation”</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">inc/languages/&lt;lang&gt;/LC_MESSAGES/shaarli.po</span></code> under Shaarli’s directory</p></li>
+<li><p>Select the language you want to create.</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">as...</span></code>, save your file in <code class="docutils literal notranslate"><span class="pre">&lt;shaarli</span> <span class="pre">directory&gt;/inc/language/&lt;new</span> <span class="pre">language&gt;/LC_MESSAGES/shaarli.po</span></code> (<code class="docutils literal notranslate"><span class="pre">&lt;new</span> <span class="pre">language&gt;</span></code> here should be the language code respecting the <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-1 alpha-2</a> format in lowercase - e.g. <code class="docutils literal notranslate"><span class="pre">de</span></code> for German)</p></li>
+<li><p>Click on the “Update” button</p></li>
+<li><p>Start editing translations.</p></li>
+</ul>
+<p>Save when you’re done, then you can submit a pull request containing the new <code class="docutils literal notranslate"><span class="pre">shaarli.po</span></code>.</p>
+</section>
+<section id="theme-translations">
+<h3>Theme translations<a class="headerlink" href="#theme-translations" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#theming"><span class="xref myst">Theme</span></a> translation extensions are loaded automatically if they’re present.</p>
+<p>As a theme developer, all you have to do is to add the <code class="docutils literal notranslate"><span class="pre">.po</span></code> and <code class="docutils literal notranslate"><span class="pre">.mo</span></code> compiled file like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tpl</span><span class="o">/&lt;</span><span class="n">theme</span> <span class="n">name</span><span class="o">&gt;/</span><span class="n">language</span><span class="o">/&lt;</span><span class="n">lang</span><span class="o">&gt;/</span><span class="n">LC_MESSAGES</span><span class="o">/&lt;</span><span class="n">theme</span> <span class="n">name</span><span class="o">&gt;.</span><span class="n">po</span>
+<span class="n">tpl</span><span class="o">/&lt;</span><span class="n">theme</span> <span class="n">name</span><span class="o">&gt;/</span><span class="n">language</span><span class="o">/&lt;</span><span class="n">lang</span><span class="o">&gt;/</span><span class="n">LC_MESSAGES</span><span class="o">/&lt;</span><span class="n">theme</span> <span class="n">name</span><span class="o">&gt;.</span><span class="n">mo</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;</span></code> is the ISO 3166-1 alpha-2 language code.</p>
+<p>Read the following section “Extend Shaarli’s translation” to learn how to generate those files.</p>
+</section>
+<section id="extend-shaarli-s-translation">
+<h3>Extend Shaarli’s translation<a class="headerlink" href="#extend-shaarli-s-translation" title="Permalink to this heading">#</a></h3>
+<p>If you’re writing a custom theme, or a non official plugin, you might want to use the translation system,
+but you won’t be able to able to override Shaarli’s translation.</p>
+<p>However, you can add your own translation domain which extends the main translation list.</p>
+<blockquote>
+<div><p>Note that you can find a live example of translation extension in the <code class="docutils literal notranslate"><span class="pre">demo_plugin</span></code>.</p>
+</div></blockquote>
+<p>First, create your translation files tree directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">your_module</span><span class="o">&gt;/</span><span class="n">languages</span><span class="o">/&lt;</span><span class="n">ISO</span> <span class="mi">3166</span><span class="o">-</span><span class="mi">1</span> <span class="n">alpha</span><span class="o">-</span><span class="mi">2</span> <span class="n">language</span> <span class="n">code</span><span class="o">&gt;/</span><span class="n">LC_MESSAGES</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Your <code class="docutils literal notranslate"><span class="pre">.po</span></code> files must be named like your domain. E.g. if your translation domain is <code class="docutils literal notranslate"><span class="pre">my_theme</span></code>, then your file will be
+<code class="docutils literal notranslate"><span class="pre">my_theme.po</span></code>.</p>
+<p>Users have to register your extension in their configuration with the parameter
+<code class="docutils literal notranslate"><span class="pre">translation.extensions.&lt;domain&gt;:</span> <span class="pre">&lt;translation</span> <span class="pre">files</span> <span class="pre">path&gt;</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">if (! $conf-&gt;exists(&#39;translation.extensions.my_theme&#39;)) {</span>
+<span class="x">    $conf-&gt;set(&#39;translation.extensions.my_theme&#39;, &#39;&lt;your_module&gt;/languages/&#39;);</span>
+<span class="x">    $conf-&gt;write(true);</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note that the page needs to be reloaded after the registration.</p>
+</div></blockquote>
+<p>It is then recommended to create a custom translation function which will call the <code class="docutils literal notranslate"><span class="pre">t()</span></code> function with your domain.
+For example :</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function my_theme_t($text, $nText = &#39;&#39;, $nb = 1)</span>
+<span class="x">{</span>
+<span class="x">    return t($text, $nText, $nb, &#39;my_theme&#39;); // the last parameter is your translation domain.</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>All strings which can be translated should be processed through your function:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">my_theme_t(&#39;Comment&#39;);</span>
+<span class="x">my_theme_t(&#39;Comment&#39;, &#39;Comments&#39;, 2);</span>
+</pre></div>
+</div>
+<p>Or in templates:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">{&#39;Comment&#39;|my_theme_t}</span>
+<span class="x">{function=&quot;my_theme_t(&#39;Comment&#39;, &#39;Comments&#39;, 2)&quot;}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note than in template, you need to visit your page at least once to generate a cache file.</p>
+</div></blockquote>
+<p>When you’re done, open Poedit and load translation strings from sources:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span></code></p></li>
+<li><p>Choose your language</p></li>
+<li><p>Save your <code class="docutils literal notranslate"><span class="pre">PO</span></code> file in <code class="docutils literal notranslate"><span class="pre">&lt;your_module&gt;/languages/&lt;language</span> <span class="pre">code&gt;/LC_MESSAGES/my_theme.po</span></code>.</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">Catalog</span> <span class="pre">&gt;</span> <span class="pre">Properties...</span></code></p></li>
+<li><p>Fill the <code class="docutils literal notranslate"><span class="pre">Translation</span> <span class="pre">Properties</span></code> tab</p></li>
+<li><p>Add your source path in the <code class="docutils literal notranslate"><span class="pre">Sources</span> <span class="pre">Paths</span></code> tab</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">Sources</span> <span class="pre">Keywords</span></code> tab uncheck “Also use default keywords” and add the following lines:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_theme_t</span>
+<span class="n">my_theme_t</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Click on the “Update” button and you’re free to start your translations!</p>
+</section>
+</section>
+<section id="versioning">
+<h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this heading">#</a></h2>
+<p>If you’re maintaining a 3rd party tool for Shaarli (theme, plugin, etc.), It’s important to understand how Shaarli branches work ensure your tool stays compatible.</p>
+<section id="master-branch">
+<h3><code class="docutils literal notranslate"><span class="pre">master</span></code> branch<a class="headerlink" href="#master-branch" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is the development branch. Any new change MUST go through this branch using Pull Requests.</p>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p>This branch shouldn’t be used for production as it isn’t necessary stable.</p></li>
+<li><p>3rd party aren’t required to be compatible with the latest changes.</p></li>
+<li><p>Official plugins, themes and libraries (contained within Shaarli organization repos) must be compatible with the master branch.</p></li>
+</ul>
+</section>
+<section id="v0-x-branch">
+<h3><code class="docutils literal notranslate"><span class="pre">v0.x</span></code> branch<a class="headerlink" href="#v0-x-branch" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">v0.x</span></code> branch points to the latest <code class="docutils literal notranslate"><span class="pre">v0.x.y</span></code> release.</p>
+<p>If a major bug affects the original <code class="docutils literal notranslate"><span class="pre">v0.x.0</span></code> release, we may <a class="reference external" href="https://en.wikipedia.org/wiki/Backporting">backport</a> a fix for this bug from master, to the <code class="docutils literal notranslate"><span class="pre">v0.x</span></code> branch, and create a new bugfix release (eg. <code class="docutils literal notranslate"><span class="pre">v0.x.1</span></code>) from this branch.</p>
+<p>This allows users of the original release to upgrade to the fixed version, without having to upgrade to a completely new minor/major release.</p>
+</section>
+</section>
+<section id="release-branch">
+<h2><code class="docutils literal notranslate"><span class="pre">release</span></code> branch<a class="headerlink" href="#release-branch" title="Permalink to this heading">#</a></h2>
+<p>This branch points to the latest release. It recommended to use it to get the latest tested changes.</p>
+<section id="releases">
+<h3>Releases<a class="headerlink" href="#releases" title="Permalink to this heading">#</a></h3>
+<p>For every release, we manually generate a .zip file which contains all Shaarli dependencies, making Shaarli’s installation only one step.</p>
+</section>
+<section id="advices-on-3rd-party-git-repos-workflow">
+<h3>Advices on 3rd party git repos workflow<a class="headerlink" href="#advices-on-3rd-party-git-repos-workflow" title="Permalink to this heading">#</a></h3>
+<p>Any time a new Shaarli release is published, you should publish a new release of your repo if the changes affected you since the latest release (take a look at the <a class="reference external" href="https://github.com/shaarli/Shaarli/releases">changelog</a> (<em>Draft</em> means not released yet) and the commit log (like <a class="reference external" href="https://github.com/shaarli/Shaarli/commits/master/tpl/default"><code class="docutils literal notranslate"><span class="pre">tpl</span></code> folder</a> for themes)). You can either:</p>
+<ul class="simple">
+<li><p>use the Shaarli version number, with your repo version. For example, if Shaarli <code class="docutils literal notranslate"><span class="pre">v0.8.3</span></code> is released, publish a <code class="docutils literal notranslate"><span class="pre">v0.8.3-1</span></code> release, where <code class="docutils literal notranslate"><span class="pre">v0.8.3</span></code> states Shaarli compatibility and <code class="docutils literal notranslate"><span class="pre">-1</span></code> is your own version digit for the current Shaarli version.</p></li>
+<li><p>use your own versioning scheme, and state Shaarli compatibility in the release description.</p></li>
+</ul>
+<p>Using this, any user will be able to pick the release matching his own Shaarli version.</p>
+</section>
+<section id="major-bugfix-backport-releases">
+<h3>Major bugfix backport releases<a class="headerlink" href="#major-bugfix-backport-releases" title="Permalink to this heading">#</a></h3>
+<p>To be able to support backported fixes, it recommended to use our workflow:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In master, fix the major bug</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Katastrophe&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
+<span class="c1"># Get your commit hash</span>
+git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;%H&quot;</span><span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
+<span class="c1"># Create a new branch from your latest release, let&#39;s say v0.8.2-1 (the tag name)</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>katastrophe<span class="w"> </span>v0.8.2-1
+<span class="c1"># Backport the fix commit to your brand new branch</span>
+git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;fix<span class="w"> </span>commit<span class="w"> </span>hash&gt;
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>katastrophe
+<span class="c1"># Then you just have to make a new release from the `katastrophe` branch tagged `v0.8.3-1`</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="../Troubleshooting.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Troubleshooting</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2011-2023, the shaarli community
+            </div>
+            Made with 
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/shaarli/shaarli" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Development</a><ul>
+<li><a class="reference internal" href="#third-party-libraries">Third-party libraries</a></li>
+<li><a class="reference internal" href="#security">Security</a></li>
+<li><a class="reference internal" href="#link-structure">Link structure</a></li>
+<li><a class="reference internal" href="#directory-structure">Directory structure</a></li>
+<li><a class="reference internal" href="#automation">Automation</a></li>
+<li><a class="reference internal" href="#continuous-integration">Continuous Integration</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#static-analysis">Static analysis</a></li>
+<li><a class="reference internal" href="#unit-tests">Unit tests</a><ul>
+<li><a class="reference internal" href="#install-composer">Install composer</a></li>
+<li><a class="reference internal" href="#install-shaarli-dev-dependencies">Install Shaarli dev dependencies</a></li>
+<li><a class="reference internal" href="#install-and-enable-xdebug-to-generate-phpunit-coverage-reports">Install and enable Xdebug to generate PHPUnit coverage reports</a></li>
+<li><a class="reference internal" href="#run-unit-tests">Run unit tests</a></li>
+<li><a class="reference internal" href="#executing-specific-tests">Executing specific tests</a></li>
+<li><a class="reference internal" href="#running-tests-inside-docker-containers">Running tests inside Docker containers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gnupg-signature">GnuPG Signature</a><ul>
+<li><a class="reference internal" href="#generate-a-gpg-key">Generate a GPG key</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#release-shaarli">Release Shaarli</a><ul>
+<li><a class="reference internal" href="#release-notes-and-changelog-md">Release notes and <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code></a></li>
+<li><a class="reference internal" href="#update-the-list-of-git-contributors">Update the list of Git contributors</a></li>
+<li><a class="reference internal" href="#create-and-merge-a-pull-request">Create and merge a Pull Request</a></li>
+<li><a class="reference internal" href="#create-the-release-branch-and-update-shaarli-version-php">Create the release branch and update shaarli_version.php</a></li>
+<li><a class="reference internal" href="#create-and-push-a-signed-tag">Create and push a signed tag</a></li>
+<li><a class="reference internal" href="#publish-the-github-release">Publish the GitHub release</a></li>
+<li><a class="reference internal" href="#generate-full-release-zip-archives">Generate full release zip archives</a></li>
+<li><a class="reference internal" href="#update-the-release-branch">Update the <code class="docutils literal notranslate"><span class="pre">release</span></code> branch</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugin-system">Plugin system</a><ul>
+<li><a class="reference internal" href="#how-to-create-a-plugin-for-shaarli">How to create a plugin for Shaarli</a></li>
+<li><a class="reference internal" href="#plugin-initialization">Plugin initialization</a></li>
+<li><a class="reference internal" href="#understanding-hooks">Understanding hooks</a></li>
+<li><a class="reference internal" href="#plugin-s-data">Plugin’s data</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#special-data">Special data</a></li>
+<li><a class="reference internal" href="#filling-templates-placeholder">Filling templates placeholder</a></li>
+<li><a class="reference internal" href="#data-manipulation">Data manipulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metadata">Metadata</a></li>
+<li><a class="reference internal" href="#register-plugin-s-routes">Register plugin’s routes</a></li>
+<li><a class="reference internal" href="#understanding-relative-paths">Understanding relative paths</a></li>
+<li><a class="reference internal" href="#it-s-not-working">It’s not working!</a></li>
+<li><a class="reference internal" href="#hooks">Hooks</a><ul>
+<li><a class="reference internal" href="#render-header">render_header</a></li>
+<li><a class="reference internal" href="#render-includes">render_includes</a></li>
+<li><a class="reference internal" href="#render-footer">render_footer</a></li>
+<li><a class="reference internal" href="#render-linklist">render_linklist</a></li>
+<li><a class="reference internal" href="#render-editlink">render_editlink</a></li>
+<li><a class="reference internal" href="#render-tools">render_tools</a></li>
+<li><a class="reference internal" href="#render-picwall">render_picwall</a></li>
+<li><a class="reference internal" href="#render-tagcloud">render_tagcloud</a></li>
+<li><a class="reference internal" href="#render-taglist">render_taglist</a></li>
+<li><a class="reference internal" href="#render-daily">render_daily</a></li>
+<li><a class="reference internal" href="#render-feed">render_feed</a></li>
+<li><a class="reference internal" href="#save-link">save_link</a></li>
+<li><a class="reference internal" href="#delete-link">delete_link</a></li>
+<li><a class="reference internal" href="#save-plugin-parameters">save_plugin_parameters</a></li>
+<li><a class="reference internal" href="#filter-search-entry">filter_search_entry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guide-for-template-designers">Guide for template designers</a><ul>
+<li><a class="reference internal" href="#plugin-administration">Plugin administration</a></li>
+<li><a class="reference internal" href="#placeholder-system">Placeholder system</a></li>
+<li><a class="reference internal" href="#list-of-placeholders">List of placeholders</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#theming">Theming</a><ul>
+<li><a class="reference internal" href="#custom-css">Custom CSS</a></li>
+<li><a class="reference internal" href="#themes">Themes</a><ul>
+<li><a class="reference internal" href="#example-installation-albinomouse-theme">Example installation: AlbinoMouse theme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#translations">Translations</a><ul>
+<li><a class="reference internal" href="#improve-existing-translations">Improve existing translations</a></li>
+<li><a class="reference internal" href="#add-a-new-language">Add a new language</a></li>
+<li><a class="reference internal" href="#theme-translations">Theme translations</a></li>
+<li><a class="reference internal" href="#extend-shaarli-s-translation">Extend Shaarli’s translation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#versioning">Versioning</a><ul>
+<li><a class="reference internal" href="#master-branch"><code class="docutils literal notranslate"><span class="pre">master</span></code> branch</a></li>
+<li><a class="reference internal" href="#v0-x-branch"><code class="docutils literal notranslate"><span class="pre">v0.x</span></code> branch</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#release-branch"><code class="docutils literal notranslate"><span class="pre">release</span></code> branch</a><ul>
+<li><a class="reference internal" href="#releases">Releases</a></li>
+<li><a class="reference internal" href="#advices-on-3rd-party-git-repos-workflow">Advices on 3rd party git repos workflow</a></li>
+<li><a class="reference internal" href="#major-bugfix-backport-releases">Major bugfix backport releases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=06ac7929"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    </body>
+</html>

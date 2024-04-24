@@ -1,0 +1,10 @@
+.phpunit.result.cache
+composer.lock
+coverage
+vendor
+!.gitkeep
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Reverse Proxy - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reverse Proxy";
+        var mkdocs_page_input_path = "Reverse-proxy.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Reverse Proxy</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#apache">Apache</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#haproxy">HAProxy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nginx">Nginx</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Plugins/">Plugins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Usage/">Usage</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Community-and-related-software/">Community and Related software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Versioning/">Versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Setup &raquo;</li>
+      <li>Reverse Proxy</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/Reverse-proxy.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reverse-proxy">Reverse proxy<a class="headerlink" href="#reverse-proxy" title="Permanent link">#</a></h1>
+<p>If Shaarli is hosted on a server behind a <a href="https://en.wikipedia.org/wiki/Reverse_proxy">reverse proxy</a> (i.e. there is a proxy server between clients and the web server hosting Shaarli), configure it accordingly. See <a href="./">Reverse proxy</a> configuration. In this example:</p>
+<ul>
+<li>The Shaarli application server exposes port <code>10080</code> to the proxy (for example docker container started with <code>--publish 127.0.0.1:10080:80</code>).</li>
+<li>The Shaarli application server runs at <code>127.0.0.1</code> (container). Replace with the server's IP address if running on a different machine.</li>
+<li>Shaarli's Fully Qualified Domain Name (FQDN) is <code>shaarli.mydomain.org</code>.</li>
+<li>No HTTPS is setup on the application server, SSL termination is done at the reverse proxy.</li>
+</ul>
+<p>In your <a href="Shaarli-configuration">Shaarli configuration</a> <code>data/config.json.php</code>, add the public IP of your proxy under <code>security.trusted_proxies</code>.</p>
+<p>See also <a href="https://github.com/shaarli/Shaarli/issues?utf8=%E2%9C%93&amp;q=label%3Aproxy+">proxy-related</a> issues.</p>
+<h2 id="apache">Apache<a class="headerlink" href="#apache" title="Permanent link">#</a></h2>
+<pre><code class="language-apache">&lt;VirtualHost *:80&gt;
+    ServerName shaarli.mydomain.org
+
+    # For SSL/TLS certificates acquired with certbot or self-signed certificates
+    # Redirect HTTP requests to HTTPS, except Let's Encrypt ACME challenge requests
+    RewriteEngine on
+    RewriteRule ^.well-known/acme-challenge/ - [L]
+    RewriteCond %{HTTP_HOST} =shaarli.mydomain.org
+    RewriteRule  ^ https://shaarli.mydomain.org%{REQUEST_URI} [END,NE,R=permanent]
+&lt;/VirtualHost&gt;
+
+# SSL/TLS configuration for Let's Encrypt certificates managed with mod_md
+#MDomain shaarli.mydomain.org
+#MDCertificateAgreement accepted
+#MDContactEmail admin@shaarli.mydomain.org
+#MDPrivateKeys RSA 4096
+
+&lt;VirtualHost *:443&gt;
+    ServerName shaarli.mydomain.org
+
+    # SSL/TLS configuration for Let's Encrypt certificates acquired with certbot standalone
+    SSLEngine             on
+    SSLCertificateFile    /etc/letsencrypt/live/shaarli.mydomain.org/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/shaarli.mydomain.org/privkey.pem
+    # Let's Encrypt settings from https://github.com/certbot/certbot/blob/master/certbot-apache/certbot_apache/_internal/tls_configs/current-options-ssl-apache.conf
+    SSLProtocol             all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+    SSLCipherSuite          ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
+    SSLHonorCipherOrder     off
+    SSLSessionTickets       off
+    SSLOptions +StrictRequire
+
+    # SSL/TLS configuration for self-signed certificates
+    #SSLEngine             on
+    #SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+    #SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+
+    # let the proxied shaarli server/container know HTTPS URLs should be served
+    RequestHeader set X-Forwarded-Proto &quot;https&quot;
+
+    # send the original SERVER_NAME to the proxied host
+    ProxyPreserveHost On
+
+    # pass requests to the proxied host
+    # sets X-Forwarded-For, X-Forwarded-Host and X-Forwarded-Server headers
+    ProxyPass        / http://127.0.0.1:10080/
+    ProxyPassReverse / http://127.0.0.1:10080/
+&lt;/VirtualHost&gt;
+</code></pre>
+<h2 id="haproxy">HAProxy<a class="headerlink" href="#haproxy" title="Permanent link">#</a></h2>
+<pre><code class="language-conf">global
+    [...]
+
+defaults
+    [...]
+
+frontend http-in
+    bind :80
+    redirect scheme https code 301 if !{ ssl_fc }
+    bind :443 ssl crt /path/to/cert.pem
+    default_backend shaarli
+
+backend shaarli
+    mode http
+    option http-server-close
+    option forwardfor
+    reqadd X-Forwarded-Proto: https
+    server shaarli1 127.0.0.1:10080
+</code></pre>
+<ul>
+<li><a href="https://cbonte.github.io/haproxy-dconv/">HAProxy documentation</a></li>
+</ul>
+<h2 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">#</a></h2>
+<pre><code class="language-nginx">http {
+    [...]
+
+    index index.html index.php;
+
+    root        /home/john/web;
+    access_log  /var/log/nginx/access.log combined;
+    error_log   /var/log/nginx/error.log;
+
+    server {
+        listen       80;
+        server_name  shaarli.mydomain.org;
+        # redirect HTTP to HTTPS
+        return       301 https://shaarli.mydomain.org$request_uri;
+    }
+
+    server {
+        listen       443 ssl http2;
+        server_name  shaarli.mydomain.org;
+
+        ssl_certificate       /path/to/certificate
+        ssl_certificate_key   /path/to/private/key
+
+        # if shaarli is installed in a subdirectory of the main domain, edit the location accordingly
+        location / {
+            proxy_set_header  X-Real-IP         $remote_addr;
+            proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
+            proxy_set_header  X-Forwarded-Proto $scheme;
+            proxy_set_header  X-Forwarded-Host  $host;
+
+            # pass requests to the proxied host
+            proxy_pass             http://localhost:10080/;
+            proxy_set_header Host  $host;
+            proxy_connect_timeout  30s;
+            proxy_read_timeout     120s;
+        }
+    }
+}
+</code></pre>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto"><code>X-Forwarded-Proto</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host"><code>X-Forwarded-Host</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For"><code>X-Forwarded-For</code></a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Docker/" class="btn btn-neutral float-left" title="Docker"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Backup-and-restore/" class="btn btn-neutral float-right" title="Backup and restore">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Docker/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Backup-and-restore/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

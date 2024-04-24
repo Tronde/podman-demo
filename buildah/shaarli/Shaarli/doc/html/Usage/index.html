@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Usage - Shaarli Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Usage";
+        var mkdocs_page_input_path = "Usage.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Shaarli Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Setup</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Server-configuration/">Server configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Reverse-proxy/">Reverse Proxy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Backup-and-restore/">Backup and restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Shaarli-configuration/">Shaarli configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Plugins/">Plugins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Upgrade-and-migration/">Upgrade and migration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Usage</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#addingediting-shaares">Adding/editing Shaares</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tags">Tags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publicprivate-shaares">Public/private Shaares</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#permalinks">Permalinks</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#text-only-note-shaares">Text-only (note) Shaares</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#search">Search</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tag-cloud">Tag cloud</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rss-feeds">RSS feeds</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#picture-wall">Picture wall</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#importexport">Import/export</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../REST-API/">REST API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Community-and-related-software/">Community and Related software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Development/">Development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Versioning/">Versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/GnuPG-signature/">GnuPG signature</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Plugin-system/">Plugin System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Translations/">Translations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Release-Shaarli/">Release Shaarli</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Theming/">Theming</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dev/Unit-tests/">Unit tests</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Shaarli Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Usage &raquo;</li>
+      <li>Usage</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/shaarli/Shaarli/edit/master/doc/md/Usage.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h2>
+<p>For any item posted to Shaarli (called a <em>Shaare</em>), you can customize the following aspects:</p>
+<ul>
+<li>URL to link to</li>
+<li>Title</li>
+<li>Free-text description</li>
+<li>Tags</li>
+<li>Public/private status</li>
+</ul>
+<h3 id="addingediting-shaares">Adding/editing Shaares<a class="headerlink" href="#addingediting-shaares" title="Permanent link">#</a></h3>
+<p>While logged in to your Shaarli, you can add, edit or delete Shaares:</p>
+<ul>
+<li>Using the <strong>+Shaare</strong> button: enter the URL you want to share, click <code>Add link</code>, fill in the details of your Shaare, and <code>Save</code></li>
+<li>Using the <a href="https://en.wikipedia.org/wiki/Bookmarklet">Bookmarklet</a>: drag the <code>✚Shaare link</code> button from the <code>Tools</code> page to your browser's bookmarks bar, click it to share the current page.</li>
+<li>Using <a href="../Community-and-related-software/#mobile-apps">apps and browser addons</a></li>
+<li>Using the <a href="https://shaarli.github.io/api-documentation/">REST API</a></li>
+<li>Any Shaare can edited by clicking its <img alt="" src="../images/edit_icon.png" /> <code>Edit</code> button.</li>
+</ul>
+<p>The <code>Shaare a new link</code> dialog also allows you to create multiple bookmarks at once (unfold the <code>bulk creation</code> section and add one URL per line).</p>
+<h3 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">#</a></h3>
+<p>Tags can be be used to organize and categorize your Shaares:</p>
+<ul>
+<li>You can rename, merge and delete tags from the <em>Tools</em> menu or the <a href="#tag-cloud">tag cloud/list</a></li>
+<li>Tags are auto-completed (from the list of existing tags) in all dialogs</li>
+<li>Tags can be combined with text in <a href="#search">search</a> queries</li>
+</ul>
+<h3 id="publicprivate-shaares">Public/private Shaares<a class="headerlink" href="#publicprivate-shaares" title="Permanent link">#</a></h3>
+<p>Additional filter buttons can be found at the top left of the Shaare list <strong>only when logged in</strong>:</p>
+<ul>
+<li><strong>Only show private Shaares:</strong> Private shares can be searched by clicking the <code>only show private links</code> toggle button top left of the Shaares list (only when logged in)</li>
+</ul>
+<h3 id="permalinks">Permalinks<a class="headerlink" href="#permalinks" title="Permanent link">#</a></h3>
+<p>Permalinks are fixed, short links attached to each Shaare. Editing a Shaare will not change it's permalink, each permalink always points to the latest revision of a Shaare.</p>
+<h3 id="text-only-note-shaares">Text-only (note) Shaares<a class="headerlink" href="#text-only-note-shaares" title="Permanent link">#</a></h3>
+<p>Shaarli can be used as a minimal blog, notepad, pastebin...: While adding or editing a Shaare, leave the URL field blank to create a text-only ("note") post. This allows you to post any kind of text content, such as blog articles, private or public notes, snippets... There is no character limit! You can access your post from its permalink.</p>
+<h3 id="search">Search<a class="headerlink" href="#search" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Plain text search:</strong> Use <code>Search text</code> to search in all fields of all Shaares (Title, URL, Description...). Use double-quotes (example <code>"exact search"</code>) to search for the exact expression.</li>
+<li><strong>Tags search:</strong> <code>Filter by tags</code> allow only displaying Shaares tagged with one or multiple tags (use space to separate tags). A plus sign <code>+</code> is optional and will restrict suggested tags to only those starting with the string (example: <code>pr</code> will hint <code>apron</code> and <code>printer</code> but <code>+pr</code> will only hint printer).</li>
+<li><strong>Hidden tags:</strong> tags starting with a dot <code>.</code> (example <code>.secret</code>) are private. They can only be seen and searched when logged in.</li>
+<li><strong>Exclude text/tags:</strong> Use the <code>-</code> operator before a word or tag to exclude Shaares matching this word from search results (<code>NOT</code> operator).</li>
+<li><strong>Optional tags:</strong> Use the <code>~</code> operator before multiple tags to search for any one of them (<code>OR</code> operator).</li>
+<li><strong>Wildcard tag search:</strong> An asterisk (<code>*</code>) can be used as a wildcard and will match any number of characters. Wildcards can appear in the middle of a search term or at the end (example: pro*in* will match programming and protein).</li>
+<li><strong>Untagged links:</strong> Shaares without tags can be searched by clicking the <code>untagged</code> toggle button top left of the Shaares list (only when logged in).</li>
+</ul>
+<p>Both exclude patterns and exact searches can be combined with normal searches (example <code>"exact search" term otherterm -notthis "very exact" stuff -notagain</code>). Only AND (and NOT) text search is currently supported.</p>
+<p>Active search terms are displayed on top of the link list. To remove terms/tags from the current search, click the <code>x</code> next to any of them, or simply clear text/tag search fields.</p>
+<h3 id="tag-cloud">Tag cloud<a class="headerlink" href="#tag-cloud" title="Permanent link">#</a></h3>
+<p>The <code>Tag cloud</code> page displays a "cloud" or list view of all tags in your Shaarli (most frequently used tags are displayed with a bigger font size)</p>
+<ul>
+<li><strong>Tags list:</strong> click on <code>Most used</code> or <code>Alphabetical</code> to display tags as a list. You can also edit/delete tags for this page.</li>
+<li>Click on any tag to search all Shaares matching this tag.</li>
+<li><strong>Filtering the tag cloud/list:</strong> Click on the counter next to a tag to show other tags of Shaares with this tag. Repeat this any number of times to further filter the tag cloud. Click <code>List all links with those tags</code> to display Shaares matching your current tag filter set.</li>
+</ul>
+<h3 id="rss-feeds">RSS feeds<a class="headerlink" href="#rss-feeds" title="Permanent link">#</a></h3>
+<p>RSS/ATOM feeds feeds are available (in ATOM with <code>/feed/atom</code> and RSS with <code>/feed/rss</code>)</p>
+<ul>
+<li><strong>Filtering RSS feeds:</strong> RSS feeds and picture wall can also be restricted to only return items matching a text/tag search. For example, search for <code>photography</code> (text or tags) in Shaarli, then click the <code>RSS Feed</code> button. A feed with only matching results is displayed.</li>
+<li>Add the <code>&amp;nb</code> parameter in feed URLs to specify the number of Shaares you want in a feed (default if not specified: <code>50</code>). The keyword <code>all</code> is available if you want everything.</li>
+<li>Add the <code>&amp;permalinks</code> parameter in feed URLs to point permalinks to the corresponding Shaarli entry/link instead of the direct, Shaare URL attribute</li>
+</ul>
+<p><img alt="" src="../images/rss-filter-1.png" /> <img alt="" src="../images/rss-filter-2.png" /></p>
+<pre><code class="language-bash"># examples
+https://shaarli.mydomain.org/feed/atom?permalinks
+https://shaarli.mydomain.org/feed/atom?permalinks&amp;nb=42
+https://shaarli.mydomain.org/feed/atom?permalinks&amp;nb=all
+https://shaarli.mydomain.org/feed/rss?searchtags=nature
+https://shaarli.mydomain.org/links/picture-wall?searchterm=poney
+</code></pre>
+<h3 id="picture-wall">Picture wall<a class="headerlink" href="#picture-wall" title="Permanent link">#</a></h3>
+<ul>
+<li>The picture wall can be filtered by text or tags search in the same way as <a href="#rss-feeds">RSS feeds</a></li>
+</ul>
+<h3 id="importexport">Import/export<a class="headerlink" href="#importexport" title="Permanent link">#</a></h3>
+<p>To <strong>export Shaares as a HTML file</strong>, under <em>Tools &gt; Export</em>, choose:</p>
+<ul>
+<li><code>Export all</code> to export both public and private Shaares</li>
+<li><code>Export public</code> to export public Shaares only</li>
+<li><code>Export private</code> to export private Shaares only</li>
+</ul>
+<p>Restore by using the <code>Import</code> feature.</p>
+<ul>
+<li>These exports contain the full data (URL, title, tags, date, description, public/private status of your Shaares)</li>
+<li>They can also be imported to your web browser bookmarks.</li>
+</ul>
+<p>To <strong>import a HTML bookmarks file</strong> exported from your browser, just use the <code>Import</code> feature. For each "folder" in the bookmarks you imported, a new tag will be created (for example a bookmark in <code>Movies &gt; Sci-fi</code> folder will be tagged <code>Movies</code> <code>Sci-fi</code>).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Upgrade-and-migration/" class="btn btn-neutral float-left" title="Upgrade and migration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../REST-API/" class="btn btn-neutral float-right" title="REST API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/shaarli/Shaarli" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Upgrade-and-migration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../REST-API/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

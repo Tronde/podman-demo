@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# build_myecho_image.sh
+# build_shaarli_image.sh
 # 
 # Get a base image
 ctr=$(buildah from registry.access.redhat.com/ubi9/php-81)

@@ -4,10 +4,10 @@ Description=MariaDB Container for Demo
 [Container]
 Image=registry.redhat.io/rhel9/mariadb-105:1-177.1712857771
 ContainerName=mariadb-demo
-Network=wordpress-demo
+Network=mytinytodo-demo
 Volume=mariadb:/var/lib/mysql:Z
-Environment=MYSQL_USER=wp_user
-Environment=MYSQL_DATABASE=wp_db
+Environment=MYSQL_USER=mtt_user
+Environment=MYSQL_DATABASE=mtt_db
 Secret=mysql-root-password-container,type=env,target=MYSQL_ROOT_PASSWORD
 Secret=mysql-user-password-container,type=env,target=MYSQL_PASSWORD
 

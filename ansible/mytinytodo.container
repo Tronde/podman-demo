@@ -1,0 +1,18 @@
+[Unit]
+Description=Apache with PHP to run myTinyTodo
+
+[Container]
+Image=localhost/mytinytodo_image
+ContainerName=mytinytodo-demo
+Environment=MTT_DB_TYPE=mysql
+Environment=MTT_DB_NAME=db
+Environment=MTT_DB_PREFIX=mtt_
+Environment=MTT_DB_USER=mtt_user
+Secret=mysql-user-password-container,type=env,target=MTT_DB_PASSWORD
+Network=mytinytodo-demo
+PublishPort=8080:8080
+#AutoUpdate=registry
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target

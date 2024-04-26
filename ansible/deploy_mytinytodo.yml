@@ -13,10 +13,8 @@
         podman_run_as_group: "{{ podman_rootless_group }}"
         podman_continue_if_pull_fails: true
         podman_quadlet_specs:
-          - name: mytinytodo-demo
-            type: network
-            file_content: |
-              [Network]
+          - file_src: mytinytodo-demo.network
+            activate_systemd_unit: true
           - file_src: mariadb.volume
             activate_systemd_unit: false
           - file_src: mariadb.container
@@ -29,7 +27,9 @@
         podman_secrets:
           - name: mysql-root-password-container
             state: present
+            skip_existing: true
             data: "{{ mysql_root_password_from_vault }}"
           - name: mysql-user-password-container
             state: present
+            skip_existing: true
             data: "{{ mysql_user_password_from_vault }}"

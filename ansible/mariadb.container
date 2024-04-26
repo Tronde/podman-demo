@@ -4,7 +4,7 @@ Description=MariaDB Container for Demo
 [Container]
 Image=registry.redhat.io/rhel9/mariadb-105:1-177.1712857771
 ContainerName=mariadb-demo
-Network=mytinytodo-demo
+Network=mytinytodo-demo.network
 Volume=mariadb:/var/lib/mysql:Z
 Environment=MYSQL_USER=mtt_user
 Environment=MYSQL_DATABASE=mtt_db

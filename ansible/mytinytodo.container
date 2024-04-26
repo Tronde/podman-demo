@@ -9,7 +9,7 @@ Environment=MTT_DB_NAME=db
 Environment=MTT_DB_PREFIX=mtt_
 Environment=MTT_DB_USER=mtt_user
 Secret=mysql-user-password-container,type=env,target=MTT_DB_PASSWORD
-Network=mytinytodo-demo
+Network=mytinytodo-demo.network
 PublishPort=8080:8080
 #AutoUpdate=registry
 

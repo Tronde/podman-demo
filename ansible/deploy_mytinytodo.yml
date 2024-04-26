@@ -2,21 +2,21 @@
 - name: myTinyTodo Demo Playbook
   hosts: localhost
   become: true # Necessary to open ports in firewall
+  vars_files:
+    - demo.vault
   tasks:
     - name: Deploy myTinyTodo and MariaDB with Podman Quadlet
       ansible.builtin.include_role:
         name: rhel-system-roles.podman
       vars:
         podman_run_as_user: "{{ podman_rootless_user }}"
-        podman_run_as group: "{{ podman_rootless_group }}"
+        podman_run_as_group: "{{ podman_rootless_group }}"
+        podman_continue_if_pull_fails: true
         podman_quadlet_specs:
           - name: mytinytodo-demo
             type: network
             file_content: |
               [Network]
-              Subnet=192.168.30.0/24
-              Gateway=192.168.30.1
-              Label=app=wordpress
           - file_src: mariadb.volume
             activate_systemd_unit: false
           - file_src: mariadb.container
@@ -32,4 +32,4 @@
             data: "{{ mysql_root_password_from_vault }}"
           - name: mysql-user-password-container
             state: present
-            data: "{{ mysql_user_password_from_fault }}"
+            data: "{{ mysql_user_password_from_vault }}"

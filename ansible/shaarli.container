@@ -4,7 +4,7 @@ Description=The personal, minimalist, super fast, database-free, bookmarking ser
 [Container]
 Image=localhost/shaarli_image
 ContainerName=shaarli
-Volume=shaarli:/var/www/shaarli/data:Z
+Volume=shaarli:/opt/app-root/src/data:Z
 PublishPort=8080:8080
 
 [Install]

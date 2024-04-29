@@ -8,7 +8,7 @@
         name: rhel-system-roles.podman
       vars:
         podman_run_as_user: "{{ podman_rootless_user }}"
-        podman_run_as group: "{{ podman_rootless_group }}"
+        podman_run_as_group: "{{ podman_rootless_group }}"
         podman_quadlet_specs:
           - file_src: ../quadlet/shaarli.volume
             activate_systemd_unit: false

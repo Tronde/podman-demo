@@ -1,0 +1,19 @@
+---
+- name: Shaarli Demo Playbook
+  hosts: localhost
+  become: true  # Necessary to open firewall port
+  tasks:
+    - name: Deploy Shaarli with Podman Quadlet
+      ansible.builtin.include_role:
+        name: rhel-system-roles.podman
+      vars:
+        podman_run_as_user: "{{ podman_rootless_user }}"
+        podman_run_as group: "{{ podman_rootless_group }}"
+        podman_quadlet_specs:
+          - file_src: ../quadlet/shaarli.volume
+            activate_systemd_unit: false
+          - file_src: ../quadlet/shaarli.container
+            activate_systemd_unit: true
+        podman_firewall:
+          - port: 3001/tcp
+            state: enabled

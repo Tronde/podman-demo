@@ -13,13 +13,13 @@
         podman_run_as_group: "{{ podman_rootless_group }}"
         podman_continue_if_pull_fails: true
         podman_quadlet_specs:
-          - file_src: mytinytodo-demo.network
+          - file_src: ../quadlet/mytinytodo-demo.network
             activate_systemd_unit: true
-          - file_src: mariadb.volume
+          - file_src: ../quadlet/mariadb.volume
             activate_systemd_unit: false
-          - file_src: mariadb.container
+          - file_src: ../quadlet/mariadb.container
             activate_systemd_unit: true
-          - file_src: mytinytodo.container
+          - file_src: ../quadlet/mytinytodo.container
             activate_systemd_unit: true
         podman_firewall:
           - port: 8080/tcp

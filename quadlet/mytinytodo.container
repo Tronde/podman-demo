@@ -4,6 +4,7 @@ Description=Apache with PHP to run myTinyTodo
 [Container]
 Image=localhost/mytinytodo_image
 ContainerName=mytinytodo-demo
+Volume=mytinytodo:/opt/app-root/src:Z
 Network=mytinytodo-demo.network
 PublishPort=8080:8080
 #AutoUpdate=registry

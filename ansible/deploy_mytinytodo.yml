@@ -17,6 +17,8 @@
             activate_systemd_unit: true
           - file_src: ../quadlet/mariadb.volume
             activate_systemd_unit: false
+          - file_src: ../quadlet/mytinytodo.volume
+            activate_systemd_unit: false
           - file_src: ../quadlet/mariadb.container
             activate_systemd_unit: true
           - file_src: ../quadlet/mytinytodo.container

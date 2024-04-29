@@ -114,7 +114,7 @@ As an alternative you can use the "shell mode".
   * Redistributable: Can be freely shared and deployed
     * See [Characteristics of UBI images](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_characteristics-of-ubi-images_assembly_types-of-container-images)
     * See [Red Hat Universal Base Image End User Licensing Agreement](https://www.redhat.com/licenses/EULA_Red_Hat_Universal_Base_Image_English_20190422.pdf)
-  * For base images are available:
+  * Four base images are available:
     * [init](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-init-images_assembly_types-of-container-images)
     * [micro](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-micro-images_assembly_types-of-container-images)
     * [minimal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-minimal-images_assembly_types-of-container-images)
@@ -225,4 +225,23 @@ View the generated files and/or error messages with:
 -> Manage and Troubleshoot <-
 =============================
 
+-> **Story 3:** System administrators need to inspect container images, check logs of running containers, and need access to troubleshooting resources in order to support their application teams. <-
+
+-------------------------------------------------------------------------------
+
+-> Manage and Troubleshoot <-
+=============================
+
 -> What can possibly go wrong? <-
+
+  * Follow `troubleshooting/README.md` to find out
+  * Sources for troubleshooting tips and guides:
+    * The Podman man pages, of course
+    * [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/main/troubleshooting.md)
+
+-------------------------------------------------------------------------------
+
+-> The End <-
+=============
+
+-> Thank you for your time and concentration <-

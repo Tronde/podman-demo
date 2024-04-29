@@ -50,7 +50,7 @@ With an automation first mindset the demo focus on using Ansible for the differe
 
 ## How to use this workshop on your own time?
 
-I designed this demo/workshop for on-site vists, where I as a Red Hat Technical Account Manager (TAM)[^4] visit my customers to discuss current topics, projects, and deliver demos and workshops that are of interest for the customer.
+I designed this demo/workshop for on-site vists, where I as a Red Hat Technical Account Manager (TAM)[^4] visit my customers to discuss current topics, projects, and deliver demos and workshops that are of interest to the customers.
 
 If you like to repeat the steps from the workshop on your own time or just do the workshop yourself, feel free to go ahead.
 You can use the file `slides-podman-demo.txt` as guidance.

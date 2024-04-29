@@ -15,5 +15,5 @@
           - file_src: ../quadlet/shaarli.container
             activate_systemd_unit: true
         podman_firewall:
-          - port: 3001/tcp
+          - port: 8081/tcp
             state: enabled

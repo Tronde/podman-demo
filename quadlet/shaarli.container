@@ -5,7 +5,7 @@ Description=The personal, minimalist, super fast, database-free, bookmarking ser
 Image=localhost/shaarli_image
 ContainerName=shaarli
 Volume=shaarli:/opt/app-root/src/data:Z
-PublishPort=8080:8080
+PublishPort=8081:8080
 
 [Install]
 # Start by default on boot

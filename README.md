@@ -33,24 +33,21 @@ With an automation first mindset the demo focus on using Ansible for the differe
     * registry.access.redhat.com
     * registry.redhat.io
   * A working Ansible installation; See [Installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible) for help.
-    On RHEL you can Ansible by running:
+    On RHEL you can install Ansible by running:
 
     ~~~
     $ sudo dnf install ansible-core
     ~~~
 
-  * Access to RHEL System Roles which can be installed on any subscribed RHEL system by running
+  * Access to RHEL System Roles which can be installed on any subscribed RHEL system by running:
 
     ~~~
     $ sudo dnf install rhel-system-roles
     ~~~
 
-  * Optional: A Podman Desktop installation; See [Installing Podman Desktop](https://podman-desktop.io/docs/installation)
-  * Optional: OpenShift CLI tools if you want to push your containers to an OpenShift cluster
-
 ## How to use this workshop on your own time?
 
-I designed this demo/workshop for on-site vists, where I as a Red Hat Technical Account Manager (TAM)[^4] visit my customers to discuss current topics, projects, and deliver demos and workshops that are of interest to the customers.
+I designed this demo/workshop for on-site vists, where I as a Red Hat Technical Account Manager (TAM)[^4] visit my customers to discuss current topics, projects, and deliver demos and workshops that are of interest to my customers.
 
 If you like to repeat the steps from the workshop on your own time or just do the workshop yourself, feel free to go ahead.
 You can use the file `slides-podman-demo.txt` as guidance.
@@ -66,7 +63,7 @@ And of course, you can just use your favorite editor to view it.
 
 ## Background information and further reading
 
-This section provides articles from various sources that can help to get a better understanding of the wonderful world of containers.
+This section provides articles from various sources that help to get a better understanding of the wonderful world of containers.
 
 ### Architecture and Terminology
 

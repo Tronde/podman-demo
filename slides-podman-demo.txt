@@ -88,7 +88,7 @@ Building from a Containerfile has some disadvantages:
 
   * If something breaks you need to start the whole build from the beginning
   * There is no chance to interupt and troubleshoot the build process
-  * It is non-interactive, you cannot anser questions or provide input
+  * It is non-interactive, you cannot answer questions or provide input
 
 As an alternative you can use the "shell mode".
 
@@ -127,7 +127,7 @@ As an alternative you can use the "shell mode".
 -> The Red Hat RHEL Image <-
 ----------------------------
 
-  * Not freely distributale
+  * Not freely distributable
   * Host needs a valid RHEL subscription
 
 -------------------------------------------------------------------------------
@@ -144,8 +144,8 @@ As an alternative you can use the "shell mode".
 -> Apache 2.4 with PHP 8.1 Builder Image <-
 -------------------------------------------
 
-  * Lets take a quick look at the [catalog](https://catalog.redhat.com/software/containers/ubi9/php-81/62e8e662f6d3d47e19779b01?architecture=amd64&image=6613b6fda253889111a3e07d)
-  * Next we extend this builder image to include the PHP application [Shaarli](https://shaarli.readthedocs.io/en/master/index.html)
+  * Let's take a quick look at the [catalog](https://catalog.redhat.com/software/containers/ubi9/php-81/62e8e662f6d3d47e19779b01?architecture=amd64&image=6613b6fda253889111a3e07d)
+  * Next we are going to extend this builder image to include the PHP application [Shaarli](https://shaarli.readthedocs.io/en/master/index.html)
   * You find source and build script in `buildah/shaarli/build_shaarli_image.sh`
   * Do not miss the example in `buildah/mytinytodo/`
 
@@ -163,7 +163,7 @@ As an alternative you can use the "shell mode".
 
   1. Take a look at what to do with podman-systemd.unit(5)
   2. Install a simple application using Podman Quadlet
-  3. Deploy containerized Applications with Ansible
+  3. Deploy containerized applications with Ansible
 
 -------------------------------------------------------------------------------
 
@@ -213,19 +213,21 @@ View the generated files and/or error messages with:
 
 -------------------------------------------------------------------------------
 
--> Example: Shaarli and mytinytodo <-
+-> Example: Shaarli and MyTinyTodo <-
 -------------------------------------
 
   * Shaarli serves as an example that needs persistent file system storage
   * MyTinyTodo serves as an example that stores data in a MySQL database
-  * Lets go to `ansible/` and checkout the `deploy_{shaarli,mytinytodo}.yml` playbooks
+  * Let's go to `ansible/` and checkout the `deploy_{shaarli,mytinytodo}.yml` playbooks
 
 -------------------------------------------------------------------------------
 
 -> Manage and Troubleshoot <-
 =============================
 
--> **Story 3:** System administrators need to inspect container images, check logs of running containers, and need access to troubleshooting resources in order to support their application teams. <-
+**Story 3:** System administrators need to inspect container images,
+check logs of running containers, and need access to troubleshooting
+resources in order to support their application teams.
 
 -------------------------------------------------------------------------------
 

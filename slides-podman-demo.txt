@@ -72,7 +72,7 @@ Workshop Cheat Sheet Part 2:
 # Build the myecho image
 buildah bud -t myecho .
 
-# Verfiy
+# Verify
 buildah images
 
 # Run
@@ -205,9 +205,9 @@ View the generated files and/or error messages with:
   3. `systemctl --user daemon-reload`
   4. `systemctl --user start uptime-kuma.service`
   5. `systemctl --user status uptime-kuma.service`
-  5. `loginctl enable-linger [NAME]`
+  6. `loginctl enable-linger [NAME]
 
-  * Step 5 is necessary to start the container after boot when the user is not looged in
+  * Step 6 is necessary to start the container after boot when the user is not logged in
   ^
   * But that is not the Ansible way to do it
 

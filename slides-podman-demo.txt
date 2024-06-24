@@ -33,11 +33,11 @@ Quick facts:
   * No Daemon - Buildah requires no container runtime
   * Works with images and from scratch
   * Builds images from a Containerfile/Dockerfile
-  * Builds images from scatch and with shell scripts
+  * Builds images with shell scripts
 
 -------------------------------------------------------------------------------
 
--> Build container images with Buildah from a Container file <-
+-> Build container images with Buildah from a Containerfile <-
 ---------------------------------------------------------------
 
 Workshop Cheat Sheet Part 1:
@@ -63,7 +63,7 @@ chmod 755 myecho
 
 -------------------------------------------------------------------------------
 
--> Build container images with Buildah from a Container file <-
+-> Build container images with Buildah from a Containerfile <-
 ---------------------------------------------------------------
 
 Workshop Cheat Sheet Part 2:
@@ -81,13 +81,13 @@ podman run --rm --name=myecho localhost/myecho
 
 -------------------------------------------------------------------------------
 
--> Build container images with Buildah from a Container file <-
+-> Build container images with Buildah from a Containerfile <-
 ---------------------------------------------------------------
 
 Building from a Containerfile has some disadvantages:
 
   * If something breaks you need to start the whole build from the beginning
-  * There is no chance to interupt and troubleshoot the build process
+  * There is no chance to interrupt and troubleshoot the build process
   * It is non-interactive, you cannot answer questions or provide input
 
 As an alternative you can use the "shell mode".
@@ -112,7 +112,7 @@ As an alternative you can use the "shell mode".
 
   * Built from a subset of RHEL content
   * Redistributable: Can be freely shared and deployed
-    * See [Characteristics of UBI images](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_characteristics-of-ubi-images_assembly_types-of-container-images)
+    * See [Characteristics of UBI images](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/building_running_and_managing_containers/assembly_types-of-container-images_building-running-and-managing-containers#con_characteristics-of-ubi-images_assembly_types-of-container-images)
     * See [Red Hat Universal Base Image End User Licensing Agreement](https://www.redhat.com/licenses/EULA_Red_Hat_Universal_Base_Image_English_20190422.pdf)
   * Four base images are available:
     * [init](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-init-images_assembly_types-of-container-images)
@@ -124,7 +124,7 @@ As an alternative you can use the "shell mode".
 
 -------------------------------------------------------------------------------
 
--> The Red Hat RHEL Image <-
+-> The RHEL Image from Red Hat <-
 ----------------------------
 
   * Not freely distributable
@@ -154,7 +154,9 @@ As an alternative you can use the "shell mode".
 -> Run containers using Ansible <-
 ==================================
 
-**User Story:** Teams should be able to run containers and pods in a rootless Podman environment. The containerized applications should be able to store data persistently in databases or local file systems.
+**User Story:** Teams should be able to run containers and pods in a
+rootless Podman environment. The containerized applications should be able
+to store data persistently in databases or local file systems.
 
 -------------------------------------------------------------------------------
 

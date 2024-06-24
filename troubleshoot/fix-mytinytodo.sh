@@ -9,7 +9,7 @@ podman network create --label purpose=demo --ignore --disable-dns \
   fix-mytinytodo-network
 
 # Create the MariaDB container with environment variables
-podman run --rm -d --name fix-mytinytodo-mariadb        \
+podman run -d --name fix-mytinytodo-mariadb        \
             --net fix-mytinytodo-network                \
             -v fix-mytinytodo-mariadb:/var/lib/mysql:Z  \
             --env 'MYSQL_USER=mtt_user'                 \
@@ -19,7 +19,7 @@ podman run --rm -d --name fix-mytinytodo-mariadb        \
             registry.redhat.io/rhel9/mariadb-105:1-177.1712857771
 
 # Create the MyTinyTodo container
-podman run --rm -d --name fix-mytinytodo-app          \
+podman run -d --name fix-mytinytodo-app          \
             -v fix-mytinytodo-app:/opt/app-root/src:Z \
             -p 8090:8081                              \
             localhost/mytinytodo_image

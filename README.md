@@ -73,6 +73,12 @@ This section provides articles from various sources that help to get a better un
   * [Architecting Containers Part 3: How the User Space Affects Your Application](https://www.redhat.com/en/blog/architecting-containers-part-3-how-user-space-affects-your-application); [Scott McCarty (fatherlinux)](https://www.redhat.com/en/authors/scott-mccarty-fatherlinux); November 10, 2015
   * [Container images, multi-architecture, manifests, ids, digests – what’s behind?](https://www.opensourcerers.org/2020/11/16/container-images-multi-architecture-manifests-ids-digests-whats-behind/); [Robert Bohne](https://www.opensourcerers.org/author/rbohne/); Open Sourcerers; November 16, 2020
 
+### Red Hat Universal Base Image
+
+  * [(Re)Introducing the Red Hat Universal Base Image](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image); [Scott McCarty (fatherlinux)](https://www.redhat.com/en/authors/scott-mccarty-fatherlinux); Red Hat Blog; 2024-03-19
+  * [Catalog: Red Hat Universal Base Image](https://catalog.redhat.com/software/base-images#overview)
+  * [Knowledge Base: Universal Base Images (UBI): Images, repositories, packages, and source code](https://access.redhat.com/articles/4238681)
+
 ### Building
 
   * [Building with Buildah: Dockerfiles, command line, or scripts](https://www.redhat.com/sysadmin/building-buildah)

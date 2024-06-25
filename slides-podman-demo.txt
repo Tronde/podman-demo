@@ -15,6 +15,52 @@ Run                 *containers using Ansible and `systemd`*
 Manage/Troubleshoot *methods and tools*
 
 -------------------------------------------------------------------------------
+-> RHEL and Universal Base Images <-
+====================================
+
+-> The Red Hat Universal Base Image (UBI) <-
+--------------------------------------------
+
+  * Built from a subset of RHEL content
+  * Redistributable: Can be freely shared and deployed
+    * See [Characteristics of UBI images](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/building_running_and_managing_containers/assembly_types-of-container-images_building-running-and-managing-containers#con_characteristics-of-ubi-images_assembly_types-of-container-images)
+    * See [Red Hat Universal Base Image End User Licensing Agreement](https://www.redhat.com/licenses/EULA_Red_Hat_Universal_Base_Image_English_20190422.pdf)
+  * Four base images are available:
+    * [init](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-init-images_assembly_types-of-container-images)
+    * [micro](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-micro-images_assembly_types-of-container-images)
+    * [minimal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-minimal-images_assembly_types-of-container-images)
+    * [standard](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-standard-images_assembly_types-of-container-images)
+  * The `ubi-9-baseos` and `ubi-9-appstream` repositories hold the redistributable subset of packages you can include in your container
+  * Provide a set of pre-built language runtime container images such as `python`, `perl`, `php`, `dotnet`, `nodejs`, and `ruby`
+
+-------------------------------------------------------------------------------
+
+-> The RHEL Image from Red Hat <-
+----------------------------
+
+  * Not freely distributable
+  * Host needs a valid RHEL subscription
+
+-------------------------------------------------------------------------------
+
+-> Characteristics of UBI and RHEL Images <-
+--------------------------------------------
+
+  * Supported by Red Hat for use with containerized applications
+  * Listed in the [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/search), with descriptions, technical details, and health index
+  * Well-defined [update schedule](https://access.redhat.com/articles/2208321)
+
+-------------------------------------------------------------------------------
+
+-> Apache 2.4 with PHP 8.1 Builder Image <-
+-------------------------------------------
+
+  * Let's take a quick look at the [catalog](https://catalog.redhat.com/software/containers/ubi9/php-81/62e8e662f6d3d47e19779b01?architecture=amd64&image=6613b6fda253889111a3e07d)
+  * Next we are going to extend this builder image to include the PHP application [Shaarli](https://shaarli.readthedocs.io/en/master/index.html)
+  * You find source and build script in `buildah/shaarli/build_shaarli_image.sh`
+  * Do not miss the example in `buildah/mytinytodo/`
+
+-------------------------------------------------------------------------------
 
 -> Build container images with Buildah <-
 =========================================
@@ -102,52 +148,6 @@ As an alternative you can use the "shell mode".
   * You can respond to interactive questions or input requests (e.g. Here docs)
   ^
   * Let me show you the script `build_myecho_image.sh`
-
--------------------------------------------------------------------------------
--> RHEL and Universal Base Images <-
-====================================
-
--> The Red Hat Universal Base Image (UBI) <-
---------------------------------------------
-
-  * Built from a subset of RHEL content
-  * Redistributable: Can be freely shared and deployed
-    * See [Characteristics of UBI images](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/building_running_and_managing_containers/assembly_types-of-container-images_building-running-and-managing-containers#con_characteristics-of-ubi-images_assembly_types-of-container-images)
-    * See [Red Hat Universal Base Image End User Licensing Agreement](https://www.redhat.com/licenses/EULA_Red_Hat_Universal_Base_Image_English_20190422.pdf)
-  * Four base images are available:
-    * [init](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-init-images_assembly_types-of-container-images)
-    * [micro](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-micro-images_assembly_types-of-container-images)
-    * [minimal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-minimal-images_assembly_types-of-container-images)
-    * [standard](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index#con_understanding-the-ubi-standard-images_assembly_types-of-container-images)
-  * The `ubi-9-baseos` and `ubi-9-appstream` repositories hold the redistributable subset of packages you can include in your container
-  * Provide a set of pre-built language runtime container images such as `python`, `perl`, `php`, `dotnet`, `nodejs`, and `ruby`
-
--------------------------------------------------------------------------------
-
--> The RHEL Image from Red Hat <-
-----------------------------
-
-  * Not freely distributable
-  * Host needs a valid RHEL subscription
-
--------------------------------------------------------------------------------
-
--> Characteristics of UBI and RHEL Images <-
---------------------------------------------
-
-  * Supported by Red Hat for use with containerized applications
-  * Listed in the [Red Hat Container Catalog](https://catalog.redhat.com/software/containers/search), with descriptions, technical details, and health index
-  * Well-defined [update schedule](https://access.redhat.com/articles/2208321)
-
--------------------------------------------------------------------------------
-
--> Apache 2.4 with PHP 8.1 Builder Image <-
--------------------------------------------
-
-  * Let's take a quick look at the [catalog](https://catalog.redhat.com/software/containers/ubi9/php-81/62e8e662f6d3d47e19779b01?architecture=amd64&image=6613b6fda253889111a3e07d)
-  * Next we are going to extend this builder image to include the PHP application [Shaarli](https://shaarli.readthedocs.io/en/master/index.html)
-  * You find source and build script in `buildah/shaarli/build_shaarli_image.sh`
-  * Do not miss the example in `buildah/mytinytodo/`
 
 -------------------------------------------------------------------------------
 

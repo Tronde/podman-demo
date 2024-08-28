@@ -1,6 +1,16 @@
-# A Podman Demo/Workshop for Red Hat Subscription Holders
+# A Podman Demo for Red Hat Subscription Holders
 
-This is the development branch for my next Podman[^1] demo/workshop.
+This is the development branch for my next Podman[^1] demo.
+The demo will show:
+  * How to provide runtimes and libraries using Red Hat container images
+  * How to add your own applications to Red Hat builder images
+  * How to use RHEL System Roles to deploy your containerized applications
+  * How to manage your containerized services with systemd
+
+I'm going to show this demo at Red Hat Summit Connect Darmstadt 2024.
+Of course you can try this demo on your own using the scripts and Ansible playbooks included in this repository.
+But be aware that you might get the full experience on Summit Connect Darmstadt only.
+
 The examples/use cases in this demo require access to the Red Hat container registry `registry.redhat.io`, for which a Red Hat Login ID is necessary to authenticate.
 
 In case you are not a Red Hat enterprise customer with access to standard or premium subscriptions of Red Hat Enterprise Linux (RHEL) you can sign up for the no-cost [Red Hat Devoloper Subscription for Individuals](https://access.redhat.com/solutions/4078831).[^2] [^3]
@@ -10,16 +20,12 @@ In case you are not a Red Hat enterprise customer with access to standard or pre
 There are three user stories for this demo.
 
 **Story 1:** Some user needs to build a container image by extending some
-base image to provide a custom container image that will serve an
+base image to create a custom container image that will serve an
 application.
 
 **Story 2:** Teams should be able to run containers and pods in a rootless
 Podman environment. The containerized applications should be able to
-store data persistently in databases or local file systems.
-
-**Story 3:** System administrators need to inspect container images, check
-logs of running containers, and need access to troubleshooting
-resources in order to support their application teams.
+store data persistently in databases and local file systems.
 
 Based on these stories the demo addresses use cases to build, deploy, integrate and test containers.
 With an automation first mindset the demo focus on using Ansible for the different use cases.
@@ -45,20 +51,8 @@ With an automation first mindset the demo focus on using Ansible for the differe
     $ sudo dnf install rhel-system-roles
     ~~~
 
-## How to use this workshop on your own time?
-
-I designed this demo/workshop for on-site vists, where I as a Red Hat Technical Account Manager (TAM)[^4] visit my customers to discuss current topics, projects, and deliver demos and workshops that are of interest to my customers.
-
-If you like to repeat the steps from the workshop on your own time or just do the workshop yourself, feel free to go ahead.
-You can use the file `slides-podman-demo.txt` as guidance.
-The file is a command-line based markdown presentation.
-See [mdp](https://github.com/visit1985/mdp) on how to render it in your terminal of choice.
-And of course, you can just use your favorite editor to view it.
-
 ## Applications used in the examples of this workshop
 
-  * [Uptime Kuma](https://github.com/louislam/uptime-kuma) is an easy-to-use self-hosted monitoring tool. It does not require a database and stores data on the hosts' file system.
-  * [Shaarli](https://shaarli.readthedocs.io/en/master/index.html) - The personal, minimalist, super fast, database-free, bookmarking service. Stores data on hosts' file system.
   * [myTinyTodo](https://www.mytinytodo.net/) - Simple way to manage your todo lists. Written in PHP and jQuery. Data stored in PostgreSQL, MySQL or Sqlite database. Distributed under the GNU GPL License.
 
 ## Background information and further reading

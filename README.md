@@ -95,6 +95,7 @@ This section provides articles from various sources that help to get a better un
 ### Others
 
   * [Quadlet: Running Podman containers under systemd](https://mo8it.com/blog/quadlet/)
+  * [Exploring the new Podman secret command](https://www.redhat.com/sysadmin/new-podman-secrets-command); Enable Sysadmin; [Ashley Cui](https://www.redhat.com/sysadmin/users/ashley-cui) (Red Hat); April 8, 2021
 
 [^1]: https://podman.io
 [^2]: [How do I get the no-cost Red Hat Enterprise Linux Developer Subscription or renew it?](https://access.redhat.com/solutions/4078831)

@@ -55,6 +55,13 @@ With an automation first mindset the demo focus on using Ansible for the differe
 
   * [myTinyTodo](https://www.mytinytodo.net/) - Simple way to manage your todo lists. Written in PHP and jQuery. Data stored in PostgreSQL, MySQL or Sqlite database. Distributed under the GNU GPL License.
 
+## Interactive Labs offered by Red Hat
+
+  * [Build container images with Red Hat Enterprise Linux container tools](https://www.redhat.com/en/interactive-labs/build-container-images-red-hat-enterprise-linux-container-tools); Add an existing application to a Red Hat universal base image container and deploy it.
+  * [Create images with container tools (Buildah)](https://www.redhat.com/en/interactive-labs/create-images-container-tools-buildah); Build containers using an existing base image or from scratch using Red Hat Enterprise Linux container tools.
+  * [Deploy containers using Podman container tools](https://www.redhat.com/en/interactive-labs/deploy-containers-podman-container-tools); Deploy and run container images using the utilities included in Red Hat Enterprise Linux container tools.
+  * [Create and manage Podman pods](https://www.redhat.com/en/interactive-labs/create-and-manage-podman-pods); Create Podman pods to manage multiple containers and services at once.
+
 ## Background information and further reading
 
 This section provides articles from various sources that help to get a better understanding of the wonderful world of containers.

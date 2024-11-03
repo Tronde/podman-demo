@@ -17,7 +17,7 @@ In case you are not a Red Hat enterprise customer with access to standard or pre
 
 ## The User Stories
 
-There are three user stories for this demo.
+There are two user stories in this demo.
 
 **Story 1:** Some user needs to build a container image by extending some
 base image to create a custom container image that will serve an

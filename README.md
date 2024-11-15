@@ -1,6 +1,7 @@
 # A Podman Demo for Red Hat Subscription Holders
 
-This is the development branch for my next Podman[^1] demo.
+This is branch contains the Podman[^1] demo for Red Hat Summit Connect Darmstadt 2024.
+
 The demo will show:
   * How to provide runtimes and libraries using Red Hat container images
   * How to add your own applications to Red Hat builder images
